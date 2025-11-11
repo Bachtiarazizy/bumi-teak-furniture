@@ -40,13 +40,13 @@ const StatsSection: React.FC<StatsSectionProps> = ({
     <section className="bg-secondary py-20">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Heading */}
-        <h2 className="font-heading text-3xl md:text-4xl text-white text-center mb-16">{heading}</h2>
+        <h3 className="font-heading text-3xl md:text-4xl text-white text-center mb-16">{heading}</h3>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="font-heading text-5xl md:text-6xl text-white mb-3">
+              <div className="font-heading text-3xl md:text-4xl text-white mb-3">
                 {stat.number}
                 {stat.suffix && <span className="text-light">{stat.suffix}</span>}
               </div>

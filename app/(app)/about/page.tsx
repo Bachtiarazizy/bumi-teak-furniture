@@ -1,10 +1,9 @@
 import AboutHero from "@/components/about-page/about-hero-section";
+import AboutSection from "@/components/about-page/about-section";
 import OurProcess from "@/components/about-page/our-process-section";
 import OurStory from "@/components/about-page/our-story-section";
 import OurValues from "@/components/about-page/our-value-section";
-import CertificationsSection from "@/components/about-page/sertification-section";
 import StatsSection from "@/components/about-page/statistic-section";
-import TeamSection from "@/components/about-page/team-section";
 import TransformLivingCTA from "@/components/transform-living-CTA-section";
 import React from "react";
 
@@ -21,6 +20,7 @@ export default function AboutPage() {
 
       {/* Our Story */}
       <OurStory imagePath="/images/hero-image.jpg" />
+      <AboutSection imagePath="/images/hero-image.jpg" />
 
       {/* Our Values */}
       <OurValues />
@@ -30,12 +30,6 @@ export default function AboutPage() {
 
       {/* Our Process */}
       <OurProcess />
-
-      {/* Team */}
-      <TeamSection />
-
-      {/* Certifications */}
-      <CertificationsSection />
 
       {/* CTA */}
       <TransformLivingCTA

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Gilda_Display, Noto_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/navbar";
-import Footer from "@/components/layout/footer";
 
 const gildaDisplay = Gilda_Display({
   weight: "400",
@@ -75,11 +73,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${gildaDisplay.variable} ${notoSans.variable} antialiased`}>
-        <Navbar />
-        {children}
-        <Footer companyName="Bumi Teak Furniture" copyrightYear={2024} />
-      </body>
+      <body className={`${gildaDisplay.variable} ${notoSans.variable} antialiased`}>{children}</body>
     </html>
   );
 }

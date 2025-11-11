@@ -37,11 +37,11 @@ const OurValues: React.FC<OurValuesProps> = ({ heading = "OUR VALUES", subheadin
   ];
 
   return (
-    <section className="bg-light py-20">
+    <section className="bg-light/50 py-20">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-heading text-4xl md:text-5xl text-secondary mb-4">{heading}</h2>
+          <h3 className="font-heading text-4xl md:text-5xl text-secondary mb-4">{heading}</h3>
           <p className="font-body text-secondary text-sm">{subheading}</p>
         </div>
 
@@ -50,7 +50,7 @@ const OurValues: React.FC<OurValuesProps> = ({ heading = "OUR VALUES", subheadin
           {values.map((value, index) => (
             <div key={index} className="bg-white p-8 rounded-lg hover:shadow-lg transition-shadow">
               <div className="text-secondary mb-4">{value.icon}</div>
-              <h4 className="font-heading text-xl text-secondary mb-3">{value.title}</h4>
+              <h5 className="font-heading text-xl text-secondary mb-3">{value.title}</h5>
               <p className="font-body text-secondary text-sm leading-relaxed">{value.description}</p>
             </div>
           ))}

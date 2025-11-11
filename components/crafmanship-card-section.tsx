@@ -14,26 +14,26 @@ interface CraftsmanshipSectionProps {
   subheading?: string;
 }
 
-const CraftsmanshipSection: React.FC<CraftsmanshipSectionProps> = ({ sectionLabel = "Craft", heading = "ESSENCE OF INDONESIAN", subheading = "Discover the pure soul of teak furniture design" }) => {
+const CraftsmanshipSection: React.FC<CraftsmanshipSectionProps> = ({ sectionLabel = "Craft", heading = "ESSENCE OF INDONESIAN", subheading = "Experience the heart of natural craftsmanship" }) => {
   const cards: CraftsmanshipCard[] = [
     {
       title: "PREMIUM TEAK WOOD SELECTION",
-      description: "Carefully chosen from the finest Indonesian forests",
+      description: "Every piece begins with the finest teak responsibly sourced from Indonesian forests. Strong, golden, and full of natural character, our wood is chosen to create furniture that lasts for generations",
       linkText: "Explore",
     },
     {
-      title: "SUSTAINABLE FOREST MANAGEMENT",
-      description: "Protecting nature while creating timeless furniture pieces",
+      title: "SUSTAINABLE BY NATURE",
+      description: "At Bumi Teak Furniture, we craft with respect for the earth. Our materials come from sustainable sources, ensuring that every design honours nature while enriching your home",
       linkText: "Learn",
     },
     {
-      title: "ARTISAN CRAFTSMANSHIP",
-      description: "Generations of skill transformed into every furniture piece",
-      linkText: "Discover",
+      title: "MALAYSIA’S TRUSTED ONLINE FURNITURE STORE",
+      description: "We bring premium teak furniture closer to you — beautifully handcrafted, customizable, and delivered across Malaysia. Experience quality, comfort, and convenience from the warmth of your home.",
+      linkText: "Shop Online",
     },
     {
-      title: "HERITAGE OF WOOD AND CRAFTSMANSHIP",
-      description: "Transforming raw timber into living art through generations of skill",
+      title: "WHERE HERITAGE MEETS DESIGN",
+      description: "Inspired by Indonesian craftsmanship and global elegance — Modern, Classic, French, and Italian — every design carries the soul of tradition, shaped for today’s modern living",
       linkText: "Journey",
     },
   ];
@@ -45,14 +45,14 @@ const CraftsmanshipSection: React.FC<CraftsmanshipSectionProps> = ({ sectionLabe
         <div className="text-center mb-16">
           <p className="text-gray-400 text-sm uppercase tracking-wider mb-4 font-body">{sectionLabel}</p>
           <h2 className="text-white font-heading mb-4">
-            <div className="text-4xl md:text-5xl tracking-wide">{heading}</div>
-            <div className="text-4xl md:text-5xl tracking-wide">WOODWORKING</div>
+            <div className="text-3xl md:text-4xl tracking-wide">{heading}</div>
+            <div className="text-3xl md:text-4xl tracking-wide">CRAFTMANSHIP</div>
           </h2>
           <p className="text-gray-300 text-lg font-body">{subheading}</p>
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {cards.map((card, index) => (
             <div key={index} className="bg-secondary p-8 rounded-sm hover:bg-secondary/50 transition-all duration-300 group overflow-hidden">
               {/* Icon */}

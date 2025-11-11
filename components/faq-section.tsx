@@ -58,7 +58,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
         {/* Header */}
         <div className="mb-12">
-          <h2 className="font-heading text-4xl md:text-5xl text-secondary mb-4">{heading}</h2>
+          <h3 className="font-heading text-4xl md:text-5xl text-secondary mb-4">{heading}</h3>
           <p className="font-body text-secondary text-sm">{description}</p>
         </div>
 
@@ -79,7 +79,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({
 
         {/* CTA */}
         <div className="pt-8">
-          <h3 className="font-heading text-2xl md:text-3xl text-secondary mb-3">{ctaHeading}</h3>
+          <h4 className="font-heading text-2xl md:text-3xl text-secondary mb-3">{ctaHeading}</h4>
           <p className="font-body text-secondary text-sm mb-6">{ctaDescription}</p>
           <Link href="/contact">
             <button className="font-body border border-secondary text-secondary px-8 py-3 text-sm hover:bg-secondary hover:text-white transition-colors">{ctaButtonText}</button>

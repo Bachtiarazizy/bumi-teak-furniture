@@ -56,13 +56,26 @@ const Footer: React.FC<FooterProps> = ({ companyName = "Bumi Teak Furniture", co
     <footer className="bg-primary text-white">
       {/* Main Footer Content */}
       <div className="container mx-auto px-6 lg:px-12 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
-          {/* Logo & Description */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-10 mb-12">
+          {/* Logo, Description & Newsletter */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-start mb-4">
-              <Image src="/logo-white.png" alt="Bumi Teak Furniture Logo" width={120} height={48} />
-            </Link>
-            <p className="font-body text-sm text-white/80 leading-relaxed max-w-xs">Bumi Teak Furniture blends Scandinavian simplicity with Indonesian craftsmanship to create timeless teak furniture that connects you with nature.</p>
+            <div className="mb-8">
+              <Link href="/" className="flex items-start mb-6">
+                <Image src="/logo-white.png" alt="Bumi Teak Furniture Logo" width={120} height={48} />
+              </Link>
+              <p className="font-body text-sm text-white/80 leading-relaxed max-w-xs mb-6">Bumi Teak Furniture blends Scandinavian simplicity with Indonesian craftsmanship to create timeless teak furniture that connects you with nature.</p>
+            </div>
+
+            <div>
+              {/* Social Icons */}
+              <div className="flex items-center gap-6 mb-6">
+                {socialLinks.map(({ Icon, href, label }) => (
+                  <Link key={label} href={href} aria-label={label} className="text-white/80 hover:text-white transition-colors">
+                    <Icon className="w-5 h-5" />
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Company Links */}
@@ -107,8 +120,8 @@ const Footer: React.FC<FooterProps> = ({ companyName = "Bumi Teak Furniture", co
             </ul>
           </div>
 
-          {/* Newsletter */}
-          <div>
+          {/* Newsletter Section */}
+          <div className="lg:col-span-2">
             <h5 className="font-heading text-white text-lg mb-4">Subscribe</h5>
             <p className="font-body text-sm text-white/80 mb-4 leading-relaxed">Stay connected with our latest teak furniture designs and craftsmanship insights.</p>
             <div className="space-y-3">
@@ -135,27 +148,22 @@ const Footer: React.FC<FooterProps> = ({ companyName = "Bumi Teak Furniture", co
               <span>
                 © {copyrightYear} {companyName}. All rights reserved.
               </span>
-              <span className="hidden md:inline">•</span>
-              <Link href="/privacy-policy" className="hover:text-white transition-colors">
-                Privacy policy
-              </Link>
-              <span>•</span>
-              <Link href="/terms-of-service" className="hover:text-white transition-colors">
-                Terms of service
-              </Link>
-              <span>•</span>
-              <Link href="/cookie-settings" className="hover:text-white transition-colors">
-                Cookie settings
-              </Link>
             </div>
 
             {/* Social Links */}
-            <div className="flex items-center gap-4">
-              {socialLinks.map(({ Icon, href, label }) => (
-                <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors" aria-label={label}>
-                  <Icon className="w-5 h-5" />
-                </a>
-              ))}
+            <div className="flex items-center gap-4 text-sm font-body text-white/80">
+              <span>•</span>
+              <Link href="/privacy-policy" className="hover:text-white transition-colors">
+                Policy
+              </Link>
+              <span>•</span>
+              <Link href="/terms-of-service" className="hover:text-white transition-colors">
+                Service
+              </Link>
+              <span>•</span>
+              <Link href="/cookie-settings" className="hover:text-white transition-colors">
+                Cookie
+              </Link>
             </div>
           </div>
         </div>

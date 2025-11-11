@@ -19,19 +19,18 @@ interface QualityVideoSectionProps {
 }
 
 const QualityVideoSection: React.FC<QualityVideoSectionProps> = ({
-  heading = "UNCOMPROMISING QUALITY",
-  subheading = "MEETS NATURAL BEAUTY",
-  description = "Experience furniture that transcends mere function. Each piece embodies the raw spirit of Indonesian woodworking.",
+  heading = "Crafted with care, where genuine quality meets the natural beauty of teak",
+  description = "Every curve, grain, and detail tells a story of nature’s patience, human touch, and the timeless craft of Indonesian woodwork.",
   videoThumbnail = "/images/video-thumbnail.jpg",
   videoUrl = "https://www.pexels.com/download/video/3773486",
   features = [
     {
-      title: "ENDURING DESIGN",
-      description: "Furniture built to withstand time, growing more beautiful with each passing year.",
+      title: "LIVING DESIGN",
+      description: "Each piece from Bumi Teak Furniture grows with you, gaining warmth, character, and meaning as time passes. Crafted for comfort and made to create memories that last.",
     },
     {
-      title: "NATURAL HARMONY",
-      description: "Pieces that breathe and connect your living space with the organic rhythms of nature.",
+      title: "NATURAL CONNECTION",
+      description: "Born from nature, crafted for living. Our teak furniture brings balance, calm, and beauty into your home, connecting you with the simple rhythm of nature.",
     },
   ],
 }) => {
@@ -60,11 +59,7 @@ const QualityVideoSection: React.FC<QualityVideoSectionProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           {/* Left: Heading */}
           <div>
-            <h3 className="font-heading text-4xl md:text-5xl text-secondary leading-tight">
-              {heading}
-              <br />
-              {subheading}
-            </h3>
+            <h3 className="font-heading text-4xl md:text-5xl text-secondary leading-tight">{heading}</h3>
           </div>
 
           {/* Right: Description & Features */}
@@ -74,7 +69,7 @@ const QualityVideoSection: React.FC<QualityVideoSectionProps> = ({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {features.map((feature, index) => (
                 <div key={index}>
-                  <h4 className="font-heading text-lg text-secondary mb-3">{feature.title}</h4>
+                  <h5 className="font-heading font-bold text-xl text-secondary mb-3">{feature.title}</h5>
                   <p className="font-body text-secondary text-sm leading-relaxed">{feature.description}</p>
                 </div>
               ))}

@@ -51,7 +51,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
       </div>
 
       {/* Product Name */}
-      <h1 className="font-heading text-4xl md:text-5xl text-secondary">{name}</h1>
+      <h3 className="font-heading text-4xl md:text-5xl text-secondary">{name}</h3>
 
       {/* Rating */}
       <div className="flex items-center gap-3">
@@ -67,7 +67,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
 
       {/* Price */}
       <div className="flex items-baseline gap-3">
-        <span className="font-heading text-4xl text-secondary">${price.toLocaleString()}</span>
+        <span className="font-heading text-2xl text-secondary">${price.toLocaleString()}</span>
         <span className={`font-body text-sm ${inStock ? "text-green-600" : "text-red-600"}`}>{inStock ? "In Stock" : "Out of Stock"}</span>
       </div>
 

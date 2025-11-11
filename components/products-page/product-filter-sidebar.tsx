@@ -104,7 +104,7 @@ const ProductFiltersSidebar: React.FC<ProductFiltersSidebarProps> = ({ onFilterC
     <aside className="bg-white border border-secondary/10 rounded-lg p-6">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
-        <h3 className="font-heading text-xl text-secondary">Filters</h3>
+        <h5 className="font-heading text-xl text-secondary">Filters</h5>
         {activeFiltersCount > 0 && (
           <button onClick={clearAllFilters} className="font-body text-sm text-secondary/70 hover:text-secondary transition-colors flex items-center gap-1">
             Clear all

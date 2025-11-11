@@ -25,10 +25,24 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
     exit: {
       opacity: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.5,
         ease: [0.43, 0.13, 0.23, 0.96] as never,
+        delay: 1.5, // Wait for all elements to exit first
       },
     },
+  };
+
+  const exitVariants = {
+    exit: (i: number) => ({
+      opacity: 0,
+      y: -30,
+      scale: 0.9,
+      transition: {
+        duration: 0.4,
+        ease: [0.43, 0.13, 0.23, 0.96] as never,
+        delay: i * 0.15,
+      },
+    }),
   };
 
   const logoVariants = {
@@ -131,8 +145,8 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
             <motion.path variants={woodGrainVariants} initial="hidden" animate="visible" d="M0,800 Q250,850 500,800 T1000,800" stroke="#d4a574" strokeWidth="2" fill="none" />
           </motion.svg>
 
-          {/* Radial Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-radial from-transparent via-[#2c1810]/50 to-[#1a0f08]" />
+          {/* Radial linear Overlay */}
+          <div className="absolute inset-0 bg-linear-radial from-transparent via-[#2c1810]/50 to-[#1a0f08]" />
 
           {/* Main Content */}
           <div className="relative z-10 text-center px-6">
@@ -200,7 +214,7 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
                 BUMI TEAK
               </motion.h1>
               <motion.h2 custom={1} variants={textVariants} initial="hidden" animate="visible" className="text-3xl md:text-5xl font-serif font-light text-[#c9995c]">
-                NUSANTARA
+                FURNITURE
               </motion.h2>
             </div>
 

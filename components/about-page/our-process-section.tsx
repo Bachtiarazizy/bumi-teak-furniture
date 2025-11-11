@@ -46,7 +46,7 @@ const OurProcess: React.FC<OurProcessProps> = ({ heading = "FROM FOREST TO HOME"
       <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-heading text-4xl md:text-5xl text-secondary mb-4">{heading}</h2>
+          <h3 className="font-heading text-4xl md:text-5xl text-secondary mb-4">{heading}</h3>
           <p className="font-body text-secondary text-sm">{subheading}</p>
         </div>
 
@@ -58,7 +58,7 @@ const OurProcess: React.FC<OurProcessProps> = ({ heading = "FROM FOREST TO HOME"
               <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                 <div className="flex items-baseline gap-4 mb-4">
                   <span className="font-heading text-5xl text-secondary/20">{step.number}</span>
-                  <h3 className="font-heading text-2xl md:text-3xl text-secondary">{step.title}</h3>
+                  <h4 className="font-heading text-2xl md:text-3xl text-secondary">{step.title}</h4>
                 </div>
                 <p className="font-body text-secondary text-sm leading-relaxed">{step.description}</p>
               </div>

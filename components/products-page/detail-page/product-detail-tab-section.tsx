@@ -83,7 +83,7 @@ const ProductTabs: React.FC<ProductTabsProps> = ({
         {/* Description Tab */}
         {activeTab === "description" && (
           <div className="space-y-4">
-            <h3 className="font-heading text-2xl text-secondary mb-4">Product Description</h3>
+            <h4 className="font-heading text-2xl text-secondary mb-4">Product Description</h4>
             <p className="font-body text-secondary text-sm leading-relaxed">
               The Sunset Dining Table is a masterpiece of Indonesian craftsmanship, meticulously handcrafted from premium teak wood sourced from sustainable forests. Each table is unique, showcasing the natural beauty and character of the
               wood through its distinctive grain patterns and warm honey tones.
@@ -111,7 +111,7 @@ const ProductTabs: React.FC<ProductTabsProps> = ({
         {/* Specifications Tab */}
         {activeTab === "specifications" && (
           <div>
-            <h3 className="font-heading text-2xl text-secondary mb-6">Technical Specifications</h3>
+            <h4 className="font-heading text-2xl text-secondary mb-6">Technical Specifications</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {Object.entries(specifications).map(([key, value]) => (
                 <div key={key} className="flex border-b border-secondary/10 pb-3">
@@ -128,7 +128,7 @@ const ProductTabs: React.FC<ProductTabsProps> = ({
           <div>
             <div className="flex justify-between items-start mb-6">
               <div>
-                <h3 className="font-heading text-2xl text-secondary mb-2">Customer Reviews</h3>
+                <h4 className="font-heading text-2xl text-secondary mb-2">Customer Reviews</h4>
                 <p className="font-body text-sm text-secondary/60">Based on {reviews.length} reviews</p>
               </div>
               <button className="font-body text-sm text-white bg-secondary px-6 py-2 rounded hover:bg-secondary/90 transition-colors">Write a Review</button>

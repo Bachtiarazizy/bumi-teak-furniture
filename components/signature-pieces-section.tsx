@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Product {
   id: string;
@@ -18,8 +19,8 @@ interface SignaturePiecesSectionProps {
 
 const SignaturePiecesSection: React.FC<SignaturePiecesSectionProps> = ({
   label = "Curate",
-  heading = "SIGNATURE PIECES",
-  description = "Discover the essence of Indonesian craftsmanship in our collection",
+  heading = "BUMI COLLECTION PIECES",
+  description = "Teak pieces crafted with soul and care, reflecting nature’s beauty and the warmth of home",
   products = [
     {
       id: "1",
@@ -72,7 +73,7 @@ const SignaturePiecesSection: React.FC<SignaturePiecesSectionProps> = ({
         <div className="flex justify-between items-end mb-12">
           <div>
             <p className="font-body text-secondary text-sm mb-3 uppercase tracking-wide">{label}</p>
-            <h2 className="font-heading text-4xl md:text-5xl text-secondary mb-3">{heading}</h2>
+            <h3 className="font-heading text-4xl md:text-5xl text-secondary mb-3">{heading}</h3>
             <p className="font-body text-secondary text-sm max-w-xl">{description}</p>
           </div>
 
@@ -82,7 +83,7 @@ const SignaturePiecesSection: React.FC<SignaturePiecesSectionProps> = ({
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product) => (
-            <div key={product.id} className="group">
+            <Link href={`/shop/${product.id}`} key={product.id} className="group">
               {/* Product Image */}
               <div className="relative h-80 mb-4 overflow-hidden bg-light">
                 <Image src={product.image} alt={product.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -99,7 +100,7 @@ const SignaturePiecesSection: React.FC<SignaturePiecesSectionProps> = ({
 
               {/* Add to Cart Button */}
               <button className="w-full font-body border border-secondary text-secondary py-3 text-sm hover:bg-secondary hover:text-white transition-colors">Add to cart</button>
-            </div>
+            </Link>
           ))}
         </div>
 
