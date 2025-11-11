@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface HeroSectionProps {
   title?: string;
@@ -15,7 +16,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   imagePath = "/images/hero-image.jpg",
 }) => {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden">
+    <section className="relative h-[70vh] min-h-[600px] w-full overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image src={imagePath} alt="Elegant teak furniture interior" fill className="object-cover" priority />
@@ -23,7 +24,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex h-full mt-24 items-center">
+      <div className="relative z-10 flex h-full items-start pt-20 md:pt-32">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-2xl">
             <h1 className="mb-2 font-heading text-white">
@@ -36,11 +37,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
 
       {/* Bottom CTA Section */}
-      <div className="absolute bottom-0  right-0 z-20 bg-black/60 backdrop-blur-sm p-8 max-w-md">
+      <div className="absolute bottom-0 right-0 z-20 bg-black/60 backdrop-blur-sm p-8 max-w-md">
         <p className="text-white text-sm mb-6 leading-relaxed font-body">{description}</p>
         <div className="flex gap-4">
-          <button className="bg-white text-black px-6 py-2 text-sm font-medium hover:bg-gray-100 transition-colors font-body">Shop now</button>
-          <button className="border border-white text-white px-6 py-2 text-sm font-medium hover:bg-white hover:text-black transition-colors font-body">Learn more</button>
+          <Link href="/shop">
+            <button className="bg-white text-black px-6 py-2 text-sm font-medium hover:bg-gray-100 transition-colors font-body">Shop now</button>
+          </Link>
+          <Link href="/about">
+            <button className="border border-white text-white px-6 py-2 text-sm font-medium hover:bg-white hover:text-black transition-colors font-body">Learn more</button>
+          </Link>
         </div>
       </div>
     </section>

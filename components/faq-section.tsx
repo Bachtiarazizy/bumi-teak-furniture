@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 
 interface FAQItem {
   question: string;
@@ -80,7 +81,9 @@ const FAQSection: React.FC<FAQSectionProps> = ({
         <div className="pt-8">
           <h3 className="font-heading text-2xl md:text-3xl text-secondary mb-3">{ctaHeading}</h3>
           <p className="font-body text-secondary text-sm mb-6">{ctaDescription}</p>
-          <button className="font-body border border-secondary text-secondary px-8 py-3 text-sm hover:bg-secondary hover:text-white transition-colors">{ctaButtonText}</button>
+          <Link href="/contact">
+            <button className="font-body border border-secondary text-secondary px-8 py-3 text-sm hover:bg-secondary hover:text-white transition-colors">{ctaButtonText}</button>
+          </Link>
         </div>
       </div>
     </section>

@@ -27,8 +27,8 @@ const AboutHero: React.FC<AboutHeroProps> = ({
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl">
             <h3 className="font-heading text-white mb-6">
-              <div className="text-5xl md:text-6xl lg:text-7xl tracking-wide mb-2">{title}</div>
-              <div className="text-5xl md:text-6xl lg:text-7xl tracking-wide">{subtitle}</div>
+              <div className="text-4xl md:text-5xl lg:text-6xl tracking-wide mb-2">{title}</div>
+              <div className="text-4xl md:text-5xl lg:text-6xl tracking-wide">{subtitle}</div>
             </h3>
             <p className="font-body text-white text-lg md:text-xl leading-relaxed max-w-2xl">{description}</p>
           </div>

@@ -50,7 +50,7 @@ const OurValues: React.FC<OurValuesProps> = ({ heading = "OUR VALUES", subheadin
           {values.map((value, index) => (
             <div key={index} className="bg-white p-8 rounded-lg hover:shadow-lg transition-shadow">
               <div className="text-secondary mb-4">{value.icon}</div>
-              <h3 className="font-heading text-xl text-secondary mb-3">{value.title}</h3>
+              <h4 className="font-heading text-xl text-secondary mb-3">{value.title}</h4>
               <p className="font-body text-secondary text-sm leading-relaxed">{value.description}</p>
             </div>
           ))}

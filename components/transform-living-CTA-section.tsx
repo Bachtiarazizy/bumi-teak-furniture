@@ -37,7 +37,7 @@ const TransformLivingCTA: React.FC<TransformLivingCTAProps> = ({
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
-              <button className="font-body bg-light text-secondary px-8 py-3 text-sm hover:bg-white transition-colors">{primaryButtonText}</button>
+              <button className="font-body bg-white text-secondary px-8 py-3 text-sm hover:bg-light transition-colors">{primaryButtonText}</button>
               <button className="font-body border border-white text-white px-8 py-3 text-sm hover:bg-white hover:text-secondary transition-colors">{secondaryButtonText}</button>
             </div>
           </div>
