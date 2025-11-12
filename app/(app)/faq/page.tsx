@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { ChevronDown, Search, HelpCircle, Package, CreditCard, Truck, Settings } from "lucide-react";
 import LegalPageHero from "@/components/layout/legal-page-hero-section";
