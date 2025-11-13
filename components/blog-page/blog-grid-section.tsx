@@ -94,15 +94,15 @@ const BlogGrid: React.FC<BlogGridProps> = ({ posts = [] }) => {
         {/* Featured Post */}
         {featuredPost && (
           <Link href={`/blog/${featuredPost.id}`} className="block mb-12 group">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-light rounded-lg overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-light rounded-lg overflow-hidden">
               {/* Image */}
-              <div className="relative h-96 lg:h-auto">
+              <div className="relative h-72 lg:h-auto">
                 <Image src={featuredPost.image} alt={featuredPost.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute top-6 left-6 bg-secondary text-white px-4 py-2 text-sm font-body rounded">Featured</div>
               </div>
 
               {/* Content */}
-              <div className="p-8 lg:p-12 flex flex-col justify-center">
+              <div className="p-6 lg:p-8 flex flex-col justify-center">
                 <span className="font-body text-sm text-secondary/60 mb-3">{featuredPost.category}</span>
                 <h3 className="font-heading text-3xl md:text-4xl text-secondary mb-4 group-hover:text-secondary/70 transition-colors">{featuredPost.title}</h3>
                 <p className="font-body text-secondary text-sm leading-relaxed mb-6">{featuredPost.excerpt}</p>

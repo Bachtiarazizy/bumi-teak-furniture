@@ -34,7 +34,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
 
           {/* Right: Content */}
           <div>
-            <div className="space-y-6">
+            <div className="space-y-4">
               {story.map((paragraph, index) => (
                 <p key={index} className="font-body text-secondary text-sm leading-relaxed">
                   {paragraph}

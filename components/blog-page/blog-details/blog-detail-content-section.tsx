@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Share2, Facebook, Twitter, Linkedin } from "lucide-react";
+import { Facebook, Twitter, Linkedin } from "lucide-react";
 
 interface BlogContentProps {
   content?: string;
@@ -12,24 +12,6 @@ const BlogContent: React.FC<BlogContentProps> = ({ content }) => {
       <div className="container mx-auto px-6 lg:px-12">
         <div className=" mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Social Share Sidebar - Desktop */}
-            {/* <div className="hidden lg:block lg:col-span-1">
-              <div className="sticky top-24 space-y-4">
-                <button className="w-full p-3 text-secondary hover:bg-secondary/10 rounded transition-colors" aria-label="Share">
-                  <Share2 className="w-5 h-5 mx-auto" />
-                </button>
-                <button className="w-full p-3 text-secondary hover:bg-secondary/10 rounded transition-colors" aria-label="Share on Facebook">
-                  <Facebook className="w-5 h-5 mx-auto" />
-                </button>
-                <button className="w-full p-3 text-secondary hover:bg-secondary/10 rounded transition-colors" aria-label="Share on Twitter">
-                  <Twitter className="w-5 h-5 mx-auto" />
-                </button>
-                <button className="w-full p-3 text-secondary hover:bg-secondary/10 rounded transition-colors" aria-label="Share on LinkedIn">
-                  <Linkedin className="w-5 h-5 mx-auto" />
-                </button>
-              </div>
-            </div> */}
-
             {/* Main Content */}
             <div className="lg:col-span-11">
               <article className="prose prose-lg max-w-none">

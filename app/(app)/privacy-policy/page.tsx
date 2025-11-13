@@ -145,11 +145,11 @@ export default function PrivacyPolicyPage() {
             <div className="space-y-10">
               {sections.map((section, index) => (
                 <div key={index}>
-                  <h2 className="font-heading text-2xl text-secondary mb-4">{section.title}</h2>
+                  <h3 className="font-heading text-2xl text-secondary mb-4">{section.title}</h3>
 
                   {section.content.map((item, idx) => (
                     <div key={idx} className="mb-4">
-                      {item.subtitle && <h3 className="font-heading text-lg text-secondary mb-2">{item.subtitle}</h3>}
+                      {item.subtitle && <h5 className="font-heading text-lg text-secondary mb-2">{item.subtitle}</h5>}
                       <p className="font-body text-secondary text-sm leading-relaxed">{item.text}</p>
                     </div>
                   ))}

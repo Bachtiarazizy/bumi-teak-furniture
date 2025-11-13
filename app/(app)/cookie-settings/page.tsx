@@ -99,10 +99,10 @@ export default function CookieSettingsPage() {
                 <div key={category.id} className="border border-secondary/10 rounded-lg p-6">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
-                      <h3 className="font-heading text-xl text-secondary mb-2">
+                      <h4 className="font-heading text-xl text-secondary mb-2">
                         {category.title}
                         {category.required && <span className="ml-2 text-xs bg-secondary/10 text-secondary px-2 py-1 rounded font-body">Always Active</span>}
-                      </h3>
+                      </h4>
                       <p className="font-body text-secondary text-sm leading-relaxed">{category.description}</p>
                     </div>
 
@@ -110,7 +110,7 @@ export default function CookieSettingsPage() {
                     <button
                       onClick={() => handleToggle(category.id)}
                       disabled={category.required}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 ml-4 flex-shrink-0 ${
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 ml-4 shrink-0 ${
                         category.enabled ? "bg-secondary" : "bg-secondary/20"
                       } ${category.required ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
                     >
@@ -136,7 +136,7 @@ export default function CookieSettingsPage() {
 
             {/* Additional Information */}
             <div className="mt-12 pt-8 border-t border-secondary/10">
-              <h2 className="font-heading text-2xl text-secondary mb-4">More Information</h2>
+              <h3 className="font-heading text-2xl text-secondary mb-4">More Information</h3>
               <p className="font-body text-secondary text-sm leading-relaxed mb-4">
                 For more details about how we use cookies and other technologies, please read our Privacy Policy. If you have any questions about our cookie usage, please contact us at privacy@bumiteakfurniture.com.
               </p>

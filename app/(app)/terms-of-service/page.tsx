@@ -169,7 +169,7 @@ export default function TermsOfServicePage() {
             <div className="space-y-10">
               {sections.map((section, index) => (
                 <div key={index}>
-                  <h2 className="font-heading text-2xl text-secondary mb-4">{section.title}</h2>
+                  <h3 className="font-heading text-2xl text-secondary mb-4">{section.title}</h3>
 
                   {section.content &&
                     section.content.map((item, idx) => (
@@ -182,7 +182,7 @@ export default function TermsOfServicePage() {
                     <div className="space-y-4">
                       {section.subsections.map((subsection, idx) => (
                         <div key={idx}>
-                          <h3 className="font-heading text-lg text-secondary mb-2">{subsection.subtitle}</h3>
+                          <h5 className="font-heading text-lg text-secondary mb-2">{subsection.subtitle}</h5>
                           <p className="font-body text-secondary text-sm leading-relaxed">{subsection.text}</p>
                         </div>
                       ))}

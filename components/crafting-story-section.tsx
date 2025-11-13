@@ -29,16 +29,16 @@ const CraftingStorySection: React.FC<CraftingStorySectionProps> = ({
           {/* Left: Content */}
           <div>
             <p className="font-body text-secondary text-sm mb-3 uppercase tracking-wide">{label}</p>
-            <h3 className="font-heading text-4xl md:text-5xl text-secondary mb-6 leading-tight">
+            <h2 className="font-heading text-4xl md:text-5xl text-secondary mb-6 leading-tight">
               {heading}
               <br />
               {subheading}
-            </h3>
+            </h2>
             <p className="font-body text-secondary text-sm leading-relaxed mb-8 max-w-lg">{description}</p>
 
             {/* Buttons */}
-            <div className="flex flex-wrap gap-4">
-              <Link href="/our-story">
+            <div className="flex items-center flex-wrap gap-4">
+              <Link href="/blog">
                 <button className="font-body border border-secondary text-secondary px-6 py-3 text-sm hover:bg-secondary hover:text-white transition-colors">{storyButtonText}</button>
               </Link>
               <Link href="/about">

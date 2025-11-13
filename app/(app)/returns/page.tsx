@@ -1,7 +1,7 @@
 import React from "react";
 
 import { RotateCcw, PackageX, CheckCircle, XCircle, AlertTriangle, MessageCircle } from "lucide-react";
-import LegalPageHero from "@/components/layout/legal-page-hero-section";
+import InformationPageHero from "@/components/layout/page-hero-section";
 
 export default function ReturnsPage() {
   const returnProcess = [
@@ -47,7 +47,7 @@ export default function ReturnsPage() {
 
   return (
     <main className="min-h-screen">
-      <LegalPageHero title="Returns & Refunds" description="Our commitment to quality extends to your complete satisfaction. Learn about our return policy and process." />
+      <InformationPageHero title="Returns & Refunds" description="Our commitment to quality extends to your complete satisfaction. Learn about our return policy and process." imagePath="/images/hero-image.jpg" />
 
       {/* Return Process */}
       <section className="bg-white py-12">
@@ -58,13 +58,11 @@ export default function ReturnsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {returnProcess.map((step, index) => (
                 <div key={index} className="text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-secondary/10 rounded-full mb-4">
-                    <step.icon className="w-8 h-8 text-secondary" />
+                  <div className="inline-flex items-center justify-center w-10 h-10 bg-secondary/10 rounded-full mb-4">
+                    <step.icon className="w-5 h-5 text-secondary" />
                   </div>
-                  <div className="mb-3">
-                    <span className="inline-block w-8 h-8 rounded-full bg-secondary text-white font-heading text-sm flex items-center justify-center mb-2">{index + 1}</span>
-                  </div>
-                  <h3 className="font-heading text-lg text-secondary mb-3">{step.title}</h3>
+
+                  <h4 className="font-heading text-lg text-secondary mb-3">{step.title}</h4>
                   <p className="font-body text-sm text-secondary/80 leading-relaxed">{step.description}</p>
                 </div>
               ))}
@@ -83,15 +81,15 @@ export default function ReturnsPage() {
               {/* Eligible */}
               <div className="bg-white p-8 rounded-lg border border-green-200">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                    <CheckCircle className="w-6 h-6 text-green-600" />
+                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                    <CheckCircle className="w-5 h-5 text-green-600" />
                   </div>
-                  <h3 className="font-heading text-2xl text-secondary">Eligible for Return</h3>
+                  <h4 className="font-heading text-2xl text-secondary">Eligible for Return</h4>
                 </div>
                 <ul className="space-y-3">
                   {eligibleReturns.map((item, index) => (
                     <li key={index} className="font-body text-sm text-secondary flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mr-3 mt-0.5" />
+                      <CheckCircle className="w-5 h-5 text-green-600 shrink-0 mr-3 mt-0.5" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -101,15 +99,15 @@ export default function ReturnsPage() {
               {/* Non-Eligible */}
               <div className="bg-white p-8 rounded-lg border border-red-200">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
-                    <XCircle className="w-6 h-6 text-red-600" />
+                  <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                    <XCircle className="w-5 h-5 text-red-600" />
                   </div>
-                  <h3 className="font-heading text-2xl text-secondary">Not Eligible for Return</h3>
+                  <h4 className="font-heading text-2xl text-secondary">Not Eligible for Return</h4>
                 </div>
                 <ul className="space-y-3">
                   {nonEligibleReturns.map((item, index) => (
                     <li key={index} className="font-body text-sm text-secondary flex items-start">
-                      <XCircle className="w-5 h-5 text-red-600 flex-shrink-0 mr-3 mt-0.5" />
+                      <XCircle className="w-5 h-5 text-red-600 shrink-0 mr-3 mt-0.5" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -129,7 +127,7 @@ export default function ReturnsPage() {
             <div className="space-y-8">
               {/* 30-Day Policy */}
               <div>
-                <h3 className="font-heading text-xl text-secondary mb-4">30-Day Return Window</h3>
+                <h4 className="font-heading text-xl text-secondary mb-4">30-Day Return Window</h4>
                 <p className="font-body text-sm text-secondary leading-relaxed mb-3">
                   We offer a 30-day return window from the date of delivery for eligible items. To be eligible for a return, your item must be unused, in the same condition as received, and in the original packaging.
                 </p>
@@ -138,7 +136,7 @@ export default function ReturnsPage() {
 
               {/* Refund Process */}
               <div>
-                <h3 className="font-heading text-xl text-secondary mb-4">Refund Processing</h3>
+                <h4 className="font-heading text-xl text-secondary mb-4">Refund Processing</h4>
                 <p className="font-body text-sm text-secondary leading-relaxed mb-3">
                   Once we receive your return and inspect it, we will notify you of the approval or rejection of your refund. If approved, your refund will be processed within 7-10 business days.
                 </p>
@@ -152,10 +150,10 @@ export default function ReturnsPage() {
 
               {/* Damaged or Defective */}
               <div className="bg-orange-50 border-l-4 border-orange-400 p-6 rounded-r-lg">
-                <div className="flex gap-4">
-                  <AlertTriangle className="w-6 h-6 text-orange-600 flex-shrink-0" />
+                <div className="flex items-start gap-2">
+                  <AlertTriangle className="w-5 h-5 text-orange-600 shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-heading text-lg text-secondary mb-2">Damaged or Defective Items</h3>
+                    <h5 className="font-heading text-lg text-secondary mb-2">Damaged or Defective Items</h5>
                     <p className="font-body text-sm text-secondary leading-relaxed mb-3">
                       If you receive a damaged or defective item, please contact us immediately within 48 hours of delivery. We will arrange for a replacement or full refund, including return shipping costs.
                     </p>
@@ -166,7 +164,7 @@ export default function ReturnsPage() {
 
               {/* Exchange Policy */}
               <div>
-                <h3 className="font-heading text-xl text-secondary mb-4">Exchanges</h3>
+                <h4 className="font-heading text-xl text-secondary mb-4">Exchanges</h4>
                 <p className="font-body text-sm text-secondary leading-relaxed mb-3">
                   We do not offer direct exchanges. If you wish to exchange an item, please return it following our return process and place a new order for the desired item.
                 </p>
@@ -175,7 +173,7 @@ export default function ReturnsPage() {
 
               {/* Custom Orders */}
               <div>
-                <h3 className="font-heading text-xl text-secondary mb-4">Custom Order Cancellations</h3>
+                <h4 className="font-heading text-xl text-secondary mb-4">Custom Order Cancellations</h4>
                 <p className="font-body text-sm text-secondary leading-relaxed mb-3">Custom-made furniture cannot be returned. However, you may cancel a custom order before production begins for a full refund minus a 10% restocking fee.</p>
                 <p className="font-body text-sm text-secondary leading-relaxed">
                   Once production has started (after you approve the design), custom orders cannot be canceled or returned. We will provide progress updates throughout the production process.
@@ -184,7 +182,7 @@ export default function ReturnsPage() {
 
               {/* Return Shipping */}
               <div>
-                <h3 className="font-heading text-xl text-secondary mb-4">Return Shipping Guidelines</h3>
+                <h4 className="font-heading text-xl text-secondary mb-4">Return Shipping Guidelines</h4>
                 <ul className="space-y-2">
                   <li className="font-body text-sm text-secondary flex items-start">
                     <span className="text-secondary mr-3 mt-1">•</span>
@@ -208,7 +206,7 @@ export default function ReturnsPage() {
 
             {/* Contact CTA */}
             <div className="mt-12 p-8 bg-secondary/5 rounded-lg border border-secondary/10">
-              <h3 className="font-heading text-2xl text-secondary mb-3 text-center">Questions About Returns?</h3>
+              <h4 className="font-heading text-2xl text-secondary mb-3 text-center">Questions About Returns?</h4>
               <p className="font-body text-secondary text-sm mb-6 text-center max-w-2xl mx-auto">Our customer service team is here to help. Contact us before initiating a return to ensure a smooth process.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="mailto:returns@bumiteakfurniture.com" className="inline-block bg-secondary text-white px-8 py-3 font-body text-sm hover:bg-secondary/90 transition-colors rounded text-center">

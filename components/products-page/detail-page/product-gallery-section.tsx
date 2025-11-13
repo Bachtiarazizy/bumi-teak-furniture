@@ -16,11 +16,11 @@ interface ProductGalleryProps {
 
 const ProductGallery: React.FC<ProductGalleryProps> = ({
   images = [
-    { id: "1", url: "/images/products/product.jpg", alt: "Product view 1" },
-    { id: "2", url: "/images/products/product.jpg", alt: "Product view 2" },
-    { id: "3", url: "/images/products/product.jpg", alt: "Product view 3" },
-    { id: "4", url: "/images/products/product.jpg", alt: "Product view 4" },
-    { id: "5", url: "/images/products/product.jpg", alt: "Product view 5" },
+    { id: "1", url: "/images/products/product-1.jpg", alt: "Product view 1" },
+    { id: "2", url: "/images/products/product-2.jpg", alt: "Product view 2" },
+    { id: "3", url: "/images/products/product-3.jpg", alt: "Product view 3" },
+    { id: "4", url: "/images/products/product-4.jpg", alt: "Product view 4" },
+    { id: "5", url: "/images/products/product-5.jpg", alt: "Product view 5" },
   ],
 }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);

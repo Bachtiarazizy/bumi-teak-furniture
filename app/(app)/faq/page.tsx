@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { ChevronDown, Search, HelpCircle, Package, CreditCard, Truck, Settings } from "lucide-react";
-import LegalPageHero from "@/components/layout/legal-page-hero-section";
+import InformationPageHero from "@/components/layout/page-hero-section";
 
 interface FAQItem {
   question: string;
@@ -160,9 +160,11 @@ export default function FAQPage() {
 
   return (
     <main className="min-h-screen">
-      <LegalPageHero title="Frequently Asked Questions" description="Find answers to common questions about our teak furniture, ordering process, shipping, and care instructions." />
+      {/* Hero Section */}
+      <InformationPageHero title="Frequently Asked Questions" description="Find answers to common questions about our teak furniture, ordering process, shipping, and care instructions." imagePath="/images/hero-image.jpg" />
 
-      <section className="bg-white py-12">
+      {/* FAQ Content */}
+      <section className="bg-white py-16">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-5xl mx-auto">
             {/* Search Bar */}
@@ -174,26 +176,33 @@ export default function FAQPage() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search for answers..."
-                  className="w-full pl-12 pr-4 py-4 border-2 border-secondary/20 rounded-lg focus:outline-none focus:border-secondary transition-colors font-body text-sm"
+                  className="w-full pl-12 pr-4 py-4 border border-secondary/20 rounded focus:outline-none focus:border-secondary transition-colors font-body text-sm"
                 />
               </div>
             </div>
 
             {/* Category Filters */}
-            <div className="flex flex-wrap justify-center gap-3 mb-12">
-              <button onClick={() => setSelectedCategory(null)} className={`px-6 py-2 rounded-full font-body text-sm transition-colors ${!selectedCategory ? "bg-secondary text-white" : "bg-light text-secondary hover:bg-secondary/10"}`}>
-                All Topics
-              </button>
-              {categories.map((category) => (
+            <div className="mb-12 -mx-6 px-6 lg:mx-0 lg:px-0">
+              <div className="flex gap-3 overflow-x-auto pb-2 lg:flex-wrap lg:justify-center lg:overflow-visible scrollbar-hide">
                 <button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={`px-6 py-2 rounded-full font-body text-sm transition-colors flex items-center gap-2 ${selectedCategory === category.id ? "bg-secondary text-white" : "bg-light text-secondary hover:bg-secondary/10"}`}
+                  onClick={() => setSelectedCategory(null)}
+                  className={`px-6 py-2.5 font-body text-sm rounded-full transition-colors whitespace-nowrap ${!selectedCategory ? "bg-secondary text-white" : "bg-light text-secondary hover:bg-secondary/10"}`}
                 >
-                  <category.icon className="w-4 h-4" />
-                  {category.title}
+                  All Topics
                 </button>
-              ))}
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                    className={`px-6 py-2.5 font-body text-sm rounded-full transition-colors flex items-center gap-2 whitespace-nowrap ${
+                      selectedCategory === category.id ? "bg-secondary text-white" : "bg-light text-secondary hover:bg-secondary/10"
+                    }`}
+                  >
+                    <category.icon className="w-4 h-4" />
+                    {category.title}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* FAQ Categories */}
@@ -204,24 +213,23 @@ export default function FAQPage() {
                     <div className="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center">
                       <category.icon className="w-5 h-5 text-secondary" />
                     </div>
-                    <h2 className="font-heading text-2xl text-secondary">{category.title}</h2>
+                    <h4 className="font-heading text-secondary">{category.title}</h4>
                   </div>
 
-                  <div className="space-y-4">
+                  {/* Clean FAQ List */}
+                  <div className="space-y-0">
                     {category.faqs.map((faq, faqIndex) => {
                       const key = `${categoryIndex}-${faqIndex}`;
                       const isOpen = openIndex === key;
 
                       return (
-                        <div key={faqIndex} className="border border-secondary/10 rounded-lg overflow-hidden">
-                          <button onClick={() => toggleFAQ(categoryIndex, faqIndex)} className="w-full px-6 py-5 flex justify-between items-center text-left hover:bg-secondary/5 transition-colors">
+                        <div key={faqIndex} className="border-b border-secondary/20">
+                          <button onClick={() => toggleFAQ(categoryIndex, faqIndex)} className="w-full py-6 flex justify-between items-center text-left hover:opacity-70 transition-opacity">
                             <span className="font-body text-secondary font-medium pr-8">{faq.question}</span>
-                            <ChevronDown className={`w-5 h-5 text-secondary flex-shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                            <ChevronDown className={`w-5 h-5 text-secondary shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`} />
                           </button>
-                          <div className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-96" : "max-h-0"}`}>
-                            <div className="px-6 pb-5 pt-2">
-                              <p className="font-body text-secondary text-sm leading-relaxed">{faq.answer}</p>
-                            </div>
+                          <div className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-96 pb-6" : "max-h-0"}`}>
+                            <p className="font-body text-secondary text-sm leading-relaxed">{faq.answer}</p>
                           </div>
                         </div>
                       );
@@ -231,18 +239,20 @@ export default function FAQPage() {
               ))}
             </div>
 
-            {/* Still Have Questions */}
-            <div className="mt-16 p-8 bg-light rounded-lg text-center">
-              <HelpCircle className="w-12 h-12 text-secondary mx-auto mb-4" />
-              <h3 className="font-heading text-2xl text-secondary mb-3">Still Have Questions?</h3>
-              <p className="font-body text-secondary text-sm mb-6 max-w-2xl mx-auto">
+            {/* Still Have Questions CTA */}
+            <div className="mt-16 pt-12 border-t border-secondary/20">
+              <div className="flex items-center gap-3 mb-4">
+                <HelpCircle className="w-6 h-6 text-secondary shrink-0 mb-1" />
+                <h4 className="font-heading text-secondary leading-none">NEED MORE INFORMATION?</h4>
+              </div>
+              <p className="font-body text-secondary text-sm mb-6 max-w-2xl">
                 Can&apos;t find the answer you&apos;re looking for? Our customer service team is ready to help with any questions about our products, ordering process, or anything else.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/contact" className="inline-block bg-secondary text-white px-8 py-3 font-body text-sm hover:bg-secondary/90 transition-colors rounded">
+              <div className="flex gap-4">
+                <a href="/contact" className="inline-block bg-secondary text-white px-8 py-3 font-body text-sm hover:bg-secondary/90 transition-colors">
                   Contact Support
                 </a>
-                <a href="mailto:support@bumiteakfurniture.com" className="inline-block border border-secondary text-secondary px-8 py-3 font-body text-sm hover:bg-secondary/5 transition-colors rounded">
+                <a href="mailto:support@bumiteakfurniture.com" className="inline-block border border-secondary text-secondary px-8 py-3 font-body text-sm hover:bg-secondary hover:text-white transition-colors">
                   Email Us
                 </a>
               </div>

@@ -2,12 +2,48 @@ import ProductInfo from "@/components/products-page/detail-page/product-detail-i
 import ProductTabs from "@/components/products-page/detail-page/product-detail-tab-section";
 import ProductGallery from "@/components/products-page/detail-page/product-gallery-section";
 import RelatedProducts from "@/components/products-page/detail-page/related-product-section";
+import { Metadata } from "next";
 import React from "react";
 
 // This would typically come from an API or database
 interface ProductDetailPageProps {
   params: {
     slug: string;
+  };
+}
+
+export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
+  // Fetch product data
+  // const product = await fetchProduct(params.slug);
+
+  // Example dengan dummy data
+  const product = {
+    name: "Classic Teak Dining Table",
+    description: "Handcrafted premium teak dining table featuring traditional Indonesian joinery. Seats 6-8 people comfortably.",
+    price: 2499,
+    image: "/products/dining-table.jpg",
+  };
+
+  return {
+    title: `${product.name} - Premium Indonesian Teak Furniture`,
+    description: product.description,
+    keywords: ["teak dining table", product.name, "buy teak furniture", "handcrafted dining table"],
+    alternates: {
+      canonical: `/shop/products/${params.slug}`,
+    },
+    openGraph: {
+      title: `${product.name} | Bumi Teak Furniture`,
+      description: product.description,
+      url: `/shop/products/${params.slug}`,
+      images: [product.image],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.name} | Bumi Teak Furniture`,
+      description: product.description,
+      images: [product.image],
+    },
   };
 }
 
@@ -26,10 +62,10 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
     inStock: true,
     images: [
       { id: "1", url: "/images/products/product.jpg", alt: "Product view 1" },
-      { id: "2", url: "/images/products/product.jpg", alt: "Product view 2" },
-      { id: "3", url: "/images/products/product.jpg", alt: "Product view 3" },
-      { id: "4", url: "/images/products/product.jpg", alt: "Product view 4" },
-      { id: "5", url: "/images/products/product.jpg", alt: "Product view 5" },
+      { id: "2", url: "/images/products/product-2.jpg", alt: "Product view 2" },
+      { id: "3", url: "/images/products/product-3.jpg", alt: "Product view 3" },
+      { id: "4", url: "/images/products/product-4.jpg", alt: "Product view 4" },
+      { id: "5", url: "/images/products/product-5.jpg", alt: "Product view 5" },
     ],
     specifications: {
       Material: "Solid Indonesian Teak",

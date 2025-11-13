@@ -7,6 +7,7 @@ import HeroSection from "@/components/hero-section";
 import AnimatedSection from "@/components/layout/animated-section";
 import IntroAnimation from "@/components/layout/intro-animation";
 import QualityVideoSection from "@/components/quality-video-section";
+import { LocalBusinessSchema, OrganizationSchema } from "@/components/seo/StructuredData";
 import SignaturePiecesSection from "@/components/signature-pieces-section";
 import TransformLivingCTA from "@/components/transform-living-CTA-section";
 import { useState } from "react";
@@ -26,6 +27,9 @@ export default function Home() {
   return (
     <div className="">
       {showIntro && <IntroAnimation onComplete={handleIntroComplete} />}
+
+      <OrganizationSchema />
+      <LocalBusinessSchema />
 
       {/* Hero Section - Mulai animasi setelah intro */}
       <HeroSection startAnimation={startHeroAnimation} />

@@ -1,6 +1,6 @@
 import React from "react";
 import { Shield, CheckCircle, XCircle, FileText, Mail, AlertCircle } from "lucide-react";
-import LegalPageHero from "@/components/layout/legal-page-hero-section";
+import InformationPageHero from "@/components/layout/page-hero-section";
 
 export default function WarrantyPage() {
   const covered = [
@@ -50,7 +50,7 @@ export default function WarrantyPage() {
 
   return (
     <main className="min-h-screen">
-      <LegalPageHero title="5-Year Warranty" description="We stand behind the quality of our craftsmanship. Every piece comes with our comprehensive 5-year warranty against defects." />
+      <InformationPageHero title="5-Year Warranty" description="We stand behind the quality of our craftsmanship. Every piece comes with our comprehensive 5-year warranty against defects." imagePath="/images/hero-image.jpg" />
 
       {/* Warranty Overview */}
       <section className="bg-white py-12">
@@ -58,9 +58,11 @@ export default function WarrantyPage() {
           <div className="max-w-4xl mx-auto">
             <div className="bg-secondary/5 border-l-4 border-secondary p-8 rounded-r-lg mb-12">
               <div className="flex gap-4">
-                <Shield className="w-12 h-12 text-secondary flex-shrink-0" />
                 <div>
-                  <h2 className="font-heading text-2xl text-secondary mb-3">Our Warranty Commitment</h2>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Shield className="w-6 h-6 text-secondary shrink-0 mb-1" />
+                    <h3 className="font-heading text-secondary leading-none">Our Warranty Commitment</h3>
+                  </div>
                   <p className="font-body text-secondary text-sm leading-relaxed mb-3">
                     Bumi Teak Furniture warrants that all furniture will be free from defects in materials and workmanship for a period of five (5) years from the original date of purchase. This warranty reflects our confidence in the
                     quality of our Indonesian teak and traditional craftsmanship methods.
@@ -75,19 +77,19 @@ export default function WarrantyPage() {
 
             {/* What's Covered */}
             <div className="mb-12">
-              <h2 className="font-heading text-3xl text-secondary mb-8">What&apos;s Covered</h2>
+              <h3 className="font-heading text-3xl text-secondary mb-8">What&apos;s Covered</h3>
               <div className="bg-green-50 border border-green-200 rounded-lg p-8">
                 <div className="flex items-start gap-3 mb-6">
-                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                  <CheckCircle className="w-6 h-6 text-green-600 shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-heading text-xl text-secondary mb-2">5-Year Coverage Includes:</h3>
+                    <h4 className="font-heading text-xl text-secondary mb-2">5-Year Coverage Includes:</h4>
                     <p className="font-body text-sm text-secondary/80 mb-4">Our warranty covers any defects that occur under normal residential use and proper care:</p>
                   </div>
                 </div>
                 <ul className="space-y-3">
                   {covered.map((item, index) => (
                     <li key={index} className="font-body text-sm text-secondary flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mr-3 mt-0.5" />
+                      <CheckCircle className="w-5 h-5 text-green-600 shrink-0 mr-3 mt-0.5" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -97,19 +99,19 @@ export default function WarrantyPage() {
 
             {/* What's Not Covered */}
             <div className="mb-12">
-              <h2 className="font-heading text-3xl text-secondary mb-8">What&apos;s Not Covered</h2>
+              <h3 className="font-heading text-3xl text-secondary mb-8">What&apos;s Not Covered</h3>
               <div className="bg-red-50 border border-red-200 rounded-lg p-8">
                 <div className="flex items-start gap-3 mb-6">
-                  <XCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-1" />
+                  <XCircle className="w-6 h-6 text-red-600 shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-heading text-xl text-secondary mb-2">Warranty Exclusions:</h3>
+                    <h4 className="font-heading text-xl text-secondary mb-2">Warranty Exclusions:</h4>
                     <p className="font-body text-sm text-secondary/80 mb-4">The following conditions are not covered by our warranty:</p>
                   </div>
                 </div>
                 <ul className="space-y-3">
                   {notCovered.map((item, index) => (
                     <li key={index} className="font-body text-sm text-secondary flex items-start">
-                      <XCircle className="w-5 h-5 text-red-600 flex-shrink-0 mr-3 mt-0.5" />
+                      <XCircle className="w-5 h-5 text-red-600 shrink-0 mr-3 mt-0.5" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -120,14 +122,15 @@ export default function WarrantyPage() {
             {/* Important Notes */}
             <div className="mb-12">
               <div className="bg-orange-50 border-l-4 border-orange-400 p-6 rounded-r-lg">
-                <div className="flex gap-4">
-                  <AlertCircle className="w-6 h-6 text-orange-600 flex-shrink-0" />
+                <div className="flex items-start gap-2">
+                  <AlertCircle className="w-5 h-5 text-orange-600 shrink-0 mt-0.5" />
                   <div>
-                    <h3 className="font-heading text-lg text-secondary mb-2">Natural Wood Characteristics</h3>
+                    <h6 className="font-heading text-lg text-secondary mb-2">Natural Wood Characteristics</h6>
                     <p className="font-body text-sm text-secondary leading-relaxed mb-3">
                       Teak is a natural material, and variations in grain pattern, color, and texture are expected and valued characteristics that make each piece unique. These variations are not considered defects.
                     </p>
                     <p className="font-body text-sm text-secondary leading-relaxed">
+                      {" "}
                       Outdoor teak furniture will naturally weather to a silver-gray patina over time. This is a normal and desirable characteristic that does not affect the structural integrity of the wood and is not covered by warranty.
                     </p>
                   </div>
@@ -137,16 +140,16 @@ export default function WarrantyPage() {
 
             {/* Claim Process */}
             <div className="mb-12">
-              <h2 className="font-heading text-3xl text-secondary mb-8">How to File a Warranty Claim</h2>
+              <h3 className="font-heading text-3xl text-secondary mb-8">How to File a Warranty Claim</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {claimProcess.map((item, index) => (
                   <div key={index} className="bg-light p-6 rounded-lg">
                     <div className="flex items-start gap-4 mb-3">
-                      <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center shrink-0">
                         <span className="font-heading text-white text-lg">{item.step}</span>
                       </div>
                       <div>
-                        <h3 className="font-heading text-lg text-secondary mb-2">{item.title}</h3>
+                        <h4 className="font-heading text-lg text-secondary mb-2">{item.title}</h4>
                         <p className="font-body text-sm text-secondary/80 leading-relaxed">{item.description}</p>
                       </div>
                     </div>
@@ -157,12 +160,12 @@ export default function WarrantyPage() {
 
             {/* Required Information */}
             <div className="mb-12">
-              <h2 className="font-heading text-3xl text-secondary mb-6">What You&apos;ll Need</h2>
+              <h3 className="font-heading text-3xl text-secondary mb-6">What You&apos;ll Need</h3>
               <div className="bg-light p-8 rounded-lg">
                 <div className="flex items-start gap-3 mb-4">
-                  <FileText className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
+                  <FileText className="w-6 h-6 text-secondary shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-heading text-lg text-secondary mb-3">Please Prepare the Following:</h3>
+                    <h4 className="font-heading text-lg text-secondary mb-3">Please Prepare the Following:</h4>
                     <ul className="space-y-2">
                       <li className="font-body text-sm text-secondary flex items-start">
                         <span className="text-secondary mr-3 mt-1">•</span>
@@ -192,7 +195,7 @@ export default function WarrantyPage() {
 
             {/* Warranty Terms */}
             <div className="mb-12">
-              <h2 className="font-heading text-3xl text-secondary mb-6">Additional Terms</h2>
+              <h3 className="font-heading text-3xl text-secondary mb-6">Additional Terms</h3>
               <div className="space-y-4 font-body text-sm text-secondary leading-relaxed">
                 <p>
                   <strong>Warranty Transfer:</strong> This warranty is non-transferable and applies only to the original purchaser. Proof of purchase is required for warranty service.
@@ -219,7 +222,7 @@ export default function WarrantyPage() {
               <Mail className="w-12 h-12 text-secondary mx-auto mb-4" />
               <h3 className="font-heading text-2xl text-secondary mb-3">Need Warranty Support?</h3>
               <p className="font-body text-secondary text-sm mb-6 max-w-2xl mx-auto">Our warranty team is here to help. Contact us with any questions about your warranty coverage or to initiate a claim.</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex gap-4 justify-center">
                 <a href="mailto:warranty@bumiteakfurniture.com" className="inline-block bg-secondary text-white px-8 py-3 font-body text-sm hover:bg-secondary/90 transition-colors rounded">
                   Email Warranty Team
                 </a>

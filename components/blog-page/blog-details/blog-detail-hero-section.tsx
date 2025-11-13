@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Calendar, Clock, User } from "lucide-react";
+import Link from "next/link";
 
 interface BlogDetailHeroProps {
   title?: string;
@@ -24,7 +25,9 @@ const BlogDetailHero: React.FC<BlogDetailHeroProps> = ({
       <div className="container mx-auto px-6 lg:px-12 py-12">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-sm font-body text-secondary/60 mb-8">
-          <span className="hover:text-secondary cursor-pointer">Blog</span>
+          <Link href="/blog">
+            <span className="hover:text-secondary cursor-pointer">Blog</span>
+          </Link>
           <span>/</span>
           <span className="hover:text-secondary cursor-pointer">{category}</span>
           <span>/</span>
@@ -37,7 +40,7 @@ const BlogDetailHero: React.FC<BlogDetailHeroProps> = ({
           <span className="inline-block bg-secondary/10 text-secondary px-4 py-1 rounded-full text-sm font-body mb-6">{category}</span>
 
           {/* Title */}
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl text-secondary mb-6 leading-tight">{title}</h1>
+          <h1 className="font-heading  text-secondary mb-6 leading-tight">{title}</h1>
 
           {/* Meta Information */}
           <div className="flex flex-wrap items-center gap-6 text-sm font-body text-secondary/60 mb-8">
@@ -62,7 +65,7 @@ const BlogDetailHero: React.FC<BlogDetailHeroProps> = ({
           </div>
 
           {/* Featured Image */}
-          <div className="relative h-[500px] rounded-lg overflow-hidden mb-12">
+          <div className="relative h-[300px] md:h-[500px] rounded-lg overflow-hidden">
             <Image src={image} alt={title} fill className="object-cover" priority />
           </div>
         </div>

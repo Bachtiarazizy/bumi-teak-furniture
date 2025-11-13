@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import InformationPageHero from "@/components/layout/page-hero-section";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -38,7 +39,7 @@ export default function ContactPage() {
     {
       icon: MapPin,
       title: "Visit Our Showroom",
-      details: ["Jl. Furniture Craft No. 123", "Jepara, Central Java", "Indonesia 59419"],
+      details: ["Jl. Furniture Craft No. 123,Jepara, Central Java", "Indonesia 59419"],
     },
     {
       icon: Phone,
@@ -53,37 +54,33 @@ export default function ContactPage() {
     {
       icon: Clock,
       title: "Business Hours",
-      details: ["Monday - Friday: 8:00 AM - 6:00 PM", "Saturday: 9:00 AM - 4:00 PM", "Sunday: Closed"],
+      details: ["Monday - Friday: 8:00 AM - 6:00 PM", "Saturday - Sunday: Closed"],
     },
   ];
 
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-light py-16">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-heading text-5xl md:text-6xl text-secondary mb-4">Get In Touch</h1>
-            <p className="font-body text-secondary text-lg leading-relaxed">
-              We&apos;d love to hear from you. Whether you have questions about our products, need design advice, or want to discuss a custom project, our team is here to help.
-            </p>
-          </div>
-        </div>
-      </section>
+
+      <InformationPageHero
+        title="Get In Touch"
+        description="We'd love to hear from you. Whether you have questions about our products, need design advice, or want to discuss a custom project, our team is here to help."
+        imagePath="/images/hero-image.jpg"
+      />
 
       {/* Contact Info Cards */}
       <section className="bg-white py-12">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-16">
             {contactInfo.map((info, index) => (
               <div key={index} className="bg-light p-6 rounded-lg text-center hover:shadow-lg transition-shadow">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-secondary/10 rounded-full mb-4">
-                  <info.icon className="w-6 h-6 text-secondary" />
+                <div className="inline-flex items-center justify-center w-10 h-10 bg-secondary/10 rounded-full mb-4">
+                  <info.icon className="w-5 h-5 text-secondary" />
                 </div>
-                <h3 className="font-heading text-lg text-secondary mb-3">{info.title}</h3>
+                <h4 className="font-heading text-lg text-secondary mb-3">{info.title}</h4>
                 <div className="space-y-1">
                   {info.details.map((detail, idx) => (
-                    <p key={idx} className="font-body text-sm text-secondary/80">
+                    <p key={idx} className="font-body text-sm text-secondary/80 ">
                       {detail}
                     </p>
                   ))}
@@ -96,7 +93,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="font-heading text-3xl text-secondary mb-6">Send Us a Message</h2>
+              <h3 className="font-heading text-3xl text-secondary mb-6">Send Us a Message</h3>
 
               {submitMessage && (
                 <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded mb-6">
@@ -184,7 +181,7 @@ export default function ContactPage() {
 
             {/* Map & Info */}
             <div>
-              <h2 className="font-heading text-3xl text-secondary mb-6">Visit Our Workshop</h2>
+              <h3 className="font-heading text-3xl text-secondary mb-6">Visit Our Workshop</h3>
 
               {/* Map Placeholder */}
               <div className="relative h-80 bg-secondary/10 rounded-lg overflow-hidden mb-6">

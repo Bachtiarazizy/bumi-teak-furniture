@@ -136,7 +136,7 @@ const ProductGridSection: React.FC<ProductGridSectionProps> = ({ products = [], 
       {/* Products Grid */}
       <div className={`grid grid-cols-1 md:grid-cols-2 ${viewMode === "3" ? "lg:grid-cols-3" : "lg:grid-cols-4"} gap-6`}>
         {displayProducts.map((product) => (
-          <Link href={`/shop/${product.id}`} key={product.id} className="group">
+          <Link href={`/shop/products/${product.id}`} key={product.id} className="group">
             {/* Product Image */}
             <div className="relative h-80 mb-4 overflow-hidden bg-light rounded-lg">
               <Image src={product.image} alt={product.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />

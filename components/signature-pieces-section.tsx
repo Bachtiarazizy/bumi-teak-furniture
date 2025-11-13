@@ -73,17 +73,18 @@ const SignaturePiecesSection: React.FC<SignaturePiecesSectionProps> = ({
         <div className="flex justify-between items-end mb-12">
           <div>
             <p className="font-body text-secondary text-sm mb-3 uppercase tracking-wide">{label}</p>
-            <h3 className="font-heading text-4xl md:text-5xl text-secondary mb-3">{heading}</h3>
+            <h2 className="font-heading text-4xl md:text-5xl text-secondary mb-3">{heading}</h2>
             <p className="font-body text-secondary text-sm max-w-xl">{description}</p>
           </div>
-
-          <button className="hidden md:block font-body border border-secondary text-secondary px-6 py-2 text-sm hover:bg-secondary hover:text-white transition-colors">View all</button>
+          <Link href="/shop">
+            <button className="hidden md:block font-body border border-secondary text-secondary px-6 py-2 text-sm hover:bg-secondary hover:text-white transition-colors">View all</button>
+          </Link>
         </div>
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product) => (
-            <Link href={`/shop/${product.id}`} key={product.id} className="group">
+            <Link href={`/shop/products/${product.id}`} key={product.id} className="group">
               {/* Product Image */}
               <div className="relative h-80 mb-4 overflow-hidden bg-light">
                 <Image src={product.image} alt={product.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />

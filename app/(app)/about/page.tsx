@@ -4,8 +4,25 @@ import OurProcess from "@/components/about-page/our-process-section";
 import OurStory from "@/components/about-page/our-story-section";
 import OurValues from "@/components/about-page/our-value-section";
 import StatsSection from "@/components/about-page/statistic-section";
+import AnimatedSection from "@/components/layout/animated-section";
 import TransformLivingCTA from "@/components/transform-living-CTA-section";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "About Us - Crafting Excellence Since [Year]",
+  description: "Discover the story behind Bumi Teak Furniture. Learn about our commitment to sustainable Indonesian teak, traditional craftsmanship, and timeless furniture design.",
+  keywords: ["about bumi teak", "Indonesian furniture maker", "sustainable teak", "furniture craftsmanship"],
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Us | Bumi Teak Furniture",
+    description: "Discover the story behind Bumi Teak Furniture and our commitment to excellence.",
+    url: "/about",
+    images: ["/og-about.jpg"],
+  },
+};
 
 export default function AboutPage() {
   return (
@@ -19,27 +36,44 @@ export default function AboutPage() {
       />
 
       {/* Our Story */}
-      <OurStory imagePath="/images/hero-image.jpg" />
-      <AboutSection imagePath="/images/hero-image.jpg" />
+      <AnimatedSection threshold={0.2}>
+        <OurStory imagePath="/images/hero-image.jpg" />
+      </AnimatedSection>
+
+      {/* About Section */}
+      <AnimatedSection threshold={0.2}>
+        <AboutSection imagePath="/images/hero-image.jpg" />
+      </AnimatedSection>
 
       {/* Our Values */}
-      <OurValues />
+      <AnimatedSection threshold={0.2}>
+        <OurValues />
+      </AnimatedSection>
 
       {/* Statistics */}
-      <StatsSection />
+      <AnimatedSection threshold={0.2}>
+        <StatsSection />
+      </AnimatedSection>
 
       {/* Our Process */}
-      <OurProcess />
+      <AnimatedSection threshold={0.2}>
+        <OurProcess />
+      </AnimatedSection>
 
       {/* CTA */}
-      <TransformLivingCTA
-        heading="START YOUR JOURNEY"
-        subheading="WITH BUMI TEAK"
-        description="Discover how our handcrafted teak furniture can transform your living space. Connect with our team to explore custom possibilities."
-        primaryButtonText="Get Started"
-        secondaryButtonText="View Collection"
-        imagePath="/images/hero-image.jpg"
-      />
+      <AnimatedSection threshold={0.2}>
+        <TransformLivingCTA
+          heading="START YOUR JOURNEY"
+          subheading="WITH BUMI TEAK"
+          description="Discover how our handcrafted teak furniture can transform your living space. Connect with our team to explore custom possibilities."
+          primaryButtonText="Get Started"
+          secondaryButtonText="View Collection"
+          imagePath="/images/hero-image.jpg"
+          primaryButtonLink="/shop/collections"
+          secondaryButtonLink="/shop"
+          contentAlignment="center"
+        />
+      </AnimatedSection>
     </main>
   );
 }

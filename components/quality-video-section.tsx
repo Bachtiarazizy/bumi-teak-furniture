@@ -59,7 +59,7 @@ const QualityVideoSection: React.FC<QualityVideoSectionProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           {/* Left: Heading */}
           <div>
-            <h3 className="font-heading text-4xl md:text-5xl text-secondary leading-tight">{heading}</h3>
+            <h2 className="font-heading text-4xl md:text-5xl text-secondary leading-tight">{heading}</h2>
           </div>
 
           {/* Right: Description & Features */}
@@ -78,7 +78,7 @@ const QualityVideoSection: React.FC<QualityVideoSectionProps> = ({
         </div>
 
         {/* Video Section */}
-        <div className="relative w-full h-[600px] md:h-[500px] rounded-lg overflow-hidden group cursor-pointer">
+        <div className="relative w-full h-[300px] md:h-[500px] rounded-lg overflow-hidden group cursor-pointer">
           {/* Video Element */}
           <video ref={videoRef} src={videoUrl} className="w-full h-full object-cover" onClick={handlePlayPause} onEnded={handleVideoEnd} muted loop={false} />
 

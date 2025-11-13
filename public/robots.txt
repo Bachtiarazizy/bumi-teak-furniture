@@ -1,0 +1,16 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow admin or private pages (jika ada)
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /cookie-settings
+Disallow: /privacy-policy
+
+# Crawl delay (optional)
+Crawl-delay: 0.5
+
+# Sitemap location
+Sitemap: https://bumiteakfurniture.com/sitemap.xml

@@ -26,8 +26,8 @@ const OurStory: React.FC<OurStoryProps> = ({
           {/* Left: Content */}
           <div>
             <p className="font-body text-secondary text-sm mb-3 uppercase tracking-wide">{label}</p>
-            <h3 className="font-heading text-4xl md:text-5xl text-secondary mb-8 leading-tight">{heading}</h3>
-            <div className="space-y-6">
+            <h2 className="font-heading text-4xl md:text-5xl text-secondary mb-6 leading-tight">{heading}</h2>
+            <div className="space-y-4">
               {story.map((paragraph, index) => (
                 <p key={index} className="font-body text-secondary text-sm leading-relaxed">
                   {paragraph}

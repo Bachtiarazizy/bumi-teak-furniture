@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { MapPin, Phone, Mail, Clock, Store, Globe, Search } from "lucide-react";
-import LegalPageHero from "@/components/layout/legal-page-hero-section";
+import InformationPageHero from "@/components/layout/page-hero-section";
 
 interface Dealer {
   id: string;
@@ -150,14 +150,14 @@ export default function DealersPage() {
 
   return (
     <main className="min-h-screen">
-      <LegalPageHero title="Dealers & Showrooms" description="Visit our showrooms and authorized dealers worldwide to experience our teak furniture in person." />
+      <InformationPageHero title="Dealers & Showrooms" description="Visit our showrooms and authorized dealers worldwide to experience our teak furniture in person." imagePath="/images/hero-image.jpg" />
 
       {/* Benefits of Visiting */}
       <section className="bg-white py-12">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             <h2 className="font-heading text-3xl text-secondary mb-8 text-center">Why Visit a Showroom?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
               {[
                 {
                   icon: Store,
@@ -181,10 +181,10 @@ export default function DealersPage() {
                 },
               ].map((benefit, index) => (
                 <div key={index} className="text-center p-6 bg-light rounded-lg">
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-secondary/10 rounded-full mb-4">
-                    <benefit.icon className="w-6 h-6 text-secondary" />
+                  <div className="inline-flex items-center justify-center w-10 h-10 bg-secondary/10 rounded-full mb-4">
+                    <benefit.icon className="w-5 h-5 text-secondary" />
                   </div>
-                  <h3 className="font-heading text-lg text-secondary mb-2">{benefit.title}</h3>
+                  <h4 className="font-heading text-lg text-secondary mb-2">{benefit.title}</h4>
                   <p className="font-body text-sm text-secondary/80 leading-relaxed">{benefit.description}</p>
                 </div>
               ))}
@@ -214,16 +214,20 @@ export default function DealersPage() {
               </div>
 
               {/* Region Filter */}
-              <div className="flex flex-wrap justify-center gap-3">
-                {regions.map((region) => (
-                  <button
-                    key={region}
-                    onClick={() => setSelectedRegion(region)}
-                    className={`px-6 py-2 rounded-full font-body text-sm transition-colors ${selectedRegion === region ? "bg-secondary text-white" : "bg-white text-secondary hover:bg-secondary/10 border border-secondary/20"}`}
-                  >
-                    {region === "all" ? "All Regions" : region}
-                  </button>
-                ))}
+              <div className="mb-12 -mx-6 px-6 lg:mx-0 lg:px-0">
+                <div className="flex gap-3 overflow-x-auto pb-2 lg:flex-wrap lg:justify-center lg:overflow-visible scrollbar-hide">
+                  {regions.map((region) => (
+                    <button
+                      key={region}
+                      onClick={() => setSelectedRegion(region)}
+                      className={`px-6 py-2.5 font-body text-sm rounded-full transition-colors whitespace-nowrap ${
+                        selectedRegion === region ? "bg-secondary text-white" : "bg-white text-secondary hover:bg-secondary/10 border border-secondary/20"
+                      }`}
+                    >
+                      {region === "all" ? "All Regions" : region}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -234,7 +238,7 @@ export default function DealersPage() {
                   {/* Header */}
                   <div className="mb-4">
                     <div className="flex items-start justify-between mb-2">
-                      <h3 className="font-heading text-xl text-secondary pr-4">{dealer.name}</h3>
+                      <h4 className="font-heading text-xl text-secondary pr-4">{dealer.name}</h4>
                       <span className={`text-xs px-3 py-1 rounded-full whitespace-nowrap font-body ${getDealerTypeBadgeColor(dealer.type)}`}>{getDealerTypeLabel(dealer.type)}</span>
                     </div>
                   </div>
@@ -242,7 +246,7 @@ export default function DealersPage() {
                   {/* Contact Info */}
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
-                      <MapPin className="w-5 h-5 text-secondary/60 flex-shrink-0 mt-0.5" />
+                      <MapPin className="w-5 h-5 text-secondary/60 shrink-0 mt-0.5" />
                       <div>
                         <p className="font-body text-sm text-secondary">{dealer.address}</p>
                         <p className="font-body text-sm text-secondary/80">
@@ -252,27 +256,27 @@ export default function DealersPage() {
                     </div>
 
                     <div className="flex items-center gap-3">
-                      <Phone className="w-5 h-5 text-secondary/60 flex-shrink-0" />
+                      <Phone className="w-5 h-5 text-secondary/60 shrink-0" />
                       <a href={`tel:${dealer.phone}`} className="font-body text-sm text-secondary hover:text-secondary/70">
                         {dealer.phone}
                       </a>
                     </div>
 
                     <div className="flex items-center gap-3">
-                      <Mail className="w-5 h-5 text-secondary/60 flex-shrink-0" />
+                      <Mail className="w-5 h-5 text-secondary/60 shrink-0" />
                       <a href={`mailto:${dealer.email}`} className="font-body text-sm text-secondary hover:text-secondary/70">
                         {dealer.email}
                       </a>
                     </div>
 
                     <div className="flex items-center gap-3">
-                      <Clock className="w-5 h-5 text-secondary/60 flex-shrink-0" />
+                      <Clock className="w-5 h-5 text-secondary/60 shrink-0" />
                       <p className="font-body text-sm text-secondary/80">{dealer.hours}</p>
                     </div>
 
                     {dealer.website && (
                       <div className="flex items-center gap-3">
-                        <Globe className="w-5 h-5 text-secondary/60 flex-shrink-0" />
+                        <Globe className="w-5 h-5 text-secondary/60 shrink-0" />
                         <a href={dealer.website} target="_blank" rel="noopener noreferrer" className="font-body text-sm text-secondary hover:text-secondary/70 underline">
                           Visit Website
                         </a>

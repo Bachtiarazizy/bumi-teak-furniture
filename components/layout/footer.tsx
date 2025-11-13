@@ -24,7 +24,7 @@ const Footer: React.FC<FooterProps> = ({ companyName = "Bumi Teak Furniture", co
     company: [
       { label: "About", href: "/about" },
       { label: "Products", href: "/products" },
-      { label: "Collections", href: "/collections" },
+      { label: "Collections", href: "/shop/collections" },
       { label: "Gallery", href: "/gallery" },
       { label: "Craftsmanship", href: "/craftsmanship" },
     ],

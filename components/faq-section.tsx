@@ -58,7 +58,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
         {/* Header */}
         <div className="mb-12">
-          <h3 className="font-heading text-4xl md:text-5xl text-secondary mb-4">{heading}</h3>
+          <h2 className="font-heading text-4xl md:text-5xl text-secondary mb-4">{heading}</h2>
           <p className="font-body text-secondary text-sm">{description}</p>
         </div>
 

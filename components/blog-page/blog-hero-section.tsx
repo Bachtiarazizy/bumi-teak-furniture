@@ -16,8 +16,8 @@ const BlogHero: React.FC<BlogHeroProps> = ({ title = "INSIGHTS & INSPIRATION", d
       </div>
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h3 className="font-heading text-5xl md:text-6xl lg:text-7xl text-white mb-4 drop-shadow-lg">{title}</h3>
-          <p className="font-body text-white text-base md:text-lg leading-relaxed max-w-2xl mx-auto drop-shadow-md">{description}</p>
+          <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-white mb-4 drop-shadow-lg">{title}</h1>
+          <p className="font-body text-white text-base md:text-md leading-relaxed max-w-2xl mx-auto drop-shadow-md">{description}</p>
         </div>
       </div>
     </section>

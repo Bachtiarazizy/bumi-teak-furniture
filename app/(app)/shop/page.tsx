@@ -6,6 +6,22 @@ import { SlidersHorizontal, X } from "lucide-react";
 import ProductsHero from "@/components/products-page/product-hero";
 import ProductFiltersSidebar from "@/components/products-page/product-filter-sidebar";
 import ProductGridSection from "@/components/products-page/product-grid-section";
+// import { Metadata } from "next";
+
+// export const metadata: Metadata = {
+//   title: "Shop Premium Teak Furniture - Handcrafted Excellence",
+//   description: "Browse our collection of handcrafted Indonesian teak furniture. Premium dining tables, chairs, outdoor furniture, and custom pieces. Free shipping on orders over $1000.",
+//   keywords: ["buy teak furniture", "teak furniture online", "premium teak", "Indonesian furniture shop"],
+//   alternates: {
+//     canonical: "/shop",
+//   },
+//   openGraph: {
+//     title: "Shop Premium Teak Furniture | Bumi Teak",
+//     description: "Browse our collection of handcrafted Indonesian teak furniture.",
+//     url: "/shop",
+//     images: ["/og-shop.jpg"],
+//   },
+// };
 
 export default function ProductsPage() {
   const [filters, setFilters] = useState<unknown>({});
