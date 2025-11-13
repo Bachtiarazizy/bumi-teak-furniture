@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Gilda_Display, Noto_Sans } from "next/font/google";
 import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 const gildaDisplay = Gilda_Display({
   weight: "400",
@@ -115,7 +117,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className={`${gildaDisplay.variable} ${notoSans.variable} antialiased`}>{children}</body>
+      <body className={`${gildaDisplay.variable} ${notoSans.variable} antialiased`}>
+        <SpeedInsights />
+        <Analytics />
+        {children}
+      </body>
     </html>
   );
 }
