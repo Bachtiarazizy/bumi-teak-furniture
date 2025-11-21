@@ -1,7 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import { Leaf, Trees, Users, Award, Recycle, Heart, TrendingUp, Shield } from "lucide-react";
+import { Trees, Users, Recycle, Heart } from "lucide-react";
 import { Metadata } from "next";
+import InformationPageHero from "@/components/layout/page-hero-section";
 
 export const metadata: Metadata = {
   title: "Sustainable Teak Furniture - Our Environmental Commitment",
@@ -23,95 +24,59 @@ export default function SustainabilityPage() {
     {
       icon: Trees,
       title: "Sustainable Forestry",
-      description: "All our teak is sourced from FSC-certified forests where responsible harvesting ensures forest regeneration and biodiversity.",
+      description: "We source our teak from responsibly managed plantations to ensure long-term forest health, biodiversity, and natural regeneration.",
     },
     {
       icon: Users,
-      title: "Fair Trade Practices",
-      description: "We work directly with local communities, ensuring fair wages, safe conditions, and preserving traditional woodworking skills.",
+      title: "Fair & Ethical Practices",
+      description: "We collaborate directly with skilled artisan communities, ensuring fair compensation, safe working environments, and the preservation of traditional woodworking knowledge.",
     },
     {
       icon: Recycle,
-      title: "Waste Reduction",
-      description: "Wood scraps are used for smaller products or donated locally. We minimize waste at every stage of production.",
+      title: "Waste Minimization",
+      description: "Offcuts and wood remnants are repurposed into smaller items or reused whenever possible, allowing us to minimize waste across every stage of production.",
     },
     {
       icon: Heart,
-      title: "Long-Lasting Quality",
-      description: "By creating furniture that lasts generations, we reduce consumption and environmental impact over time.",
-    },
-  ];
-
-  const certifications = [
-    {
-      name: "FSC Certified",
-      description: "Forest Stewardship Council certification ensures responsible forest management",
-      icon: Shield,
-    },
-    {
-      name: "Fair Trade Verified",
-      description: "Commitment to fair wages and ethical working conditions",
-      icon: Award,
-    },
-    {
-      name: "SVLK Certified",
-      description: "Indonesian Timber Legality Verification System compliance",
-      icon: Leaf,
-    },
-  ];
-
-  const impacts = [
-    {
-      number: "10,000+",
-      label: "Trees Planted",
-      description: "Through our reforestation program since 2020",
-    },
-    {
-      number: "150+",
-      label: "Artisan Families",
-      description: "Supported through fair trade practices",
-    },
-    {
-      number: "95%",
-      label: "Wood Utilization",
-      description: "Minimal waste in our production process",
-    },
-    {
-      number: "100%",
-      label: "FSC Certified",
-      description: "All teak sourced from certified forests",
+      title: "Built to Last",
+      description: "Durability is sustainability. By creating furniture that stands the test of time, we reduce unnecessary consumption and environmental impact.",
     },
   ];
 
   const forestProcess = [
     {
       step: "1",
-      title: "Selective Harvesting",
-      description: "Only mature trees (60+ years) are harvested. Young trees are left to grow, maintaining forest ecosystem.",
+      title: "Controlled Harvesting",
+      description: "Only mature trees are selected to maintain healthy forest cycles and ensure younger trees continue to grow.",
     },
     {
       step: "2",
-      title: "Immediate Replanting",
-      description: "For every tree harvested, 5-10 saplings are planted, ensuring forest growth exceeds harvesting.",
+      title: "Replanting Initiatives",
+      description: "New saplings are planted routinely to support forest regeneration and long-term ecological balance.",
     },
     {
       step: "3",
       title: "Community Partnership",
-      description: "Local communities are involved in planting, maintaining, and benefiting from the forests.",
+      description: "Local communities are involved in planting, maintaining, and benefiting from sustainably managed forests.",
     },
     {
       step: "4",
-      title: "Monitoring & Protection",
-      description: "Regular audits ensure compliance with sustainable practices and forest health monitoring.",
+      title: "Ongoing Monitoring",
+      description: "Regular assessments ensure compliance with responsible forestry standards and forest health.",
     },
   ];
 
   return (
     <main className="min-h-screen">
-      {/* <LegalPageHero
-        title="Our Commitment to Sustainability"
-        description="At Bumi Teak Furniture, sustainability isn't just a buzzword—it's the foundation of everything we do. From responsible sourcing to supporting local communities."
-      /> */}
+      <InformationPageHero
+        title="Sustainability"
+        description="Honoring nature. Respecting people. Creating responsibly."
+        imagePath="/images/hero-image.jpg"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Sustainability", href: "/sustainability" },
+        ]}
+      />
 
       {/* Hero Image Section */}
       <section className="bg-white py-12">
@@ -122,7 +87,8 @@ export default function SustainabilityPage() {
             </div>
             <div className="text-center max-w-3xl mx-auto">
               <p className="font-body text-secondary text-lg leading-relaxed">
-                We believe that beautiful furniture shouldn&apos;t come at the cost of our planet. By combining traditional Indonesian craftsmanship with modern sustainable practices, we create pieces that honor both nature and heritage.
+                At Bumi Teak Furniture, we believe beautiful furniture should never come at the expense of the planet. Our approach blends thoughtful material sourcing, mindful craftsmanship, and a deep respect for nature. Every piece we
+                create is guided by our purpose: to bring the warmth of teak into your home while caring for the world it comes from.{" "}
               </p>
             </div>
           </div>
@@ -140,7 +106,7 @@ export default function SustainabilityPage() {
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
                     <commitment.icon className="w-8 h-8 text-green-600" />
                   </div>
-                  <h3 className="font-heading text-lg text-secondary mb-3">{commitment.title}</h3>
+                  <h4 className="font-heading text-lg text-secondary mb-3">{commitment.title}</h4>
                   <p className="font-body text-sm text-secondary/80 leading-relaxed">{commitment.description}</p>
                 </div>
               ))}
@@ -153,10 +119,8 @@ export default function SustainabilityPage() {
       <section className="bg-white py-12">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-heading text-3xl text-secondary mb-8 text-center">Sustainable Forest Management</h2>
-            <p className="font-body text-secondary text-sm leading-relaxed text-center mb-12 max-w-2xl mx-auto">
-              Our partnership with FSC-certified forests ensures that teak harvesting supports, rather than depletes, Indonesia&apos;s precious forest ecosystems.
-            </p>
+            <h2 className="font-heading text-3xl text-secondary mb-8 text-center">Responsible Forest Management</h2>
+            <p className="font-body text-secondary text-sm leading-relaxed text-center mb-12 max-w-2xl mx-auto">Working with certified suppliers ensures that every piece of wood is harvested with care and accountability. </p>
 
             <div className="space-y-6">
               {forestProcess.map((item, index) => (
@@ -167,7 +131,7 @@ export default function SustainabilityPage() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-heading text-xl text-secondary mb-2">{item.title}</h3>
+                    <h4 className="font-heading text-xl text-secondary mb-2">{item.title}</h4>
                     <p className="font-body text-sm text-secondary/80 leading-relaxed">{item.description}</p>
                   </div>
                 </div>
@@ -178,7 +142,7 @@ export default function SustainabilityPage() {
       </section>
 
       {/* Impact Numbers */}
-      <section className="bg-secondary py-12">
+      {/* <section className="bg-secondary py-12">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             <h2 className="font-heading text-3xl text-white mb-12 text-center">Our Environmental Impact</h2>
@@ -194,10 +158,10 @@ export default function SustainabilityPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Certifications */}
-      <section className="bg-light py-12">
+      {/* <section className="bg-light py-12">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-4xl mx-auto">
             <h2 className="font-heading text-3xl text-secondary mb-8 text-center">Certifications & Standards</h2>
@@ -218,10 +182,10 @@ export default function SustainabilityPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Community Impact */}
-      <section className="bg-white py-12">
+      <section className="bg-light py-12">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -229,30 +193,29 @@ export default function SustainabilityPage() {
                 <Image src="/images/video-thumbnail.jpg" alt="Local artisan community" fill className="object-cover" />
               </div>
               <div>
-                <h2 className="font-heading text-3xl text-secondary mb-6">Supporting Local Communities</h2>
-                <p className="font-body text-secondary text-sm leading-relaxed mb-4">
-                  Our sustainability commitment extends beyond environmental practices to the people who make our furniture possible. We work directly with artisan communities in Jepara, Central Java, where furniture-making has been a
-                  tradition for centuries.
-                </p>
+                <h2 className="font-heading text-3xl text-secondary mb-6">Supporting Local Artisans</h2>
+                <p className="font-body text-secondary text-sm leading-relaxed mb-4">Sustainability is not only about forests—it is also about people.</p>
                 <p className="font-body text-secondary text-sm leading-relaxed mb-6">
-                  By ensuring fair wages, safe working conditions, and investing in skills training, we help preserve traditional woodworking techniques while providing stable livelihoods for artisan families.
+                  We work closely with artisan communities in Central Java, where woodworking is a cultural heritage. Through fair compensation, respectful partnerships, and skill development, we help preserve this heritage while supporting
+                  stable livelihoods.{" "}
                 </p>
+                <p className="font-body text-secondary text-sm leading-relaxed mb-6">Our commitments include:</p>
                 <ul className="space-y-3">
                   <li className="font-body text-sm text-secondary flex items-start">
                     <span className="text-green-600 mr-3 mt-1">✓</span>
-                    <span>Fair wages exceeding local standards</span>
+                    <span>Fair wages aligned with ethical standards</span>
                   </li>
                   <li className="font-body text-sm text-secondary flex items-start">
                     <span className="text-green-600 mr-3 mt-1">✓</span>
-                    <span>Safe, well-ventilated workshop facilities</span>
+                    <span>Safe and well-ventilated workshop environments</span>
                   </li>
                   <li className="font-body text-sm text-secondary flex items-start">
                     <span className="text-green-600 mr-3 mt-1">✓</span>
-                    <span>Apprenticeship programs for young artisans</span>
+                    <span>Skill mentorship and training for younger artisans</span>
                   </li>
                   <li className="font-body text-sm text-secondary flex items-start">
                     <span className="text-green-600 mr-3 mt-1">✓</span>
-                    <span>Health and education benefits for families</span>
+                    <span>Support for education and well-being within artisan families</span>
                   </li>
                 </ul>
               </div>
@@ -260,25 +223,45 @@ export default function SustainabilityPage() {
           </div>
         </div>
       </section>
-
-      {/* Your Impact */}
-      <section className="bg-light py-12">
+      <section className="bg-white py-12">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white p-8 rounded-lg text-center border border-secondary/10">
-              <Leaf className="w-12 h-12 text-green-600 mx-auto mb-4" />
-              <h3 className="font-heading text-2xl text-secondary mb-3">Your Choice Makes a Difference</h3>
-              <p className="font-body text-secondary text-sm mb-6 leading-relaxed max-w-2xl mx-auto">
-                When you choose Bumi Teak Furniture, you&apos;re not just buying furniture—you&apos;re supporting sustainable forestry, fair trade practices, and the preservation of traditional Indonesian craftsmanship. Together, we can
-                create beautiful homes while protecting our planet for future generations.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/shop" className="inline-block bg-secondary text-white px-8 py-3 font-body text-sm hover:bg-secondary/90 transition-colors rounded">
-                  Shop Sustainable Furniture
-                </a>
-                <a href="/about" className="inline-block border border-secondary text-secondary px-8 py-3 font-body text-sm hover:bg-secondary/5 transition-colors rounded">
-                  Learn More About Us
-                </a>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="font-heading text-3xl text-secondary mb-6">Your Choice Makes a Difference</h2>
+                <p className="font-body text-secondary text-sm leading-relaxed mb-4">When you choose Bumi Teak Furniture, you’re choosing more than a beautiful piece of furniture.</p>
+
+                <p className="font-body text-secondary text-sm leading-relaxed mb-6">You are supporting:</p>
+                <ul className="space-y-3">
+                  <li className="font-body text-sm text-secondary flex items-start">
+                    <span className="text-green-600 mr-3 mt-1">✓</span>
+                    <span>responsible forestry</span>
+                  </li>
+                  <li className="font-body text-sm text-secondary flex items-start">
+                    <span className="text-green-600 mr-3 mt-1">✓</span>
+                    <span>ethical craftsmanship</span>
+                  </li>
+                  <li className="font-body text-sm text-secondary flex items-start">
+                    <span className="text-green-600 mr-3 mt-1">✓</span>
+                    <span>preservation of traditional arts</span>
+                  </li>
+                  <li className="font-body text-sm text-secondary flex items-start">
+                    <span className="text-green-600 mr-3 mt-1">✓</span>
+                    <span>sustainable, long-lasting design</span>
+                  </li>
+                </ul>
+                <p className="font-body text-secondary text-sm leading-relaxed mb-6">Together, we can create homes filled with warmth—while caring for the planet that inspires us.</p>
+                <div className="flex flex-row gap-4 justify-start">
+                  <a href="/shop" className="inline-block bg-secondary text-white px-8 py-3 font-body text-sm hover:bg-secondary/90 transition-colors rounded">
+                    Shop Now
+                  </a>
+                  <a href="/about" className="inline-block border border-secondary text-secondary px-8 py-3 font-body text-sm hover:bg-secondary/5 transition-colors rounded">
+                    Learn More
+                  </a>
+                </div>
+              </div>
+              <div className="relative h-128 rounded-lg overflow-hidden">
+                <Image src="/images/video-thumbnail.jpg" alt="Local artisan community" fill className="object-cover" />
               </div>
             </div>
           </div>

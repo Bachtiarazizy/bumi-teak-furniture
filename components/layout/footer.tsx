@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Facebook, Instagram, Twitter, Linkedin, Youtube } from "lucide-react";
+import { Facebook, Instagram, MessageCircle } from "lucide-react";
 import Image from "next/image";
 
 interface FooterProps {
@@ -23,7 +23,7 @@ const Footer: React.FC<FooterProps> = ({ companyName = "Bumi Teak Furniture", co
   const footerLinks = {
     company: [
       { label: "About", href: "/about" },
-      { label: "Products", href: "/products" },
+      { label: "Shop", href: "/shop" },
       { label: "Collections", href: "/shop/collections" },
       { label: "Gallery", href: "/gallery" },
       { label: "Craftsmanship", href: "/craftsmanship" },
@@ -40,16 +40,14 @@ const Footer: React.FC<FooterProps> = ({ companyName = "Bumi Teak Furniture", co
       { label: "Returns", href: "/returns" },
       { label: "FAQ", href: "/faq" },
       { label: "Warranty", href: "/warranty" },
-      { label: "Dealers", href: "/dealers" },
+      { label: "Custom", href: "/custom-furniture" },
     ],
   };
 
   const socialLinks = [
-    { Icon: Facebook, href: "https://facebook.com", label: "Facebook" },
-    { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-    { Icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-    { Icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { Icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+    { Icon: Facebook, href: "https://www.facebook.com/share/1DU8JEDNDq/", label: "Facebook" },
+    { Icon: Instagram, href: "https://www.instagram.com/bumiteakfurniture", label: "Instagram" },
+    { Icon: MessageCircle, href: "https://wa.me/60175709140", label: "Whatsapp" },
   ];
 
   return (
@@ -61,7 +59,7 @@ const Footer: React.FC<FooterProps> = ({ companyName = "Bumi Teak Furniture", co
           <div className="lg:col-span-2">
             <div className="mb-8">
               <Link href="/" className="flex items-start mb-6">
-                <Image src="/logo-white.png" alt="Bumi Teak Furniture Logo" width={120} height={48} />
+                <Image src="/logo-btf-white.png" alt="Bumi Teak Furniture Logo" width={100} height={48} />
               </Link>
               <p className="font-body text-sm text-white/80 leading-relaxed max-w-xs mb-6">Bumi Teak Furniture blends Scandinavian simplicity with Indonesian craftsmanship to create timeless teak furniture that connects you with nature.</p>
             </div>
@@ -152,15 +150,12 @@ const Footer: React.FC<FooterProps> = ({ companyName = "Bumi Teak Furniture", co
 
             {/* Social Links */}
             <div className="flex items-center gap-4 text-sm font-body text-white/80">
-              <span>•</span>
               <Link href="/privacy-policy" className="hover:text-white transition-colors">
                 Policy
               </Link>
-              <span>•</span>
               <Link href="/terms-of-service" className="hover:text-white transition-colors">
                 Service
               </Link>
-              <span>•</span>
               <Link href="/cookie-settings" className="hover:text-white transition-colors">
                 Cookie
               </Link>

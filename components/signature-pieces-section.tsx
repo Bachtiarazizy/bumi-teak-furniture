@@ -11,14 +11,12 @@ interface Product {
 }
 
 interface SignaturePiecesSectionProps {
-  label?: string;
   heading?: string;
   description?: string;
   products?: Product[];
 }
 
 const SignaturePiecesSection: React.FC<SignaturePiecesSectionProps> = ({
-  label = "Curate",
   heading = "BUMI COLLECTION PIECES",
   description = "Teak pieces crafted with soul and care, reflecting nature’s beauty and the warmth of home",
   products = [
@@ -72,7 +70,6 @@ const SignaturePiecesSection: React.FC<SignaturePiecesSectionProps> = ({
         {/* Section Header */}
         <div className="flex justify-between items-end mb-12">
           <div>
-            <p className="font-body text-secondary text-sm mb-3 uppercase tracking-wide">{label}</p>
             <h2 className="font-heading text-4xl md:text-5xl text-secondary mb-3">{heading}</h2>
             <p className="font-body text-secondary text-sm max-w-xl">{description}</p>
           </div>

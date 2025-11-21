@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Instagram } from "lucide-react";
 import InformationPageHero from "@/components/layout/page-hero-section";
 
 export default function ContactPage() {
@@ -37,11 +37,6 @@ export default function ContactPage() {
 
   const contactInfo = [
     {
-      icon: MapPin,
-      title: "Visit Our Showroom",
-      details: ["Jl. Furniture Craft No. 123,Jepara, Central Java", "Indonesia 59419"],
-    },
-    {
       icon: Phone,
       title: "Call Us",
       details: ["+62 291 123 4567", "+62 812 3456 7890"],
@@ -55,6 +50,11 @@ export default function ContactPage() {
       icon: Clock,
       title: "Business Hours",
       details: ["Monday - Friday: 8:00 AM - 6:00 PM", "Saturday - Sunday: Closed"],
+    },
+    {
+      icon: Instagram,
+      title: "Social Media",
+      details: ["Instagram: @bumiteakfurniture", "facebook: @bumiteakfurniture"],
     },
   ];
 

@@ -89,7 +89,7 @@ export default function CareTipsPage() {
                   <div className="inline-flex items-center justify-center w-12 h-12 bg-secondary/10 rounded-full mb-4">
                     <tip.icon className="w-6 h-6 text-secondary" />
                   </div>
-                  <h3 className="font-heading text-lg text-secondary mb-2">{tip.title}</h3>
+                  <h4 className="font-heading text-lg text-secondary mb-2">{tip.title}</h4>
                   <p className="font-body text-sm text-secondary/80 leading-relaxed">{tip.tip}</p>
                 </div>
               ))}
@@ -126,7 +126,7 @@ export default function CareTipsPage() {
                 </div>
 
                 <div>
-                  <h4 className="font-heading text-xl text-secondary mb-4">Daily & Weekly Care</h4>
+                  <h5 className="font-heading text-xl text-secondary mb-4">Daily & Weekly Care</h5>
                   <ul className="space-y-2">
                     <li className="font-body text-sm text-secondary flex items-start">
                       <span className="text-secondary mr-3 mt-1">•</span>
@@ -144,7 +144,7 @@ export default function CareTipsPage() {
                 </div>
 
                 <div>
-                  <h4 className="font-heading text-xl text-secondary mb-4">Monthly Deep Cleaning</h4>
+                  <h5 className="font-heading text-xl text-secondary mb-4">Monthly Deep Cleaning</h5>
                   <p className="font-body text-secondary text-sm leading-relaxed mb-3">
                     Mix a few drops of mild dish soap in warm water. Dampen a soft cloth (not soaking wet) and wipe down the furniture following the grain. Dry immediately with a clean cloth.
                   </p>
@@ -152,7 +152,7 @@ export default function CareTipsPage() {
                 </div>
 
                 <div>
-                  <h4 className="font-heading text-xl text-secondary mb-4">Annual Oil Treatment</h4>
+                  <h5 className="font-heading text-xl text-secondary mb-4">Annual Oil Treatment</h5>
                   <p className="font-body text-secondary text-sm leading-relaxed mb-3">Apply teak oil once or twice a year to maintain the golden color:</p>
                   <ol className="space-y-2 ml-4">
                     <li className="font-body text-sm text-secondary">1. Clean the furniture thoroughly and let it dry completely</li>
@@ -179,7 +179,7 @@ export default function CareTipsPage() {
                   <div className="flex gap-4">
                     <Wind className="w-6 h-6 text-blue-600 shrink-0" />
                     <div>
-                      <h4 className="font-heading text-lg text-secondary mb-2">Natural Weathering Process</h4>
+                      <h5 className="font-heading text-lg text-secondary mb-2">Natural Weathering Process</h5>
                       <p className="font-body text-sm text-secondary leading-relaxed">
                         Outdoor teak will naturally weather to a silver-gray color within 6-12 months. This is normal and desirable! The patina doesn&apos;t affect durability—it&apos;s purely aesthetic.
                       </p>
@@ -188,7 +188,7 @@ export default function CareTipsPage() {
                 </div>
 
                 <div>
-                  <h4 className="font-heading text-xl text-secondary mb-4">Regular Maintenance</h4>
+                  <h5 className="font-heading text-xl text-secondary mb-4">Regular Maintenance</h5>
                   <ul className="space-y-2">
                     <li className="font-body text-sm text-secondary flex items-start">
                       <span className="text-secondary mr-3 mt-1">•</span>
@@ -210,7 +210,7 @@ export default function CareTipsPage() {
                 </div>
 
                 <div>
-                  <h4 className="font-heading text-xl text-secondary mb-4">Maintaining Golden Color (Optional)</h4>
+                  <h5 className="font-heading text-xl text-secondary mb-4">Maintaining Golden Color (Optional)</h5>
                   <p className="font-body text-secondary text-sm leading-relaxed mb-3">If you prefer to maintain the golden honey color:</p>
                   <ul className="space-y-2">
                     <li className="font-body text-sm text-secondary flex items-start">
@@ -229,7 +229,7 @@ export default function CareTipsPage() {
                 </div>
 
                 <div>
-                  <h4 className="font-heading text-xl text-secondary mb-4">Winter Storage</h4>
+                  <h5 className="font-heading text-xl text-secondary mb-4">Winter Storage</h5>
                   <p className="font-body text-secondary text-sm leading-relaxed">
                     While teak can withstand winter weather, storing furniture in a covered, ventilated area extends its life. If leaving outside, use breathable furniture covers and remove snow promptly.
                   </p>
@@ -250,7 +250,7 @@ export default function CareTipsPage() {
               <div className="bg-green-50 border border-green-200 rounded-lg p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <CheckCircle className="w-8 h-8 text-green-600" />
-                  <h3 className="font-heading text-2xl text-secondary">Do&apos;s</h3>
+                  <h4 className="font-heading text-2xl text-secondary">Do&apos;s</h4>
                 </div>
                 <ul className="space-y-3">
                   {dosList.map((item, index) => (
@@ -266,7 +266,7 @@ export default function CareTipsPage() {
               <div className="bg-red-50 border border-red-200 rounded-lg p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <XCircle className="w-8 h-8 text-red-600" />
-                  <h3 className="font-heading text-2xl text-secondary">Don&apos;ts</h3>
+                  <h4 className="font-heading text-2xl text-secondary">Don&apos;ts</h4>
                 </div>
                 <ul className="space-y-3">
                   {dontsList.map((item, index) => (
@@ -291,7 +291,7 @@ export default function CareTipsPage() {
               {seasonalCare.map((season, index) => (
                 <div key={index} className="bg-white p-6 rounded-lg border border-secondary/10">
                   <div className="text-4xl mb-4 text-center">{season.icon}</div>
-                  <h3 className="font-heading text-xl text-secondary mb-4 text-center">{season.season}</h3>
+                  <h4 className="font-heading text-xl text-secondary mb-4 text-center">{season.season}</h4>
                   <ul className="space-y-2">
                     {season.tasks.map((task, idx) => (
                       <li key={idx} className="font-body text-sm text-secondary flex items-start">

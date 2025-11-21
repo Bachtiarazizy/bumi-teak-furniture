@@ -47,32 +47,32 @@ const processSteps = [
 const customOptions = [
   {
     title: "Dining Tables",
-    description: "Custom-sized dining tables for any space, from intimate family dinners to grand entertaining",
+    description: "Custom-built to fit your dining space and lifestyle.",
     examples: ["Extendable tables", "Live edge designs", "Custom dimensions"],
   },
   {
     title: "Bedroom Sets",
-    description: "Complete bedroom furniture tailored to your style and storage needs",
+    description: "Furnish your bedroom with pieces made to suit your style and storage needs.",
     examples: ["Bed frames", "Wardrobes", "Nightstands"],
   },
   {
     title: "Living Room",
-    description: "Create the perfect living space with custom sofas, coffee tables, and entertainment centers",
+    description: "Build a living space that feels warm, balanced, and elegant.",
     examples: ["TV units", "Coffee tables", "Sofa frames"],
   },
   {
     title: "Office Furniture",
-    description: "Professional workspace solutions designed for productivity and comfort",
+    description: "Create a workspace that inspires focus and comfort.",
     examples: ["Executive desks", "Bookshelves", "Conference tables"],
   },
   {
     title: "Outdoor Furniture",
-    description: "Weather-resistant custom pieces for your garden, patio, or poolside",
+    description: "Durable teak pieces designed to withstand the elements.",
     examples: ["Lounge sets", "Dining sets", "Daybeds"],
   },
   {
     title: "Special Projects",
-    description: "Unique pieces for specific needs - from built-ins to architectural elements",
+    description: "For unique architectural or functional needs.",
     examples: ["Wall panels", "Room dividers", "Custom storage"],
   },
 ];
@@ -140,7 +140,7 @@ export default function CustomFurniturePage() {
       {/* Hero Section */}
       <InformationPageHero
         title="Custom Furniture Design"
-        description="Bring your vision to life with bespoke teak furniture crafted exclusively for you. Every piece is unique, every detail is personal."
+        description="Crafted exclusively for you. Unique, personal, and made with heart."
         imagePath="/images/hero-image.jpg"
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -154,11 +154,16 @@ export default function CustomFurniturePage() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Your Vision, Our Expertise</h2>
             <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              At Bumi Teak Furniture, we understand that sometimes the perfect piece doesn&apos;t exist in our catalog. That&apos;s where our custom furniture service comes in. Whether you need a specific size, a unique design, or want to
-              recreate a treasured heirloom, our team of expert craftsmen can bring your ideas to life.
+              At Bumi Teak Furniture, we know that some visions are too personal for standard catalog pieces. That’s why we offer a bespoke furniture service—where your ideas, needs, and lifestyle are translated into one-of-a-kind teak
+              creations.
+            </p>
+            <p className="text-gray-700 text-lg leading-relaxed mb-6">
+              Whether you’re looking for the perfect size, a fresh design, or a modern reinterpretation of a meaningful piece, our team will work closely with you to bring your vision to life. With a deep understanding of teak wood and
+              thoughtful craftsmanship, we create furniture that feels intentional, functional, and beautifully yours.{" "}
             </p>
             <p className="text-gray-600 leading-relaxed">
-              With decades of experience in custom woodworking and a deep understanding of teak&apos;s properties, we transform your concepts into functional works of art that perfectly suit your space and lifestyle.
+              Every custom piece begins with collaboration. You bring the idea; we bring the expertise in design, material selection, and precise handcrafting. Together, we create furniture that blends practicality, beauty, and
+              soul—perfectly tailored to your home.{" "}
             </p>
           </div>
         </div>
@@ -168,14 +173,14 @@ export default function CustomFurniturePage() {
       <section className="bg-gray-50 py-16 lg:py-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">What We Can Create for You</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">From single statement pieces to complete room sets, we handle projects of all sizes</p>
+            <h3 className="text-3xl md:text-4xl font-bold text-primary mb-4">What We Can Create for You</h3>
+            <p className="text-gray-600 max-w-2xl mx-auto">From single statement pieces to full interior setups, we handle custom projects of all scales.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {customOptions.map((option, index) => (
               <div key={index} className="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <h3 className="text-xl font-bold text-primary mb-3">{option.title}</h3>
+                <h5 className="text-xl font-bold text-primary mb-3">{option.title}</h5>
                 <p className="text-gray-600 mb-4 leading-relaxed">{option.description}</p>
                 <div className="space-y-2">
                   {option.examples.map((example, idx) => (
@@ -195,7 +200,7 @@ export default function CustomFurniturePage() {
       <section className="bg-white py-16 lg:py-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">How It Works</h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-primary mb-4">How It Works</h3>
             <p className="text-gray-600 max-w-2xl mx-auto">Our streamlined process ensures your custom furniture project is smooth from start to finish</p>
           </div>
 
@@ -205,16 +210,16 @@ export default function CustomFurniturePage() {
                 <div key={index} className="flex gap-6 items-start">
                   {/* Step Number & Icon */}
                   <div className="flex flex-col items-center shrink-0">
-                    <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">{step.number}</div>
-                    {index < processSteps.length - 1 && <div className="w-0.5 h-16 bg-primary mt-4" />}
+                    <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">{step.number}</div>
+                    {index < processSteps.length - 1 && <div className="w-0.5 h-10 bg-primary mt-4" />}
                   </div>
 
                   {/* Content */}
                   <div className="flex-1 bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors">
                     <div className="flex items-start gap-4">
-                      <step.icon className="w-8 h-8 text-primary shrink-0 mt-1" />
+                      <step.icon className="w-6 h-6 text-primary shrink-0 mt-1" />
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
+                        <h5 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h5>
                         <p className="text-gray-600 leading-relaxed">{step.description}</p>
                       </div>
                     </div>

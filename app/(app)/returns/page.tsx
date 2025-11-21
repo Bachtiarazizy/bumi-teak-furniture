@@ -8,7 +8,7 @@ export default function ReturnsPage() {
     {
       icon: MessageCircle,
       title: "Contact Us",
-      description: "Email returns@bumiteakfurniture.com within 30 days of delivery with your order number and reason for return.",
+      description: "Email info@bumiteakfurniture.com within 30 days of delivery with your order number and reason for return.",
     },
     {
       icon: CheckCircle,
@@ -47,7 +47,15 @@ export default function ReturnsPage() {
 
   return (
     <main className="min-h-screen">
-      <InformationPageHero title="Returns & Refunds" description="Our commitment to quality extends to your complete satisfaction. Learn about our return policy and process." imagePath="/images/hero-image.jpg" />
+      <InformationPageHero
+        title="Returns & Refunds"
+        description="Our commitment to quality extends to your complete satisfaction. Learn about our return policy and process."
+        imagePath="/images/hero-image.jpg"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Returns", href: "/returns" },
+        ]}
+      />
 
       {/* Return Process */}
       <section className="bg-white py-12">
@@ -55,9 +63,9 @@ export default function ReturnsPage() {
           <div className="max-w-6xl mx-auto">
             <h2 className="font-heading text-3xl md:text-4xl text-secondary mb-10 text-center">How to Return an Item</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
               {returnProcess.map((step, index) => (
-                <div key={index} className="text-center">
+                <div key={index} className="text-center bg-light/70 p-6 rounded-lg hover:shadow-lg transition-shadow">
                   <div className="inline-flex items-center justify-center w-10 h-10 bg-secondary/10 rounded-full mb-4">
                     <step.icon className="w-5 h-5 text-secondary" />
                   </div>
@@ -209,7 +217,7 @@ export default function ReturnsPage() {
               <h4 className="font-heading text-2xl text-secondary mb-3 text-center">Questions About Returns?</h4>
               <p className="font-body text-secondary text-sm mb-6 text-center max-w-2xl mx-auto">Our customer service team is here to help. Contact us before initiating a return to ensure a smooth process.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="mailto:returns@bumiteakfurniture.com" className="inline-block bg-secondary text-white px-8 py-3 font-body text-sm hover:bg-secondary/90 transition-colors rounded text-center">
+                <a href="mailto:info@bumiteakfurniture.com" className="inline-block bg-secondary text-white px-8 py-3 font-body text-sm hover:bg-secondary/90 transition-colors rounded text-center">
                   Email Returns Team
                 </a>
                 <a href="/contact" className="inline-block border border-secondary text-secondary px-8 py-3 font-body text-sm hover:bg-secondary/5 transition-colors rounded text-center">

@@ -118,7 +118,7 @@ const Navbar: React.FC = () => {
           <div className="flex items-center gap-12">
             {/* Logo */}
             <Link href="/" className="flex item-start">
-              <Image src="/logo-white.png" alt="Bumi Teak Nusantara Logo" width={100} height={40} />
+              <Image src="/logo-btf-white.png" alt="Bumi Teak Nusantara Logo" width={70} height={40} />
             </Link>
 
             {/* Desktop Navigation */}

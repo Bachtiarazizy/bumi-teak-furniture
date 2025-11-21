@@ -252,7 +252,7 @@ export default function FAQPage() {
                 <a href="/contact" className="inline-block bg-secondary text-white px-8 py-3 font-body text-sm hover:bg-secondary/90 transition-colors">
                   Contact Support
                 </a>
-                <a href="mailto:support@bumiteakfurniture.com" className="inline-block border border-secondary text-secondary px-8 py-3 font-body text-sm hover:bg-secondary hover:text-white transition-colors">
+                <a href="mailto:info@bumiteakfurniture.com" className="inline-block border border-secondary text-secondary px-8 py-3 font-body text-sm hover:bg-secondary hover:text-white transition-colors">
                   Email Us
                 </a>
               </div>

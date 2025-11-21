@@ -9,12 +9,11 @@ interface CraftsmanshipCard {
 }
 
 interface CraftsmanshipSectionProps {
-  sectionLabel?: string;
   heading?: string;
   subheading?: string;
 }
 
-const CraftsmanshipSection: React.FC<CraftsmanshipSectionProps> = ({ sectionLabel = "Craft", heading = "ESSENCE OF INDONESIAN", subheading = "Experience the heart of natural craftsmanship" }) => {
+const CraftsmanshipSection: React.FC<CraftsmanshipSectionProps> = ({ heading = "ESSENCE OF INDONESIAN", subheading = "Experience the heart of natural craftsmanship" }) => {
   const cards: CraftsmanshipCard[] = [
     {
       title: "PREMIUM TEAK WOOD SELECTION",
@@ -43,7 +42,6 @@ const CraftsmanshipSection: React.FC<CraftsmanshipSectionProps> = ({ sectionLabe
       <div className="container mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <p className="text-gray-400 text-sm uppercase tracking-wider mb-4 font-body">{sectionLabel}</p>
           <h2 className="text-white font-heading mb-4">
             <div className="text-3xl md:text-4xl tracking-wide">{heading}</div>
             <div className="text-3xl md:text-4xl tracking-wide">CRAFTMANSHIP</div>

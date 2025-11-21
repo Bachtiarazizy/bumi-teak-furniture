@@ -1,47 +1,8 @@
 import React from "react";
-import { Package, Truck, Clock, MapPin, Shield, AlertCircle } from "lucide-react";
+import { Package, Truck, Clock, Shield, AlertCircle } from "lucide-react";
 import InformationPageHero from "@/components/layout/page-hero-section";
 
 export default function ShippingPage() {
-  const shippingZones = [
-    {
-      zone: "Indonesia",
-      time: "2-4 weeks",
-      cost: "Free on orders over $500",
-      details: "Standard delivery to major cities. Remote areas may require additional time.",
-    },
-    {
-      zone: "Southeast Asia",
-      time: "4-6 weeks",
-      cost: "Starting from $150",
-      details: "Singapore, Malaysia, Thailand, Philippines, Vietnam",
-    },
-    {
-      zone: "Asia Pacific",
-      time: "6-8 weeks",
-      cost: "Starting from $300",
-      details: "Australia, New Zealand, Japan, South Korea, Hong Kong",
-    },
-    {
-      zone: "North America",
-      time: "8-10 weeks",
-      cost: "Starting from $500",
-      details: "USA, Canada, Mexico",
-    },
-    {
-      zone: "Europe",
-      time: "8-10 weeks",
-      cost: "Starting from $600",
-      details: "UK, Germany, France, Netherlands, and other EU countries",
-    },
-    {
-      zone: "Rest of World",
-      time: "10-12 weeks",
-      cost: "Contact for quote",
-      details: "Middle East, Africa, South America - custom shipping available",
-    },
-  ];
-
   const shippingProcess = [
     {
       icon: Package,
@@ -67,55 +28,29 @@ export default function ShippingPage() {
 
   return (
     <main className="min-h-screen">
-      <InformationPageHero title="Shipping Information" description="Learn about our shipping process, delivery times, and costs for domestic and international orders." imagePath="/images/hero-image.jpg" />
-
+      <InformationPageHero
+        title="Shipping Information"
+        description="Learn about our shipping process, delivery times, and costs for domestic and international orders."
+        imagePath="/images/hero-image.jpg"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Shipping", href: "/shipping" },
+        ]}
+      />
       {/* Shipping Process */}
       <section className="bg-white py-12">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             <h2 className="font-heading text-3xl md:text-4xl text-secondary mb-10 text-center">How Shipping Works</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
               {shippingProcess.map((step, index) => (
-                <div key={index} className="text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-secondary/10 rounded-full mb-4">
-                    <step.icon className="w-8 h-8 text-secondary" />
+                <div key={index} className="text-center bg-light/70 p-6 rounded-lg hover:shadow-lg transition-shadow">
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-secondary/10 rounded-full mb-4">
+                    <step.icon className="w-6 h-6 text-secondary" />
                   </div>
                   <h4 className="font-heading text-lg text-secondary mb-3">{step.title}</h4>
                   <p className="font-body text-sm text-secondary/80 leading-relaxed">{step.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Shipping Zones */}
-      <section className="bg-light py-12">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="font-heading text-3xl md:text-4xl text-secondary mb-10 text-center">Shipping Destinations & Rates</h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {shippingZones.map((zone, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg border border-secondary/10 hover:shadow-lg transition-shadow">
-                  <div className="flex items-start gap-3 mb-2">
-                    <MapPin className="w-5 h-5 text-secondary shrink-0 mt-1" />
-                    <div>
-                      <h5 className="font-heading text-xl text-secondary mb-1">{zone.zone}</h5>
-                      <p className="font-body text-sm text-secondary/60">{zone.details}</p>
-                    </div>
-                  </div>
-                  <div className="space-y-2 pt-4 border-t border-secondary/10">
-                    <div className="flex justify-between">
-                      <span className="font-body text-sm text-secondary/80">Delivery Time:</span>
-                      <span className="font-body text-sm text-secondary font-semibold">{zone.time}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="font-body text-sm text-secondary/80">Shipping Cost:</span>
-                      <span className="font-body text-sm text-secondary font-semibold">{zone.cost}</span>
-                    </div>
-                  </div>
                 </div>
               ))}
             </div>

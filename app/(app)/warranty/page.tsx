@@ -29,7 +29,7 @@ export default function WarrantyPage() {
     {
       step: "1",
       title: "Contact Us",
-      description: "Email warranty@bumiteakfurniture.com with your order number, photos of the issue, and a description of the problem.",
+      description: "Email info@bumiteakfurniture.com with your order number, photos of the issue, and a description of the problem.",
     },
     {
       step: "2",
@@ -222,8 +222,8 @@ export default function WarrantyPage() {
               <Mail className="w-12 h-12 text-secondary mx-auto mb-4" />
               <h3 className="font-heading text-2xl text-secondary mb-3">Need Warranty Support?</h3>
               <p className="font-body text-secondary text-sm mb-6 max-w-2xl mx-auto">Our warranty team is here to help. Contact us with any questions about your warranty coverage or to initiate a claim.</p>
-              <div className="flex gap-4 justify-center">
-                <a href="mailto:warranty@bumiteakfurniture.com" className="inline-block bg-secondary text-white px-8 py-3 font-body text-sm hover:bg-secondary/90 transition-colors rounded">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="mailto:info@bumiteakfurniture.com" className="inline-block bg-secondary text-white px-8 py-3 font-body text-sm hover:bg-secondary/90 transition-colors rounded">
                   Email Warranty Team
                 </a>
                 <a href="/contact" className="inline-block border border-secondary text-secondary px-8 py-3 font-body text-sm hover:bg-secondary/5 transition-colors rounded">
