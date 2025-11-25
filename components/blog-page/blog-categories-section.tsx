@@ -18,14 +18,14 @@ const BlogCategories: React.FC<BlogCategoriesProps> = ({ categories = [], select
   };
 
   return (
-    <div className="bg-white border-b border-secondary/10">
+    <div className="bg-white py-8 border-b border-gray-200 sticky top-0 z-30">
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="flex gap-2 overflow-x-auto py-6 scrollbar-hide">
+        <div className="flex gap-2 overflow-x-auto py-6 scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => handleCategoryClick(category.id)}
-              className={`shrink-0 px-6 py-2 rounded-full font-body text-sm transition-colors ${selectedCategory === category.id ? "bg-secondary text-white" : "bg-light text-secondary hover:bg-secondary/10"}`}
+              className={`shrink-0 px-6 py-2 rounded-full font-body text-sm transition-colors ${selectedCategory === category.id ? "bg-secondary text-white" : "bg-gray-100 text-secondary hover:bg-gray-200"}`}
             >
               {category.label} ({category.count})
             </button>

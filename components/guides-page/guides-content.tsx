@@ -113,30 +113,32 @@ export default function GuidesContent({ guides, featuredGuide }: GuidesContentPr
       )}
 
       {/* Search & Filter */}
-      <section className="bg-light py-8">
+      <section className="bg-white py-8 border-b border-gray-200 sticky top-0 z-30">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             {/* Search Bar */}
-            <div className="relative max-w-2xl mx-auto mb-6">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-secondary/40" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search guides..."
-                className="w-full pl-12 pr-4 py-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-secondary transition-colors font-body text-sm bg-white"
-              />
+            <div className="mb-4 md:mb-8">
+              <div className="relative max-w-xl mx-auto">
+                <Search className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-secondary/40" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search for answers..."
+                  className="w-full pl-10 md:pl-12 pr-3 md:pr-4 py-2.5 md:py-3.5 text-sm md:text-base border border-secondary/20 rounded focus:outline-none focus:border-secondary transition-colors font-body"
+                />
+              </div>
             </div>
 
             {/* Category Filters */}
             <div className="-mx-6 px-6 lg:mx-0 lg:px-0">
-              <div className="flex gap-3 overflow-x-auto pb-2 lg:flex-wrap lg:justify-center lg:overflow-visible scrollbar-hide">
+              <div className="flex gap-3 overflow-x-auto pb-2 lg:flex-wrap lg:justify-center lg:overflow-visible scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 {displayCategories.map((category) => (
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
                     className={`px-6 py-2.5 font-body text-sm rounded-full transition-all duration-300 whitespace-nowrap ${
-                      selectedCategory === category ? "bg-secondary text-white scale-105 shadow-md" : "bg-white text-secondary hover:bg-secondary/10 hover:scale-105 border border-secondary/20"
+                      selectedCategory === category ? "bg-secondary text-white scale-105 shadow-md" : "bg-gray-100 text-secondary hover:bg-gray-200 hover:scale-105 border border-secondary/20"
                     }`}
                   >
                     {category === "all" ? "All Guides" : category}

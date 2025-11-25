@@ -98,7 +98,7 @@ export default function GalleryGrid({ allImages, categories, initialCategory }: 
       {/* Category Filter */}
       <section className="bg-white py-8 border-b border-gray-200 sticky top-0 z-30">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex gap-3 overflow-x-auto pb-2 lg:flex-wrap lg:justify-center lg:overflow-visible scrollbar-hide">
+          <div className="flex gap-3 overflow-x-auto pb-2 lg:flex-wrap lg:justify-center lg:overflow-visible scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {categories.map((category) => (
               <button
                 key={category}
