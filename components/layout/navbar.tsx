@@ -23,6 +23,7 @@ const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems: NavItem[] = [
+    { label: "Home", href: "/" },
     { label: "Products", href: "/shop" },
     { label: "About", href: "/about" },
     { label: "Blog", href: "/blog" },
@@ -118,7 +119,7 @@ const Navbar: React.FC = () => {
           <div className="flex items-center gap-12">
             {/* Logo */}
             <Link href="/" className="flex item-start">
-              <Image src="/logo-btf-white.png" alt="Bumi Teak Nusantara Logo" width={70} height={40} />
+              <Image src="/logo-btf-white.png" alt="Bumi Teak Nusantara Logo" width={80} height={40} />
             </Link>
 
             {/* Desktop Navigation */}

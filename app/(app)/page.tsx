@@ -1,40 +1,19 @@
-"use client";
-
-import CraftsmanshipSection from "@/components/crafmanship-card-section";
-import CraftingStorySection from "@/components/crafting-story-section";
-import FAQSection from "@/components/faq-section";
-import HeroSection from "@/components/hero-section";
+import CraftsmanshipSection from "@/components/home-page/crafmanship-card-section";
+import CraftingStorySection from "@/components/home-page/crafting-story-section";
+import FAQSection from "@/components/home-page/faq-section";
 import AnimatedSection from "@/components/layout/animated-section";
-import IntroAnimation from "@/components/layout/intro-animation";
-import QualityVideoSection from "@/components/quality-video-section";
+import QualityVideoSection from "@/components/home-page/quality-video-section";
 import { LocalBusinessSchema, OrganizationSchema } from "@/components/seo/StructuredData";
-import SignaturePiecesSection from "@/components/signature-pieces-section";
-import TransformLivingCTA from "@/components/transform-living-CTA-section";
-import { useState } from "react";
+import SignaturePiecesSection from "@/components/home-page/signature-pieces-section";
+import TransformLivingCTA from "@/components/home-page/transform-living-CTA-section";
+import HomeClientWrapper from "@/components/home-page/home-client-wrapper";
 
 export default function Home() {
-  const [showIntro, setShowIntro] = useState(true);
-  const [startHeroAnimation, setStartHeroAnimation] = useState(false);
-
-  const handleIntroComplete = () => {
-    setShowIntro(false);
-    // Mulai animasi hero setelah intro selesai dengan sedikit delay
-    setTimeout(() => {
-      setStartHeroAnimation(true);
-    }, 100);
-  };
-
   return (
-    <div className="">
-      {showIntro && <IntroAnimation onComplete={handleIntroComplete} />}
-
+    <HomeClientWrapper>
       <OrganizationSchema />
       <LocalBusinessSchema />
 
-      {/* Hero Section - Mulai animasi setelah intro */}
-      <HeroSection startAnimation={startHeroAnimation} />
-
-      {/* Section lainnya dengan scroll-triggered animation */}
       <AnimatedSection threshold={0.2}>
         <CraftsmanshipSection />
       </AnimatedSection>
@@ -58,6 +37,6 @@ export default function Home() {
       <AnimatedSection threshold={0.2}>
         <FAQSection />
       </AnimatedSection>
-    </div>
+    </HomeClientWrapper>
   );
 }

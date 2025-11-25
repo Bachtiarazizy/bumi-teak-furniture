@@ -5,7 +5,7 @@ import OurStory from "@/components/about-page/our-story-section";
 import OurValues from "@/components/about-page/our-value-section";
 import StatsSection from "@/components/about-page/statistic-section";
 import AnimatedSection from "@/components/layout/animated-section";
-import TransformLivingCTA from "@/components/transform-living-CTA-section";
+import TransformLivingCTA from "@/components/home-page/transform-living-CTA-section";
 import { Metadata } from "next";
 import React from "react";
 

@@ -61,7 +61,7 @@ const Footer: React.FC<FooterProps> = ({ companyName = "Bumi Teak Furniture", co
               <Link href="/" className="flex items-start mb-6">
                 <Image src="/logo-btf-white.png" alt="Bumi Teak Furniture Logo" width={100} height={48} />
               </Link>
-              <p className="font-body text-sm text-white/80 leading-relaxed max-w-xs mb-6">Bumi Teak Furniture blends Scandinavian simplicity with Indonesian craftsmanship to create timeless teak furniture that connects you with nature.</p>
+              <p className="font-body text-sm text-white/80 leading-relaxed max-w-xs mb-6">Bumi Teak Furniture blends modern luxury with Indonesian craftsmanship to create timeless teak pieces for your home.</p>
             </div>
 
             <div>

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { ChevronRight, Pencil, MessageSquare, Ruler, CheckCircle, Upload, Mail, Phone, User, Home } from "lucide-react";
 import InformationPageHero from "@/components/layout/page-hero-section";
-import TransformLivingCTA from "@/components/transform-living-CTA-section";
+import TransformLivingCTA from "@/components/home-page/transform-living-CTA-section";
 
 const processSteps = [
   {

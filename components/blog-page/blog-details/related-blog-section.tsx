@@ -2,48 +2,39 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { urlForImage } from "@/lib/sanity/image";
+
+interface SanityImage {
+  asset: {
+    _ref: string;
+    _type: string;
+  };
+  alt?: string;
+}
 
 interface RelatedPost {
-  id: string;
+  _id: string;
   title: string;
-  category: string;
-  date: string;
+  slug: {
+    current: string;
+  };
+  excerpt: string;
+  publishedAt: string;
   readTime: string;
-  image: string;
+  category: string;
+  mainImage?: SanityImage;
 }
 
 interface RelatedPostsProps {
-  posts?: RelatedPost[];
+  posts: RelatedPost[];
 }
 
-const RelatedPosts: React.FC<RelatedPostsProps> = ({
-  posts = [
-    {
-      id: "2",
-      title: "Sustainable Living: How Teak Furniture Supports Our Planet",
-      category: "Sustainability",
-      date: "2024-01-12",
-      readTime: "6 min read",
-      image: "/blog/related-1.jpg",
-    },
-    {
-      id: "3",
-      title: "5 Design Tips for Mixing Traditional and Modern Furniture",
-      category: "Design Tips",
-      date: "2024-01-10",
-      readTime: "5 min read",
-      image: "/blog/related-2.jpg",
-    },
-    {
-      id: "4",
-      title: "Behind the Scenes: Meet Our Master Craftsmen",
-      category: "Craftsmanship",
-      date: "2024-01-05",
-      readTime: "10 min read",
-      image: "/blog/related-3.jpg",
-    },
-  ],
-}) => {
+const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts }) => {
+  // Jika tidak ada related posts, tidak tampilkan section ini
+  if (!posts || posts.length === 0) {
+    return null;
+  }
+
   return (
     <section className="bg-light py-16">
       <div className="container mx-auto px-6 lg:px-12">
@@ -60,10 +51,16 @@ const RelatedPosts: React.FC<RelatedPostsProps> = ({
           {/* Posts Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {posts.map((post) => (
-              <Link href={`/blog/${post.id}`} key={post.id} className="group bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+              <Link href={`/blog/${post.slug.current}`} key={post._id} className="group bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                 {/* Image */}
-                <div className="relative h-56 overflow-hidden">
-                  <Image src={post.image} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="relative h-56 mb-4 overflow-hidden">
+                  {post.mainImage ? (
+                    <Image src={urlForImage(post.mainImage.asset).width(600).height(800).url()} alt={post.mainImage.alt || post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-light">
+                      <p className="text-secondary/40 font-body text-sm">No image</p>
+                    </div>
+                  )}
                 </div>
 
                 {/* Content */}
@@ -75,7 +72,7 @@ const RelatedPosts: React.FC<RelatedPostsProps> = ({
                   <div className="flex items-center gap-3 text-xs font-body text-secondary/60">
                     <span className="flex items-center gap-1">
                       <Calendar className="w-3 h-3" />
-                      {new Date(post.date).toLocaleDateString("en-US", {
+                      {new Date(post.publishedAt).toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
                       })}

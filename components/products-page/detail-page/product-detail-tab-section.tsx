@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { Star } from "lucide-react";
 
 interface Review {
-  id: string;
   author: string;
   rating: number;
   date: string;
@@ -13,55 +12,22 @@ interface Review {
 }
 
 interface ProductTabsProps {
-  specifications?: { [key: string]: string };
-  reviews?: Review[];
+  specifications?: { [key: string]: string } | null;
+  reviews?: Review[] | null;
+  description?: string | null;
 }
 
-const ProductTabs: React.FC<ProductTabsProps> = ({
-  specifications = {
-    Material: "Solid Indonesian Teak",
-    Dimensions: '78"L x 39"W x 30"H',
-    Weight: "165 lbs",
-    Finish: "Natural oil finish",
-    "Seating Capacity": "6-8 people",
-    Assembly: "Minimal assembly required",
-    Care: "Clean with mild soap and water, apply teak oil annually",
-    Origin: "Handcrafted in Jepara, Indonesia",
-  },
-  reviews = [
-    {
-      id: "1",
-      author: "Sarah Johnson",
-      rating: 5,
-      date: "2024-01-15",
-      comment: "Absolutely stunning table! The craftsmanship is impeccable and the wood grain is gorgeous. Worth every penny.",
-      verified: true,
-    },
-    {
-      id: "2",
-      author: "Michael Chen",
-      rating: 5,
-      date: "2024-01-10",
-      comment: "Best furniture investment we've made. The quality is outstanding and it arrived perfectly packaged.",
-      verified: true,
-    },
-    {
-      id: "3",
-      author: "Emma Wilson",
-      rating: 4,
-      date: "2024-01-05",
-      comment: "Beautiful table, very solid construction. Only minor issue was delivery took a bit longer than expected.",
-      verified: true,
-    },
-  ],
-}) => {
+const ProductTabs: React.FC<ProductTabsProps> = ({ specifications, reviews, description }) => {
   const [activeTab, setActiveTab] = useState<"description" | "specifications" | "reviews">("description");
 
-  const tabs = [
-    { id: "description", label: "Description" },
-    { id: "specifications", label: "Specifications" },
-    { id: "reviews", label: `Reviews (${reviews.length})` },
-  ];
+  // Safely handle potentially null/undefined values
+  const safeSpecifications = specifications || {};
+  const safeReviews = reviews || [];
+
+  const hasSpecifications = Object.keys(safeSpecifications).length > 0;
+  const hasReviews = safeReviews.length > 0;
+
+  const tabs = [{ id: "description", label: "Description" }, ...(hasSpecifications ? [{ id: "specifications", label: "Specifications" }] : []), { id: "reviews", label: `Reviews (${safeReviews.length})` }];
 
   return (
     <div className="bg-white border border-secondary/10 rounded-lg overflow-hidden">
@@ -86,36 +52,35 @@ const ProductTabs: React.FC<ProductTabsProps> = ({
         {activeTab === "description" && (
           <div className="space-y-4">
             <h4 className="font-heading text-xl sm:text-2xl text-secondary mb-4">Product Description</h4>
-            <p className="font-body text-secondary text-sm leading-relaxed wrap-break-words">
-              The Sunset Dining Table is a masterpiece of Indonesian craftsmanship, meticulously handcrafted from premium teak wood sourced from sustainable forests. Each table is unique, showcasing the natural beauty and character of the
-              wood through its distinctive grain patterns and warm honey tones.
-            </p>
-            <p className="font-body text-secondary text-sm leading-relaxed wrap-break-words">
-              Our master artisans in Jepara, Indonesia&apos;s historic furniture-making center, employ traditional joinery techniques passed down through generations. The table features mortise and tenon joints for exceptional structural
-              integrity, ensuring it will serve your family for decades to come.
-            </p>
-            <p className="font-body text-secondary text-sm leading-relaxed wrap-break-words">
-              The natural oil finish enhances the wood&apos;s inherent beauty while providing protection. Over time, your table will develop a rich patina that adds character and depth, making it truly one-of-a-kind.
-            </p>
-
-            <h4 className="font-heading text-base sm:text-lg text-secondary mt-6 mb-3">Key Features:</h4>
-            <ul className="list-disc list-inside space-y-2 font-body text-secondary text-sm wrap-break-words">
-              <li>100% solid Indonesian teak, no veneers or particle board</li>
-              <li>Traditional mortise and tenon joinery for superior strength</li>
-              <li>Natural oil finish highlights the wood&apos;s beauty</li>
-              <li>Seats 6-8 people comfortably</li>
-              <li>Suitable for both indoor and covered outdoor use</li>
-              <li>Eco-friendly: sourced from FSC-certified sustainable forests</li>
-            </ul>
+            {description ? (
+              <div className="font-body text-secondary text-sm leading-relaxed whitespace-pre-wrap">{description}</div>
+            ) : (
+              <div className="space-y-4">
+                <p className="font-body text-secondary text-sm leading-relaxed">
+                  This is a handcrafted piece made with premium materials and exceptional attention to detail. Each item showcases unique characteristics that make it truly one-of-a-kind.
+                </p>
+                <p className="font-body text-secondary text-sm leading-relaxed">
+                  Our master artisans employ traditional techniques passed down through generations, ensuring superior quality and structural integrity that will last for years to come.
+                </p>
+                <h4 className="font-heading text-base sm:text-lg text-secondary mt-6 mb-3">Key Features:</h4>
+                <ul className="list-disc list-inside space-y-2 font-body text-secondary text-sm">
+                  <li>Premium quality materials</li>
+                  <li>Handcrafted with traditional techniques</li>
+                  <li>Durable construction for long-lasting use</li>
+                  <li>Unique character in every piece</li>
+                  <li>Sustainably sourced materials</li>
+                </ul>
+              </div>
+            )}
           </div>
         )}
 
         {/* Specifications Tab */}
-        {activeTab === "specifications" && (
+        {activeTab === "specifications" && hasSpecifications && (
           <div>
             <h4 className="font-heading text-xl sm:text-2xl text-secondary mb-4 sm:mb-6">Technical Specifications</h4>
             <div className="grid grid-cols-1 gap-3 sm:gap-4">
-              {Object.entries(specifications).map(([key, value]) => (
+              {Object.entries(safeSpecifications).map(([key, value]) => (
                 <div key={key} className="flex flex-col sm:flex-row border-b border-secondary/10 pb-3 gap-1 sm:gap-0">
                   <span className="font-body text-sm text-secondary/60 sm:w-1/2 font-medium">{key}:</span>
                   <span className="font-body text-sm text-secondary sm:w-1/2 wrap-break-words">{value}</span>
@@ -131,40 +96,46 @@ const ProductTabs: React.FC<ProductTabsProps> = ({
             <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-6">
               <div>
                 <h4 className="font-heading text-xl sm:text-2xl text-secondary mb-2">Customer Reviews</h4>
-                <p className="font-body text-sm text-secondary/60">Based on {reviews.length} reviews</p>
+                <p className="font-body text-sm text-secondary/60">{hasReviews ? `Based on ${safeReviews.length} ${safeReviews.length === 1 ? "review" : "reviews"}` : "No reviews yet"}</p>
               </div>
               <button className="font-body text-sm text-white bg-secondary px-4 sm:px-6 py-2 rounded hover:bg-secondary/90 transition-colors whitespace-nowrap w-full sm:w-auto">Write a Review</button>
             </div>
 
-            <div className="space-y-6">
-              {reviews.map((review) => (
-                <div key={review.id} className="border-b border-secondary/10 pb-6 last:border-b-0">
-                  <div className="flex flex-col sm:flex-row items-start justify-between mb-3 gap-3">
-                    <div className="w-full">
-                      <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <span className="font-body text-secondary font-medium wrap-break-words">{review.author}</span>
-                        {review.verified && <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded font-body whitespace-nowrap">Verified Purchase</span>}
-                      </div>
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <div className="flex">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className={`w-4 h-4 ${i < review.rating ? "fill-secondary text-secondary" : "text-secondary/20"}`} />
-                          ))}
+            {hasReviews ? (
+              <div className="space-y-6">
+                {safeReviews.map((review, index) => (
+                  <div key={index} className="border-b border-secondary/10 pb-6 last:border-b-0">
+                    <div className="flex flex-col sm:flex-row items-start justify-between mb-3 gap-3">
+                      <div className="w-full">
+                        <div className="flex items-center gap-2 mb-1 flex-wrap">
+                          <span className="font-body text-secondary font-medium wrap-break-words">{review.author}</span>
+                          {review.verified && <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded font-body whitespace-nowrap">Verified Purchase</span>}
                         </div>
-                        <span className="font-body text-xs text-secondary/60">
-                          {new Date(review.date).toLocaleDateString("en-US", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          })}
-                        </span>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <div className="flex">
+                            {[...Array(5)].map((_, i) => (
+                              <Star key={i} className={`w-4 h-4 ${i < review.rating ? "fill-secondary text-secondary" : "text-secondary/20"}`} />
+                            ))}
+                          </div>
+                          <span className="font-body text-xs text-secondary/60">
+                            {new Date(review.date).toLocaleDateString("en-US", {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            })}
+                          </span>
+                        </div>
                       </div>
                     </div>
+                    <p className="font-body text-sm text-secondary leading-relaxed wrap-break-words">{review.comment}</p>
                   </div>
-                  <p className="font-body text-sm text-secondary leading-relaxed wrap-break-words">{review.comment}</p>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-8">
+                <p className="font-body text-secondary/60 text-sm">Be the first to review this product!</p>
+              </div>
+            )}
           </div>
         )}
       </div>

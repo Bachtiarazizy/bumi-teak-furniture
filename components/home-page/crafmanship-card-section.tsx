@@ -1,11 +1,13 @@
 import React from "react";
 import { Cuboid } from "lucide-react";
+import Link from "next/link";
 
 interface CraftsmanshipCard {
   icon?: React.ReactNode;
   title: string;
   description: string;
   linkText: string;
+  linkUrl?: string;
 }
 
 interface CraftsmanshipSectionProps {
@@ -19,21 +21,25 @@ const CraftsmanshipSection: React.FC<CraftsmanshipSectionProps> = ({ heading = "
       title: "PREMIUM TEAK WOOD SELECTION",
       description: "Every piece begins with the finest teak responsibly sourced from Indonesian forests. Strong, golden, and full of natural character, our wood is chosen to create furniture that lasts for generations",
       linkText: "Explore",
+      linkUrl: "/blog/our-promise-to-nature",
     },
     {
       title: "SUSTAINABLE BY NATURE",
       description: "At Bumi Teak Furniture, we craft with respect for the earth. Our materials come from sustainable sources, ensuring that every design honours nature while enriching your home",
       linkText: "Learn",
+      linkUrl: "/blog/the-beauty-of-premium-teak-wood",
     },
     {
-      title: "MALAYSIA’S TRUSTED ONLINE FURNITURE STORE",
+      title: "MALAYSIA'S TRUSTED ONLINE FURNITURE STORE",
       description: "We bring premium teak furniture closer to you — beautifully handcrafted, customizable, and delivered across Malaysia. Experience quality, comfort, and convenience from the warmth of your home.",
       linkText: "Shop Online",
+      linkUrl: "/blog/crafted-for-your-convenience",
     },
     {
       title: "WHERE HERITAGE MEETS DESIGN",
-      description: "Inspired by Indonesian craftsmanship and global elegance — Modern, Classic, French, and Italian — every design carries the soul of tradition, shaped for today’s modern living",
+      description: "Inspired by Indonesian craftsmanship and global elegance — Modern, Classic, French, and Italian — every design carries the soul of tradition, shaped for today's modern living",
       linkText: "Journey",
+      linkUrl: "/blog/where-heritage-meets-design",
     },
   ];
 
@@ -64,11 +70,20 @@ const CraftsmanshipSection: React.FC<CraftsmanshipSectionProps> = ({ heading = "
               {/* Description */}
               <p className="text-gray-400 hidden md:flex text-sm mb-6 leading-relaxed font-body">{card.description}</p>
 
-              {/* Link */}
-              <button className="text-white text-sm flex items-center gap-2 group-hover:gap-3 transition-all font-body">
-                {card.linkText}
-                <span className="text-lg">→</span>
-              </button>
+              {/* Link - Conditional Rendering */}
+              {card.linkUrl ? (
+                <Link href={card.linkUrl}>
+                  <button className="text-white text-sm flex items-center gap-2 group-hover:gap-3 transition-all font-body">
+                    {card.linkText}
+                    <span className="text-lg">→</span>
+                  </button>
+                </Link>
+              ) : (
+                <button className="text-white text-sm flex items-center gap-2 group-hover:gap-3 transition-all font-body" disabled>
+                  {card.linkText}
+                  <span className="text-lg">→</span>
+                </button>
+              )}
             </div>
           ))}
         </div>

@@ -1,29 +1,35 @@
-"use client";
+import BlogPageClient from "@/components/blog-page/blog-page-client";
+import { client } from "@/lib/sanity/client";
+import { allBlogPostsQuery, blogCategoriesQuery } from "@/lib/sanity/queries";
+import { Metadata } from "next";
 
-import BlogCategories from "@/components/blog-page/blog-categories-section";
-import BlogGrid from "@/components/blog-page/blog-grid-section";
-import BlogHero from "@/components/blog-page/blog-hero-section";
-import React, { useState } from "react";
+export const metadata: Metadata = {
+  title: "Blog - Teak Furniture Tips & Stories",
+  description: "Read our latest articles about teak furniture care, design tips, sustainability, and craftsmanship stories.",
+  keywords: ["teak furniture blog", "furniture care tips", "sustainable furniture", "craftsmanship stories", "teak furniture tips"],
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Blog - Teak Furniture Tips & Stories",
+    description: "Read our latest articles about teak furniture care, design tips, sustainability, and craftsmanship stories.",
+    url: "/blog",
+    images: ["/og-blog.jpg"],
+  },
+};
 
-export default function BlogPage() {
-  const [selectedCategory, setSelectedCategory] = useState("all");
+export default async function BlogPage() {
+  let posts = [];
+  let categories = [];
 
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
-    console.log("Category changed:", category);
-    // Here you would typically fetch filtered posts from API
-  };
+  try {
+    const data = await Promise.all([client.fetch(allBlogPostsQuery), client.fetch(blogCategoriesQuery)]);
+    posts = data[0] || [];
+    categories = data[1] || [];
+  } catch (error) {
+    console.error("Error fetching blog data:", error);
+    // posts and categories will remain empty arrays
+  }
 
-  return (
-    <main className="min-h-screen">
-      {/* Hero Section */}
-      <BlogHero />
-
-      {/* Categories Filter */}
-      <BlogCategories onCategoryChange={handleCategoryChange} />
-
-      {/* Blog Grid */}
-      <BlogGrid />
-    </main>
-  );
+  return <BlogPageClient initialPosts={posts} categories={categories} />;
 }

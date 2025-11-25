@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send, Instagram } from "lucide-react";
+import { Phone, Mail, Clock, Send, Instagram } from "lucide-react";
 import InformationPageHero from "@/components/layout/page-hero-section";
 
 export default function ContactPage() {
@@ -39,7 +39,7 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+62 291 123 4567", "+62 812 3456 7890"],
+      details: ["Whatsapp: +60 175 709 140, Phone: +60 175 709 140"],
     },
     {
       icon: Mail,
@@ -49,7 +49,7 @@ export default function ContactPage() {
     {
       icon: Clock,
       title: "Business Hours",
-      details: ["Monday - Friday: 8:00 AM - 6:00 PM", "Saturday - Sunday: Closed"],
+      details: ["Monday - Friday: 8:00 AM - 6:00 PM", "Saturday - Sunday: OFF"],
     },
     {
       icon: Instagram,
@@ -66,6 +66,10 @@ export default function ContactPage() {
         title="Get In Touch"
         description="We'd love to hear from you. Whether you have questions about our products, need design advice, or want to discuss a custom project, our team is here to help."
         imagePath="/images/hero-image.jpg"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Contact", href: "/contact" },
+        ]}
       />
 
       {/* Contact Info Cards */}
@@ -181,17 +185,17 @@ export default function ContactPage() {
 
             {/* Map & Info */}
             <div>
-              <h3 className="font-heading text-3xl text-secondary mb-6">Visit Our Workshop</h3>
+              {/* <h3 className="font-heading text-3xl text-secondary mb-6">Visit Our Workshop</h3> */}
 
               {/* Map Placeholder */}
-              <div className="relative h-80 bg-secondary/10 rounded-lg overflow-hidden mb-6">
+              {/* <div className="relative h-80 bg-secondary/10 rounded-lg overflow-hidden mb-6">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
                     <MapPin className="w-12 h-12 text-secondary/40 mx-auto mb-2" />
                     <p className="font-body text-sm text-secondary/60">Map will be integrated here</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               <div className="bg-light p-6 rounded-lg">
                 <h3 className="font-heading text-xl text-secondary mb-4">Why Visit Us?</h3>

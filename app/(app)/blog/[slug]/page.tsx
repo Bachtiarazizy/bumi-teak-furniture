@@ -1,111 +1,75 @@
+import NotFound from "@/app/not-found";
 import BlogContent from "@/components/blog-page/blog-details/blog-detail-content-section";
 import BlogDetailHero from "@/components/blog-page/blog-details/blog-detail-hero-section";
 import RelatedPosts from "@/components/blog-page/blog-details/related-blog-section";
+import { client } from "@/lib/sanity/client";
+import { blogPostBySlugQuery, relatedBlogPostsQuery } from "@/lib/sanity/queries";
+import { generateSanityMetadata } from "@/lib/sanity/seo";
 import { Metadata } from "next";
 import React from "react";
 
-interface BlogDetailPageProps {
-  params: {
+interface BlogPostDetailPageProps {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export async function generateMetadata({ params }: BlogDetailPageProps): Promise<Metadata> {
-  // const post = await fetchBlogPost(params.slug);
+export async function generateMetadata({ params }: BlogPostDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
 
-  const post = {
-    title: "The Complete Guide to Teak Furniture Care",
-    excerpt: "Learn how to maintain and care for your teak furniture to ensure it lasts for generations.",
-    image: "/blog/post.jpg",
-    publishedAt: "2024-11-01",
-    author: "Bumi Teak Team",
-  };
+  const post = await client.fetch(blogPostBySlugQuery, { slug });
 
-  return {
+  if (!post) {
+    return {
+      title: "Post Not Found",
+    };
+  }
+
+  return generateSanityMetadata({
     title: post.title,
     description: post.excerpt,
-    keywords: ["teak furniture care", "teak maintenance", "furniture care guide"],
-    alternates: {
-      canonical: `/blog/${params.slug}`,
-    },
-    openGraph: {
-      title: `${post.title} | Bumi Teak Blog`,
-      description: post.excerpt,
-      url: `/blog/${params.slug}`,
-      images: [post.image],
-      type: "article",
-      publishedTime: post.publishedAt,
-      authors: [post.author],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt,
-      images: [post.image],
-    },
-  };
+    path: `/blog/${slug}`,
+    image: post.mainImage,
+    seo: post.seo,
+    type: "article",
+    publishedTime: post.publishedAt,
+    authors: [post.author?.name],
+    tags: post.tags,
+  });
 }
 
-export default function BlogDetailPage({ params }: BlogDetailPageProps) {
-  // In a real application, you would fetch blog data based on params.slug
-  const blogData = {
-    id: params.slug,
-    title: "The Art of Indonesian Teak: A Journey Through Centuries",
-    category: "Craftsmanship",
-    author: "Sarah Chen",
-    date: "2024-01-15",
-    readTime: "8 min read",
-    image: "/blog/post.jpg",
-    content: "", // Content is rendered in BlogContent component
-  };
+export default async function BlogDetailPage({ params }: BlogPostDetailPageProps) {
+  const { slug } = await params;
 
-  const relatedPosts = [
-    {
-      id: "2",
-      title: "Sustainable Living: How Teak Furniture Supports Our Planet",
-      category: "Sustainability",
-      date: "2024-01-12",
-      readTime: "6 min read",
-      image: "/blog/post.jpg",
-    },
-    {
-      id: "3",
-      title: "5 Design Tips for Mixing Traditional and Modern Furniture",
-      category: "Design Tips",
-      date: "2024-01-10",
-      readTime: "5 min read",
-      image: "/blog/post.jpg",
-    },
-    {
-      id: "4",
-      title: "Behind the Scenes: Meet Our Master Craftsmen",
-      category: "Craftsmanship",
-      date: "2024-01-05",
-      readTime: "10 min read",
-      image: "/blog/post.jpg",
-    },
-  ];
+  const post = await client.fetch(blogPostBySlugQuery, { slug });
+
+  if (!post) {
+    return <NotFound />;
+  }
+
+  // Ambil category reference dengan benar
+  const categoryRef = post.category?._id || post.category?._ref;
+
+  // Fetch related posts hanya jika ada categoryRef
+  let relatedPosts = [];
+
+  if (categoryRef) {
+    relatedPosts = await client.fetch(relatedBlogPostsQuery, {
+      slug,
+      categoryRef,
+    });
+  }
 
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <BlogDetailHero title={blogData.title} category={blogData.category} author={blogData.author} date={blogData.date} readTime={blogData.readTime} image={blogData.image} />
+      <BlogDetailHero title={post.title} category={post.category?.name} author={post.author?.name} date={post.publishedAt} readTime={post.readTime} image={post.mainImage?.asset?.url || "/blog/post.jpg"} />
 
       {/* Article Content */}
-      <BlogContent content={blogData.content} />
+      <BlogContent content={post.body} />
 
-      {/* Related Posts */}
+      {/* Related Posts - akan otomatis hide jika posts kosong */}
       <RelatedPosts posts={relatedPosts} />
     </main>
   );
 }
-
-// For static generation (optional)
-// export async function generateStaticParams() {
-//   // Fetch all blog post slugs from your API/database
-//   const posts = await fetchBlogPosts();
-//
-//   return posts.map((post) => ({
-//     slug: post.slug,
-//   }));
-// }

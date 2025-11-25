@@ -2,63 +2,56 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import TransformLivingCTA from "@/components/transform-living-CTA-section";
+import TransformLivingCTA from "@/components/home-page/transform-living-CTA-section";
+import { allCollectionsQuery } from "@/lib/sanity/queries";
+import { client } from "@/lib/sanity/client";
+import { urlForImage } from "@/lib/sanity/image";
+import { Metadata } from "next";
 
+// Define the Collection type
 interface Collection {
-  slug: string;
+  _id: string;
   title: string;
+  slug: {
+    current: string;
+  };
   description: string;
-  image: string;
+  image: {
+    asset: unknown;
+    alt?: string;
+  };
   productCount: number;
 }
 
-// Mock data collections
-const collections: Collection[] = [
-  {
-    slug: "dining",
-    title: "Dining",
-    description: "Elegant dining furniture crafted from premium teak wood",
-    image: "/images/collections/dining.jpg",
-    productCount: 45,
+export const metadata: Metadata = {
+  title: "Explore Handcrafted Teak Furniture Collections",
+  description: "Discover our curated collections of premium Indonesian teak furniture, designed to elevate your living spaces with natural elegance.",
+  keywords: ["buy teak furniture", "teak furniture online", "premium teak", "Indonesian furniture shop"],
+  alternates: {
+    canonical: "/shop/collections",
   },
-  {
-    slug: "living",
-    title: "Living Room",
-    description: "Transform your living space with handcrafted pieces",
-    image: "/images/collections/living.jpg",
-    productCount: 38,
+  openGraph: {
+    title: "Explore Handcrafted Teak Furniture Collections",
+    description: "Discover our curated collections of premium Indonesian teak furniture.",
+    url: "/shop/collections",
+    images: ["/og-collections.jpg"],
   },
-  {
-    slug: "bedroom",
-    title: "Bedroom",
-    description: "Create your perfect sanctuary with our bedroom furniture",
-    image: "/images/collections/bedroom.jpg",
-    productCount: 29,
-  },
-  {
-    slug: "outdoor",
-    title: "Outdoor",
-    description: "Weather-resistant teak furniture for outdoor living",
-    image: "/images/collections/outdoor.jpg",
-    productCount: 52,
-  },
-  {
-    slug: "office",
-    title: "Office",
-    description: "Professional and elegant workspace solutions",
-    image: "/images/collections/office.jpg",
-    productCount: 18,
-  },
-  {
-    slug: "accessories",
-    title: "Accessories",
-    description: "Functional and beautiful accessories solutions",
-    image: "/images/collections/accessories.jpg",
-    productCount: 24,
-  },
-];
+};
 
-export default function CollectionsPage() {
+export default async function CollectionsPage() {
+  const collections: Collection[] = await client.fetch(allCollectionsQuery);
+
+  if (!collections || collections.length === 0) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="font-heading text-4xl text-secondary mb-4">No Collections Found</h1>
+          <p className="font-body text-secondary/70">Check back soon for our curated furniture collections.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <main className="min-h-screen flex flex-col">
       {/* Hero Section */}
@@ -98,26 +91,28 @@ export default function CollectionsPage() {
       <section className="bg-white py-12 lg:py-16">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {collections.map((collection) => (
-              <Link href={`/shop/collections/${collection.slug}`} key={collection.slug} className="group">
+            {collections.map((item) => (
+              <Link href={`/shop/collections/${item.slug.current}`} key={item._id} className="group">
                 {/* Collection Image */}
                 <div className="relative h-80 mb-4 overflow-hidden bg-light rounded-lg">
-                  <Image src={collection.image} alt={collection.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  {item.image && <Image src={urlForImage(item.image).width(800).height(800).url()} alt={item.image.alt || item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />}
                   <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
 
                   {/* Product Count Badge */}
                   <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-                    <span className="font-body text-xs text-secondary font-semibold">{collection.productCount} Products</span>
+                    <span className="font-body text-xs text-secondary font-semibold">
+                      {item.productCount} {item.productCount === 1 ? "Product" : "Products"}
+                    </span>
                   </div>
 
                   {/* Title Overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="font-heading text-2xl text-white mb-2">{collection.title}</h3>
+                    <h3 className="font-heading text-2xl text-white mb-2">{item.title}</h3>
                   </div>
                 </div>
 
                 {/* Collection Description */}
-                <p className="font-body text-sm text-secondary/70 group-hover:text-secondary transition-colors">{collection.description}</p>
+                <p className="font-body text-sm text-secondary/70 group-hover:text-secondary transition-colors line-clamp-2">{item.description}</p>
 
                 {/* View Collection Link */}
                 <div className="mt-3 flex items-center gap-2 text-secondary font-body text-sm font-semibold group-hover:gap-3 transition-all">
@@ -131,7 +126,6 @@ export default function CollectionsPage() {
       </section>
 
       {/* CTA Section */}
-
       <TransformLivingCTA
         heading="Can't Find What"
         subheading="You're Looking For?"

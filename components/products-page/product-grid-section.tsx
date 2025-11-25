@@ -4,99 +4,64 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Grid3x3, LayoutGrid, SlidersHorizontal } from "lucide-react";
+import { urlForImage } from "@/lib/sanity/image";
 
 interface Product {
-  id: string;
+  _id: string;
   name: string;
-  category: string;
+  slug: { current: string };
   price: number;
-  image: string;
-  badge?: string;
+  category: string;
+  categorySlug?: string;
+  collection?: string;
+  collectionSlug?: string;
+  mainImage: {
+    asset: unknown;
+    alt?: string;
+  };
+  featured?: boolean;
+  inStock?: boolean;
+  rating?: number;
+  reviewCount?: number;
 }
 
 interface ProductGridSectionProps {
   products?: Product[];
   onSortChange?: (sort: string) => void;
+  isLoading?: boolean;
+  initialSort?: string;
 }
 
-const ProductGridSection: React.FC<ProductGridSectionProps> = ({ products = [], onSortChange }) => {
+const ProductGridSection: React.FC<ProductGridSectionProps> = ({ products = [], onSortChange, isLoading = false, initialSort = "featured" }) => {
   const [viewMode, setViewMode] = useState<"3" | "4">("3");
-  const [sortBy, setSortBy] = useState("featured");
-
-  const defaultProducts: Product[] = [
-    {
-      id: "1",
-      name: "Sunset dining table",
-      category: "Dining",
-      price: 1850,
-      image: "/images/products/product.jpg",
-      badge: "New",
-    },
-    {
-      id: "2",
-      name: "Tropical lounge chair",
-      category: "Living Room",
-      price: 1200,
-      image: "/images/products/product.jpg",
-    },
-    {
-      id: "3",
-      name: "Bali sideboard",
-      category: "Storage",
-      price: 2300,
-      image: "/images/products/product.jpg",
-      badge: "Bestseller",
-    },
-    {
-      id: "4",
-      name: "Java coffee table",
-      category: "Living Room",
-      price: 950,
-      image: "/images/products/product.jpg",
-    },
-    {
-      id: "5",
-      name: "Bamboo pendant lamp",
-      category: "Lighting",
-      price: 680,
-      image: "/images/products/product.jpg",
-    },
-    {
-      id: "6",
-      name: "Rattan dining chair",
-      category: "Dining",
-      price: 1400,
-      image: "/images/products/product.jpg",
-    },
-    {
-      id: "7",
-      name: "Outdoor bench",
-      category: "Outdoor",
-      price: 980,
-      image: "/images/products/product.jpg",
-    },
-    {
-      id: "8",
-      name: "Minimalist desk",
-      category: "Office",
-      price: 1650,
-      image: "/images/products/product.jpg",
-    },
-    {
-      id: "9",
-      name: "Bookshelf cabinet",
-      category: "Storage",
-      price: 2100,
-      image: "/images/products/product.jpg",
-    },
-  ];
-
-  const displayProducts = products.length > 0 ? products : defaultProducts;
+  const [sortBy, setSortBy] = useState(initialSort);
 
   const handleSortChange = (value: string) => {
     setSortBy(value);
     onSortChange?.(value);
   };
+
+  // Loading skeleton with smooth transition
+  if (isLoading) {
+    return (
+      <div className="flex-1">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+          <div className="h-4 w-32 bg-gray-200 rounded animate-pulse" />
+          <div className="h-10 w-64 bg-gray-200 rounded animate-pulse" />
+        </div>
+        <div className={`grid grid-cols-1 md:grid-cols-2 ${viewMode === "3" ? "lg:grid-cols-3" : "lg:grid-cols-4"} gap-6`}>
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <div key={i} className="animate-pulse">
+              <div className="bg-gray-200 h-80 rounded-lg mb-4" />
+              <div className="bg-gray-200 h-4 rounded mb-2" />
+              <div className="bg-gray-200 h-4 rounded w-2/3 mb-3" />
+              <div className="bg-gray-200 h-10 rounded" />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex-1">
@@ -104,7 +69,7 @@ const ProductGridSection: React.FC<ProductGridSectionProps> = ({ products = [], 
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         {/* Results Count */}
         <p className="font-body text-sm text-secondary">
-          Showing <span className="font-semibold">{displayProducts.length}</span> products
+          Showing <span className="font-semibold">{products.length}</span> products
         </p>
 
         {/* Right Controls */}
@@ -115,9 +80,10 @@ const ProductGridSection: React.FC<ProductGridSectionProps> = ({ products = [], 
             <select value={sortBy} onChange={(e) => handleSortChange(e.target.value)} className="font-body text-sm text-secondary border border-secondary/20 rounded px-3 py-2 focus:outline-none focus:border-secondary/40">
               <option value="featured">Featured</option>
               <option value="newest">Newest</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-              <option value="name">Name: A to Z</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A to Z</option>
+              <option value="name-desc">Name: Z to A</option>
             </select>
           </div>
 
@@ -133,45 +99,76 @@ const ProductGridSection: React.FC<ProductGridSectionProps> = ({ products = [], 
         </div>
       </div>
 
-      {/* Products Grid */}
-      <div className={`grid grid-cols-1 md:grid-cols-2 ${viewMode === "3" ? "lg:grid-cols-3" : "lg:grid-cols-4"} gap-6`}>
-        {displayProducts.map((product) => (
-          <Link href={`/shop/products/${product.id}`} key={product.id} className="group">
-            {/* Product Image */}
-            <div className="relative h-80 mb-4 overflow-hidden bg-light rounded-lg">
-              <Image src={product.image} alt={product.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-              {product.badge && <div className="absolute top-4 left-4 bg-secondary text-white px-3 py-1 text-xs font-body rounded">{product.badge}</div>}
-            </div>
+      {/* Products Grid with fade-in animation */}
+      {products.length > 0 ? (
+        <div className={`grid grid-cols-1 md:grid-cols-2 ${viewMode === "3" ? "lg:grid-cols-3" : "lg:grid-cols-4"} gap-6 animate-fadeIn`}>
+          {products.map((product) => (
+            <Link href={`/shop/products/${product.slug.current}`} key={product._id} className="group">
+              {/* Product Image */}
+              <div className="relative h-80 mb-4 overflow-hidden bg-light rounded-lg">
+                {product.mainImage && (
+                  <Image src={urlForImage(product.mainImage).width(600).height(600).url()} alt={product.mainImage.alt || product.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                )}
 
-            {/* Product Info */}
-            <div className="mb-3">
-              <p className="font-body text-xs text-secondary/60 mb-1">{product.category}</p>
-              <h5 className="font-heading text-lg text-secondary mb-2 group-hover:text-secondary/70 transition-colors">{product.name}</h5>
-              <p className="font-body text-secondary font-semibold">${product.price.toLocaleString()}</p>
-            </div>
+                {/* Badges */}
+                {product.featured && <div className="absolute top-4 left-4 bg-secondary text-white px-3 py-1 text-xs font-body rounded">Featured</div>}
+                {!product.inStock && <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 text-xs font-body rounded">Out of Stock</div>}
+              </div>
 
-            {/* Quick Add Button */}
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                console.log("Add to cart:", product.id);
-              }}
-              className="w-full font-body border border-secondary text-secondary py-3 text-sm hover:bg-secondary hover:text-white transition-colors rounded"
-            >
-              Add to cart
-            </button>
-          </Link>
-        ))}
-      </div>
+              {/* Product Info */}
+              <div className="mb-3">
+                <p className="font-body text-xs text-secondary/60 mb-1 uppercase tracking-wide">{product.category}</p>
+                <h5 className="font-heading text-lg text-secondary mb-2 group-hover:text-secondary/70 transition-colors">{product.name}</h5>
 
-      {/* Pagination */}
-      <div className="flex justify-center items-center gap-2 mt-12">
-        <button className="font-body px-4 py-2 border border-secondary/20 text-secondary text-sm hover:bg-secondary/5 transition-colors rounded">Previous</button>
-        <button className="font-body px-4 py-2 bg-secondary text-white text-sm rounded">1</button>
-        <button className="font-body px-4 py-2 border border-secondary/20 text-secondary text-sm hover:bg-secondary/5 transition-colors rounded">2</button>
-        <button className="font-body px-4 py-2 border border-secondary/20 text-secondary text-sm hover:bg-secondary/5 transition-colors rounded">3</button>
-        <button className="font-body px-4 py-2 border border-secondary/20 text-secondary text-sm hover:bg-secondary/5 transition-colors rounded">Next</button>
-      </div>
+                {/* Rating (if available) */}
+                {product.rating && product.reviewCount && (
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="flex items-center">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className={`text-xs ${i < Math.floor(product.rating!) ? "text-yellow-400" : "text-gray-300"}`}>
+                          ★
+                        </span>
+                      ))}
+                    </div>
+                    <span className="font-body text-xs text-secondary/60">({product.reviewCount})</span>
+                  </div>
+                )}
+
+                <p className="font-body text-secondary font-semibold">${product.price.toLocaleString()}</p>
+              </div>
+
+              {/* Quick Add Button */}
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  console.log("Add to cart:", product._id);
+                  // TODO: Add to cart functionality
+                }}
+                className="w-full font-body border border-secondary text-secondary py-3 text-sm hover:bg-secondary hover:text-white transition-colors rounded"
+                disabled={!product.inStock}
+              >
+                {product.inStock ? "Add to cart" : "Out of Stock"}
+              </button>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-16">
+          <p className="font-body text-secondary/60 text-lg">No products found matching your filters.</p>
+          <p className="font-body text-secondary/60 text-sm mt-2">Try adjusting your filters or search criteria.</p>
+        </div>
+      )}
+
+      {/* Pagination - Optional */}
+      {products.length > 0 && (
+        <div className="flex justify-center items-center gap-2 mt-12">
+          <button className="font-body px-4 py-2 border border-secondary/20 text-secondary text-sm hover:bg-secondary/5 transition-colors rounded">Previous</button>
+          <button className="font-body px-4 py-2 bg-secondary text-white text-sm rounded">1</button>
+          <button className="font-body px-4 py-2 border border-secondary/20 text-secondary text-sm hover:bg-secondary/5 transition-colors rounded">2</button>
+          <button className="font-body px-4 py-2 border border-secondary/20 text-secondary text-sm hover:bg-secondary/5 transition-colors rounded">3</button>
+          <button className="font-body px-4 py-2 border border-secondary/20 text-secondary text-sm hover:bg-secondary/5 transition-colors rounded">Next</button>
+        </div>
+      )}
     </div>
   );
 };

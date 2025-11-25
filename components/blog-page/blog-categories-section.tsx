@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 interface Category {
   id: string;
@@ -7,23 +7,13 @@ interface Category {
 }
 
 interface BlogCategoriesProps {
+  categories?: Category[];
+  selectedCategory?: string;
   onCategoryChange?: (category: string) => void;
 }
 
-const BlogCategories: React.FC<BlogCategoriesProps> = ({ onCategoryChange }) => {
-  const [selectedCategory, setSelectedCategory] = useState("all");
-
-  const categories: Category[] = [
-    { id: "all", label: "All Posts", count: 48 },
-    { id: "craftsmanship", label: "Craftsmanship", count: 12 },
-    { id: "design", label: "Design Tips", count: 15 },
-    { id: "sustainability", label: "Sustainability", count: 8 },
-    { id: "care", label: "Care & Maintenance", count: 7 },
-    { id: "inspiration", label: "Inspiration", count: 6 },
-  ];
-
+const BlogCategories: React.FC<BlogCategoriesProps> = ({ categories = [], selectedCategory = "all", onCategoryChange }) => {
   const handleCategoryClick = (categoryId: string) => {
-    setSelectedCategory(categoryId);
     onCategoryChange?.(categoryId);
   };
 
