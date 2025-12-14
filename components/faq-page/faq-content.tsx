@@ -74,7 +74,7 @@ export default function FAQContent({ faqs }: FAQContentProps) {
 
   return (
     <section className="bg-white py-8 md:py-16">
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-30 pb-4 md:pb-6 shadow-sm">
+      <div className="bg-white border-b border-gray-200 sticky top-0 z-30 pb-6 md:pb-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 pt-4 md:pt-6">
           {/* Search Bar - Responsive */}
           <div className="mb-4 md:mb-8">
@@ -122,7 +122,7 @@ export default function FAQContent({ faqs }: FAQContentProps) {
         </div>
       </div>
 
-      <div className="container py-4 mx-auto px-4 sm:px-6 lg:px-12">
+      <div className="container py-8 mx-auto px-4 sm:px-6 lg:px-12">
         <div className="max-w-5xl mx-auto">
           {/* FAQ Categories */}
           {filteredCategories.length > 0 ? (
@@ -182,7 +182,7 @@ export default function FAQContent({ faqs }: FAQContentProps) {
             <p className="font-body text-secondary text-xs md:text-sm mb-4 md:mb-6 max-w-2xl">
               Can&apos;t find the answer you&apos;re looking for? Our customer service team is ready to help with any questions about our products, ordering process, or anything else.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+            <div className="flex flex-row gap-3 md:gap-4">
               <a href="/contact" className="inline-block text-center bg-secondary text-white px-6 md:px-8 py-2.5 md:py-3 font-body text-xs md:text-sm hover:bg-secondary/90 transition-colors">
                 Contact Support
               </a>

@@ -67,7 +67,7 @@ const RelatedProducts: React.FC<RelatedProductsProps> = ({ heading = "You Might 
               <div className="mb-3">
                 {product.collection && <p className="font-body text-xs text-secondary/60 mb-1">{product.collection}</p>}
                 <h5 className="font-heading text-lg text-secondary mb-2 group-hover:text-secondary/70 transition-colors">{product.name}</h5>
-                <p className="font-body text-secondary font-semibold">${product.price.toLocaleString()}</p>
+                <p className="font-body text-secondary font-semibold">RM {product.price.toLocaleString()}</p>
               </div>
 
               {/* Quick View Button */}

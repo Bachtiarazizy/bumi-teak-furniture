@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 interface BlogPost {
   id: string;
@@ -57,23 +57,6 @@ const BlogGrid: React.FC<BlogGridProps> = ({ posts = [] }) => {
                 <h3 className="font-heading text-3xl md:text-4xl text-secondary mb-4 group-hover:text-secondary/70 transition-colors">{featuredPost.title}</h3>
                 <p className="font-body text-secondary text-sm leading-relaxed mb-6">{featuredPost.excerpt}</p>
 
-                {/* Meta */}
-                <div className="flex flex-wrap items-center gap-4 text-sm font-body text-secondary/60 mb-6">
-                  <span>{featuredPost.author}</span>
-                  <span className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
-                    {new Date(featuredPost.date).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    {featuredPost.readTime}
-                  </span>
-                </div>
-
                 <div className="flex items-center gap-2 font-body text-secondary group-hover:gap-3 transition-all">
                   Read More
                   <ArrowRight className="w-4 h-4" />
@@ -98,24 +81,6 @@ const BlogGrid: React.FC<BlogGridProps> = ({ posts = [] }) => {
                   <span className="font-body text-xs text-secondary/60 uppercase tracking-wide">{post.category}</span>
                   <h5 className="font-heading text-xl text-secondary my-3 group-hover:text-secondary/70 transition-colors">{post.title}</h5>
                   <p className="font-body text-secondary text-sm leading-relaxed mb-4">{post.excerpt}</p>
-
-                  {/* Meta */}
-                  <div className="flex flex-wrap items-center gap-3 text-xs font-body text-secondary/60 mb-4">
-                    <span>{post.author}</span>
-                    <span>•</span>
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3" />
-                      {new Date(post.date).toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "numeric",
-                      })}
-                    </span>
-                    <span>•</span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      {post.readTime}
-                    </span>
-                  </div>
 
                   <div className="flex items-center gap-2 font-body text-sm text-secondary group-hover:gap-3 transition-all">
                     Read Article

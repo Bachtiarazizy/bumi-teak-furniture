@@ -8,7 +8,6 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
     subject: "",
     message: "",
   });
@@ -28,7 +27,6 @@ export default function ContactPage() {
     setFormData({
       name: "",
       email: "",
-      phone: "",
       subject: "",
       message: "",
     });
@@ -44,7 +42,7 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: "Email Us",
-      details: ["info@bumiteakfurniture.com", "support@bumiteakfurniture.com"],
+      details: ["info@bumiteakfurniture.com"],
     },
     {
       icon: Clock,
@@ -129,18 +127,6 @@ export default function ContactPage() {
                     className="w-full px-4 py-3 border border-secondary/20 rounded focus:outline-none focus:border-secondary transition-colors font-body text-sm"
                     placeholder="john@example.com"
                     required
-                  />
-                </div>
-
-                <div>
-                  <label className="font-body text-sm text-secondary mb-2 block">Phone Number</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-secondary/20 rounded focus:outline-none focus:border-secondary transition-colors font-body text-sm"
-                    placeholder="+62 812 3456 7890"
                   />
                 </div>
 

@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import { Droplets, Sun, Wind, Thermometer, Sparkles, AlertTriangle, CheckCircle, XCircle } from "lucide-react";
+import Link from "next/link";
+import InformationPageHero from "@/components/layout/page-hero-section";
 
 export default function CareTipsPage() {
   const [selectedType, setSelectedType] = useState<"indoor" | "outdoor">("indoor");
@@ -76,8 +78,15 @@ export default function CareTipsPage() {
 
   return (
     <main className="min-h-screen">
-      {/* <LegalPageHero title="Teak Furniture Care Tips" description="Learn how to care for your teak furniture to ensure it remains beautiful for generations. Expert tips for both indoor and outdoor pieces." /> */}
-
+      <InformationPageHero
+        title="Teak Furniture Care Tips"
+        description="Learn how to properly care for your teak furniture to ensure its beauty and durability for years to come."
+        imagePath="/images/hero-image.jpg"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Care Tips", href: "/care-tips" },
+        ]}
+      />
       {/* Quick Tips */}
       <section className="bg-white py-12">
         <div className="container mx-auto px-6 lg:px-12">
@@ -181,7 +190,7 @@ export default function CareTipsPage() {
                     <div>
                       <h5 className="font-heading text-lg text-secondary mb-2">Natural Weathering Process</h5>
                       <p className="font-body text-sm text-secondary leading-relaxed">
-                        Outdoor teak will naturally weather to a silver-gray color within 6-12 months. This is normal and desirable! The patina doesn&apos;t affect durability—it&apos;s purely aesthetic.
+                        Outdoor teak will naturally weather to a silver-gray color within 6-12 months. This is normal and desirable! The patina doesn&apos;t affect durability it&apos;s purely aesthetic.
                       </p>
                     </div>
                   </div>
@@ -316,12 +325,12 @@ export default function CareTipsPage() {
               <h3 className="font-heading text-2xl text-secondary mb-3">Need Care Advice?</h3>
               <p className="font-body text-secondary text-sm mb-6 max-w-2xl mx-auto">Have a specific care question or issue? Our team is here to help with personalized advice for your teak furniture.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/contact" className="inline-block bg-secondary text-white px-8 py-3 font-body text-sm hover:bg-secondary/90 transition-colors rounded">
+                <Link href="/contact" className="inline-block bg-secondary text-white px-8 py-3 font-body text-sm hover:bg-secondary/90 transition-colors rounded">
                   Contact Support
-                </a>
-                <a href="/guides" className="inline-block border border-secondary text-secondary px-8 py-3 font-body text-sm hover:bg-secondary/5 transition-colors rounded">
+                </Link>
+                <Link href="/guides" className="inline-block border border-secondary text-secondary px-8 py-3 font-body text-sm hover:bg-secondary/5 transition-colors rounded">
                   View All Guides
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,4 +1,5 @@
-import LegalPageHero from "@/components/layout/legal-page-hero-section";
+import InformationPageHero from "@/components/layout/page-hero-section";
+import Link from "next/link";
 import React from "react";
 
 export default function TermsOfServicePage() {
@@ -91,7 +92,7 @@ export default function TermsOfServicePage() {
       title: "7. Warranty",
       content: [
         {
-          text: "We warrant that our furniture will be free from defects in materials and workmanship for a period of five (5) years from the date of purchase. This warranty does not cover normal wear and tear, damage from misuse or neglect, or damage from improper care. Our warranty is limited to repair or replacement of defective items.",
+          text: "We warrant that our furniture will be free from defects in materials and workmanship for a period of two (2) years from the date of purchase. This warranty does not cover normal wear and tear, damage from misuse or neglect, or damage from improper care. Our warranty is limited to repair or replacement of defective items.",
         },
       ],
     },
@@ -143,16 +144,24 @@ export default function TermsOfServicePage() {
         },
       ],
       contact: {
-        email: "legal@bumiteakfurniture.com",
-        phone: "+62 291 123 4567",
-        address: "Jl. Furniture Craft No. 123, Jepara, Central Java, Indonesia 59419",
+        email: "info@bumiteakfurniture.com",
+        phone: "+60 17 570 9140",
+        // address: "Jl. Furniture Craft No. 123, Jepara, Central Java, Indonesia 59419",
       },
     },
   ];
 
   return (
     <main className="min-h-screen">
-      <LegalPageHero title="Terms of Service" lastUpdated="January 15, 2024" description="Please read these Terms of Service carefully before using our website or purchasing our products." />
+      <InformationPageHero
+        title="Terms of Service"
+        description="Read our terms of service to understand how you can use our website and our products."
+        imagePath="/images/hero-image.jpg"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Terms of Service", href: "/terms-of-services" },
+        ]}
+      />
 
       <section className="bg-white py-12">
         <div className="container mx-auto px-6 lg:px-12">
@@ -191,15 +200,19 @@ export default function TermsOfServicePage() {
 
                   {section.contact && (
                     <div className="mt-4 p-6 bg-light rounded-lg">
-                      <p className="font-body text-secondary text-sm mb-2">
-                        <strong>Email:</strong> {section.contact.email}
-                      </p>
-                      <p className="font-body text-secondary text-sm mb-2">
-                        <strong>Phone:</strong> {section.contact.phone}
-                      </p>
-                      <p className="font-body text-secondary text-sm">
+                      <Link href={`mailto:${section.contact.email}`} target="_blank" rel="noopener noreferrer">
+                        <p className="font-body text-secondary text-sm mb-2">
+                          <strong>Email:</strong> {section.contact.email}
+                        </p>
+                      </Link>
+                      <Link href={`https://wa.me${section.contact.phone.replace(/\+/g, "")}`} target="_blank" rel="noopener noreferrer">
+                        <p className="font-body text-secondary text-sm">
+                          <strong>Phone:</strong> {section.contact.phone}
+                        </p>
+                      </Link>
+                      {/* <p className="font-body text-secondary text-sm">
                         <strong>Address:</strong> {section.contact.address}
-                      </p>
+                      </p> */}
                     </div>
                   )}
                 </div>

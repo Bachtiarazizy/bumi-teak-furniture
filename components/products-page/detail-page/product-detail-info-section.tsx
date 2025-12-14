@@ -70,7 +70,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ name = "Product Name", collec
 
       {/* Price */}
       <div className="flex items-baseline gap-3">
-        <span className="font-heading text-3xl text-secondary">${price.toLocaleString()}</span>
+        <span className="font-heading text-3xl text-secondary">RM {price.toLocaleString()}</span>
         <span className={`font-body text-sm ${inStock ? "text-green-600" : "text-red-600"}`}>{inStock ? "In Stock" : "Out of Stock"}</span>
       </div>
 
@@ -98,13 +98,13 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ name = "Product Name", collec
           </button>
 
           {/* Wishlist */}
-          <button
+          {/* <button
             onClick={() => setIsWishlisted(!isWishlisted)}
             className={`p-3 border rounded transition-colors ${isWishlisted ? "border-secondary bg-secondary text-white" : "border-secondary/20 text-secondary hover:border-secondary"}`}
             aria-label="Add to wishlist"
           >
             <Heart className={`w-5 h-5 ${isWishlisted ? "fill-white" : ""}`} />
-          </button>
+          </button> */}
 
           {/* Share */}
           <button
@@ -128,11 +128,11 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ name = "Product Name", collec
         <div className="space-y-3">
           <div className="flex items-center gap-3 text-sm">
             <Truck className="w-5 h-5 text-secondary/60" />
-            <span className="font-body text-secondary">Free shipping on orders over $500</span>
+            <span className="font-body text-secondary">Free shipping on orders over RM 500</span>
           </div>
           <div className="flex items-center gap-3 text-sm">
             <Shield className="w-5 h-5 text-secondary/60" />
-            <span className="font-body text-secondary">5-year warranty included</span>
+            <span className="font-body text-secondary">2-year warranty included</span>
           </div>
           <div className="flex items-center gap-3 text-sm">
             <Award className="w-5 h-5 text-secondary/60" />

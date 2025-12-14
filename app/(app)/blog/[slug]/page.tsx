@@ -63,7 +63,7 @@ export default async function BlogDetailPage({ params }: BlogPostDetailPageProps
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <BlogDetailHero title={post.title} category={post.category?.name} author={post.author?.name} date={post.publishedAt} readTime={post.readTime} image={post.mainImage?.asset?.url || "/blog/post.jpg"} />
+      <BlogDetailHero title={post.title} category={post.category?.name} image={post.mainImage?.asset?.url || "/blog/post.jpg"} />
 
       {/* Article Content */}
       <BlogContent content={post.body} />

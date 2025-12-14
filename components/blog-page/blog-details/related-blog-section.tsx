@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { urlForImage } from "@/lib/sanity/image";
 
 interface SanityImage {
@@ -20,7 +20,6 @@ interface RelatedPost {
   };
   excerpt: string;
   publishedAt: string;
-  readTime: string;
   category: string;
   mainImage?: SanityImage;
 }
@@ -51,7 +50,7 @@ const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts }) => {
           {/* Posts Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {posts.map((post) => (
-              <Link href={`/blog/${post.slug.current}`} key={post._id} className="group bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+              <Link href={`/blog/${post.slug.current}`} key={post._id} className="group bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow">
                 {/* Image */}
                 <div className="relative h-56 mb-4 overflow-hidden">
                   {post.mainImage ? (
@@ -67,22 +66,7 @@ const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts }) => {
                 <div className="p-6">
                   <span className="font-body text-xs text-secondary/60 uppercase tracking-wide">{post.category}</span>
                   <h5 className="font-heading text-xl text-secondary my-3 group-hover:text-secondary/70 transition-colors line-clamp-2">{post.title}</h5>
-
-                  {/* Meta */}
-                  <div className="flex items-center gap-3 text-xs font-body text-secondary/60">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3" />
-                      {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "numeric",
-                      })}
-                    </span>
-                    <span>•</span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      {post.readTime}
-                    </span>
-                  </div>
+                  <p className="font-body text-sm text-secondary/80 mb-4 line-clamp-3">{post.excerpt}</p>
                 </div>
               </Link>
             ))}

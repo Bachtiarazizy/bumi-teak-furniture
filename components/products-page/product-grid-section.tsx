@@ -134,7 +134,7 @@ const ProductGridSection: React.FC<ProductGridSectionProps> = ({ products = [], 
                   </div>
                 )}
 
-                <p className="font-body text-secondary font-semibold">${product.price.toLocaleString()}</p>
+                <p className="font-body text-secondary font-semibold">RM {product.price.toLocaleString()}</p>
               </div>
 
               {/* Quick Add Button */}

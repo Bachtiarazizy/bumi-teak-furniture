@@ -17,7 +17,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   title = "TIMELESS",
   subtitle = "ELEGANCE IN",
   description = "Every piece we craft tells a story where heritage and modern living unite, and the soul of nature becomes part of your home.",
-  imagePath = "/images/hero-image.jpg",
+  imagePath = "/images/hero.webp",
   startAnimation = false,
 }) => {
   // Animation variants

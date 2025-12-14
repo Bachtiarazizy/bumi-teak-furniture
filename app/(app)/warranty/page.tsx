@@ -50,7 +50,7 @@ export default function WarrantyPage() {
 
   return (
     <main className="min-h-screen">
-      <InformationPageHero title="5-Year Warranty" description="We stand behind the quality of our craftsmanship. Every piece comes with our comprehensive 5-year warranty against defects." imagePath="/images/hero-image.jpg" />
+      <InformationPageHero title="2-Year Warranty" description="We stand behind the quality of our craftsmanship. Every piece comes with our comprehensive 2-year warranty against defects." imagePath="/images/hero-image.jpg" />
 
       {/* Warranty Overview */}
       <section className="bg-white py-12">
@@ -64,7 +64,7 @@ export default function WarrantyPage() {
                     <h3 className="font-heading text-secondary leading-none">Our Warranty Commitment</h3>
                   </div>
                   <p className="font-body text-secondary text-sm leading-relaxed mb-3">
-                    Bumi Teak Furniture warrants that all furniture will be free from defects in materials and workmanship for a period of five (5) years from the original date of purchase. This warranty reflects our confidence in the
+                    Bumi Teak Furniture warrants that all furniture will be free from defects in materials and workmanship for a period of two (2) years from the original date of purchase. This warranty reflects our confidence in the
                     quality of our Indonesian teak and traditional craftsmanship methods.
                   </p>
                   <p className="font-body text-secondary text-sm leading-relaxed">
@@ -82,7 +82,7 @@ export default function WarrantyPage() {
                 <div className="flex items-start gap-3 mb-6">
                   <CheckCircle className="w-6 h-6 text-green-600 shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-heading text-xl text-secondary mb-2">5-Year Coverage Includes:</h4>
+                    <h4 className="font-heading text-xl text-secondary mb-2">2-Year Coverage Includes:</h4>
                     <p className="font-body text-sm text-secondary/80 mb-4">Our warranty covers any defects that occur under normal residential use and proper care:</p>
                   </div>
                 </div>

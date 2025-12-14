@@ -27,11 +27,11 @@ export default function Home() {
       </AnimatedSection>
 
       <AnimatedSection threshold={0.2}>
-        <CraftingStorySection imagePath="/images/crafting-story.jpg" />
+        <CraftingStorySection imagePath="/images/quality.jpg" />
       </AnimatedSection>
 
       <AnimatedSection threshold={0.2}>
-        <TransformLivingCTA imagePath="/images/hero-image.jpg" />
+        <TransformLivingCTA imagePath="/images/craftman.webp" />
       </AnimatedSection>
 
       <AnimatedSection threshold={0.2}>

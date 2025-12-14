@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronRight, Pencil, MessageSquare, Ruler, CheckCircle, Upload, Mail, Phone, User, Home } from "lucide-react";
+import { Pencil, MessageSquare, Ruler, CheckCircle, Upload, Mail, User, Home, ChevronDown } from "lucide-react";
 import InformationPageHero from "@/components/layout/page-hero-section";
 import TransformLivingCTA from "@/components/home-page/transform-living-CTA-section";
 
@@ -112,7 +112,11 @@ export default function CustomFurniturePage() {
     timeline: "",
   });
 
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const toggleFAQ = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -154,16 +158,16 @@ export default function CustomFurniturePage() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Your Vision, Our Expertise</h2>
             <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              At Bumi Teak Furniture, we know that some visions are too personal for standard catalog pieces. That’s why we offer a bespoke furniture service—where your ideas, needs, and lifestyle are translated into one-of-a-kind teak
+              At Bumi Teak Furniture, we know that some visions are too personal for standard catalog pieces. That’s why we offer a bespoke furniture service where your ideas, needs, and lifestyle are translated into one of a kind teak
               creations.
             </p>
             <p className="text-gray-700 text-lg leading-relaxed mb-6">
               Whether you’re looking for the perfect size, a fresh design, or a modern reinterpretation of a meaningful piece, our team will work closely with you to bring your vision to life. With a deep understanding of teak wood and
               thoughtful craftsmanship, we create furniture that feels intentional, functional, and beautifully yours.{" "}
             </p>
-            <p className="text-gray-600 leading-relaxed">
-              Every custom piece begins with collaboration. You bring the idea; we bring the expertise in design, material selection, and precise handcrafting. Together, we create furniture that blends practicality, beauty, and
-              soul—perfectly tailored to your home.{" "}
+            <p className="text-gray-700 text-lg leading-relaxed">
+              Every custom piece begins with collaboration. You bring the idea; we bring the expertise in design, material selection, and precise handcrafting. Together, we create furniture that blends practicality, beauty, and soul
+              perfectly tailored to your home.{" "}
             </p>
           </div>
         </div>
@@ -282,26 +286,6 @@ export default function CustomFurniturePage() {
                 </div>
               </div>
 
-              {/* Phone */}
-              <div>
-                <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Phone Number *
-                </label>
-                <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                    placeholder="+62 812 3456 7890"
-                  />
-                </div>
-              </div>
-
               {/* Furniture Type & Timeline */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -363,7 +347,7 @@ export default function CustomFurniturePage() {
                   </label>
                   <select id="budget" name="budget" value={formData.budget} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                     <option value="">Select range</option>
-                    <option value="under5">Under 5 Million IDR</option>
+                    <option value="under5">Under 5 Million RM</option>
                     <option value="5-10">5-10 Million IDR</option>
                     <option value="10-20">10-20 Million IDR</option>
                     <option value="20-50">20-50 Million IDR</option>
@@ -418,14 +402,16 @@ export default function CustomFurniturePage() {
               <p className="text-gray-600">Common questions about our custom furniture service</p>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-0 mb-16">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-gray-50 rounded-lg overflow-hidden">
-                  <button onClick={() => setOpenFaq(openFaq === index ? null : index)} className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors">
-                    <span className="font-semibold text-gray-900">{faq.question}</span>
-                    <ChevronRight className={`w-5 h-5 text-primary transition-transform ${openFaq === index ? "rotate-90" : ""}`} />
+                <div key={index} className="border-b border-secondary/20">
+                  <button onClick={() => toggleFAQ(index)} className="w-full py-6 flex justify-between items-center text-left hover:opacity-70 transition-opacity">
+                    <span className="font-body text-secondary font-medium pr-8">{faq.question}</span>
+                    <ChevronDown className={`w-5 h-5 text-secondary shrink-0 transition-transform ${openIndex === index ? "rotate-180" : ""}`} />
                   </button>
-                  {openFaq === index && <div className="px-6 pb-4 text-gray-600 leading-relaxed">{faq.answer}</div>}
+                  <div className={`overflow-hidden transition-all duration-300 ${openIndex === index ? "max-h-96 pb-6" : "max-h-0"}`}>
+                    <p className="font-body text-secondary text-sm leading-relaxed">{faq.answer}</p>
+                  </div>
                 </div>
               ))}
             </div>

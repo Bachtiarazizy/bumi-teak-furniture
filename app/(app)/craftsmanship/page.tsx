@@ -7,7 +7,7 @@ const processSteps = [
   {
     number: "01",
     title: "Material Selection",
-    description: "We source premium-grade teak wood from sustainable plantations, choosing each log for its grain pattern, color consistency, and natural strength.",
+    description: "We source premium grade teak wood from sustainable plantations, choosing each log for its grain pattern, color consistency, and natural strength.",
   },
   {
     number: "02",
@@ -78,8 +78,8 @@ export default function CraftsmanshipPage() {
               timeless craft of woodworking. Though we are a new brand, our standards are anything but new. We combine a deep appreciation for teak wood, thoughtful design, and skilled hands to create furniture that feels warm, soulful, and
               enduring.
             </p>
-            <p className="text-gray-600 leading-relaxed">
-              For us, craftsmanship is more than a technique—it is a dialogue between nature and the artisan. We collaborate with skilled craftsmen who understand the character of teak wood and shape it with precision and care. Their
+            <p className="text-gray-700 text-lg leading-relaxed">
+              For us, craftsmanship is more than a technique it is a dialogue between nature and the artisan. We collaborate with skilled craftsmen who understand the character of teak wood and shape it with precision and care. Their
               expertise blends traditional woodworking methods with modern accuracy, resulting in pieces that are both beautifully refined and built for long-term durability. From the initial selection of timber to the final finish, each
               piece is made to be lived with, loved, and passed down.
             </p>
@@ -115,22 +115,22 @@ export default function CraftsmanshipPage() {
       </section>
 
       {/* Qualities Grid */}
-      <section className="bg-white py-16 lg:py-20">
+      <section className="bg-primary py-16 lg:py-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">What Sets Us Apart</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">Our commitment to excellence is reflected in every aspect of our work</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What Sets Us Apart</h2>
+            <p className="text-gray-300 max-w-2xl mx-auto">Our commitment to excellence is reflected in every aspect of our work</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {qualities.map((quality, index) => (
-              <div key={index} className="flex gap-4 p-6 rounded-lg hover:bg-gray-50 transition-colors duration-300">
+              <div key={index} className="flex gap-4 p-6 rounded-lg bg-primary border border-amber-100 transition-colors duration-300">
                 <div className="shrink-0 mt-1">
-                  <CheckCircle className="w-6 h-6 text-primary" />
+                  <CheckCircle className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">{quality.title}</h4>
-                  <p className="text-gray-600 text-sm leading-relaxed">{quality.description}</p>
+                  <h4 className="text-lg font-bold text-white mb-2">{quality.title}</h4>
+                  <p className="text-gray-300 text-sm leading-relaxed">{quality.description}</p>
                 </div>
               </div>
             ))}
@@ -139,19 +139,19 @@ export default function CraftsmanshipPage() {
       </section>
 
       {/* Teak Wood Info */}
-      <section className="bg-primarypy-16 lg:py-20">
+      <section className="bg-gray-50 py-16 lg:py-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Why Teak Wood?</h2>
-              <p className="text-gray-700 text-lg">The gold standard of furniture-making.</p>
+              <p className="text-gray-700 text-lg">The gold standard of furniture making.</p>
             </div>
 
             <div className="bg-white rounded-lg shadow-lg p-8 lg:p-12">
               <div className="space-y-6">
                 <div>
                   <h4 className="text-xl font-bold text-primary mb-3">Natural Durability</h4>
-                  <p className="text-gray-600 leading-relaxed">Teak contains natural oils that protect it from rot, decay, and insects—making it ideal for long-term use. </p>
+                  <p className="text-gray-600 leading-relaxed">Teak contains natural oils that protect it from rot, decay, and insects making it ideal for long-term use. </p>
                 </div>
 
                 <div>
@@ -161,7 +161,7 @@ export default function CraftsmanshipPage() {
 
                 <div>
                   <h4 className="text-xl font-bold text-primary mb-3">Timeless Beauty</h4>
-                  <p className="text-gray-600 leading-relaxed">Teak’s golden-brown hues and elegant grain patterns complement any style and develop a beautiful patina over time. </p>
+                  <p className="text-gray-600 leading-relaxed">Teak’s golden brown hues and elegant grain patterns complement any style and develop a beautiful patina over time. </p>
                 </div>
 
                 <div>
@@ -181,10 +181,10 @@ export default function CraftsmanshipPage() {
             <Trees className="w-16 h-16 text-primary mx-auto mb-6" />
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Our Commitment to Sustainability</h2>
             <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              We believe that beautiful furniture begins with respect—for nature, for materials, and for future generations. Our teak wood comes from certified sustainable plantations where replanting and responsible management are core
+              We believe that beautiful furniture begins with respect for nature, for materials, and for future generations. Our teak wood comes from certified sustainable plantations where replanting and responsible management are core
               principles.{" "}
             </p>
-            <p className="text-gray-600 leading-relaxed">By choosing Bumi Teak Furniture, you support sustainable forestry and help preserve one of nature’s most valuable resources. </p>
+            <p className="text-gray-700 text-lg leading-relaxed">By choosing Bumi Teak Furniture, you support sustainable forestry and help preserve one of nature’s most valuable resources. </p>
           </div>
         </div>
       </section>

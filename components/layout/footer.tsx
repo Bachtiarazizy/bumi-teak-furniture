@@ -122,7 +122,7 @@ const Footer: React.FC<FooterProps> = ({ companyName = "Bumi Teak Furniture", co
           <div className="lg:col-span-2">
             <h5 className="font-heading text-white text-lg mb-4">Subscribe</h5>
             <p className="font-body text-sm text-white/80 mb-4 leading-relaxed">Stay connected with our latest teak furniture designs and craftsmanship insights.</p>
-            <div className="space-y-3">
+            <div className="flex flex-row gap-3">
               <input
                 type="email"
                 value={email}
@@ -130,7 +130,7 @@ const Footer: React.FC<FooterProps> = ({ companyName = "Bumi Teak Furniture", co
                 placeholder="Enter email address"
                 className="w-full px-4 py-2 bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm font-body focus:outline-none focus:border-white/40 transition-colors"
               />
-              <button onClick={handleSubmit} className="w-full bg-light text-secondary px-6 py-2 text-sm font-body hover:bg-white transition-colors">
+              <button onClick={handleSubmit} className="hover:bg-light text-secondary px-6 py-2 text-sm font-body bg-white transition-colors">
                 Submit
               </button>
             </div>

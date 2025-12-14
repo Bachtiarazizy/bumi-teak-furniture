@@ -111,11 +111,11 @@ const ProductFiltersSidebar: React.FC<ProductFiltersSidebarProps> = ({ onFilterC
   };
 
   const priceOptions: FilterOption[] = [
-    { id: "under-500", label: "Under $500" },
-    { id: "500-1000", label: "$500 - $1,000" },
-    { id: "1000-2000", label: "$1,000 - $2,000" },
-    { id: "2000-5000", label: "$2,000 - $5,000" },
-    { id: "above-5000", label: "Above $5,000" },
+    { id: "under-500", label: "Under RM 500" },
+    { id: "500-1000", label: "RM 500 - RM 1,000" },
+    { id: "1000-2000", label: "RM 1,000 - RM 2,000" },
+    { id: "2000-5000", label: "RM 2,000 - RM 5,000" },
+    { id: "above-5000", label: "Above RM 5,000" },
   ];
 
   // Update parent component when filters change

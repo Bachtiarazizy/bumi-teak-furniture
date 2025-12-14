@@ -2,7 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import { Clock, Download, Share2 } from "lucide-react";
+import { Download, Share2 } from "lucide-react";
+import Link from "next/link";
 import { urlForImage } from "@/lib/sanity/image";
 
 interface SanityImage {
@@ -16,13 +17,13 @@ interface SanityImage {
 interface GuideDetailHeroProps {
   title: string;
   category: string;
-  readTime: string;
   image?: SanityImage;
   downloadable: boolean;
   pdfUrl?: string;
+  slug?: string; // slug untuk breadcrumb
 }
 
-export default function GuideDetailHero({ title, category, readTime, image, downloadable, pdfUrl }: GuideDetailHeroProps) {
+export default function GuideDetailHero({ title, category, image, downloadable, pdfUrl, slug }: GuideDetailHeroProps) {
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -43,50 +44,61 @@ export default function GuideDetailHero({ title, category, readTime, image, down
   const imageUrl = image?.asset ? urlForImage(image.asset).width(1200).height(600).url() : "/images/guides/default.jpg";
 
   return (
-    <section className="relative bg-secondary text-white overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0">
-        <Image src={imageUrl} alt={image?.alt || title} fill className="object-cover opacity-20" priority />
-        <div className="absolute inset-0 bg-linear-to-b from-secondary/50 to-secondary" />
-      </div>
+    <section className="bg-white">
+      <div className="container max-w-5xl mx-auto px-6 lg:px-12 py-12">
+        {/* Breadcrumb */}
+        <div className="flex items-center gap-2 text-sm font-body text-secondary/60 mb-8">
+          <Link href="/">
+            <span className="hover:text-secondary cursor-pointer">Home</span>
+          </Link>
+          <span>/</span>
+          <Link href="/guides">
+            <span className="hover:text-secondary cursor-pointer">Guides</span>
+          </Link>
+          <span>/</span>
+          <Link href={`/guides/${slug}`}>
+            <span className="hover:text-secondary cursor-pointer">{title}</span>
+          </Link>
+        </div>
 
-      {/* Content */}
-      <div className="relative container mx-auto px-6 lg:px-12 py-16 lg:py-24">
-        <div className="max-w-4xl mx-auto text-center">
+        {/* Content */}
+        <div className="container mx-auto">
           {/* Category Badge */}
-          <div className="inline-block mb-6">
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-body uppercase tracking-wide">{category}</span>
-          </div>
+          <span className="inline-block bg-secondary/10 text-secondary px-4 py-1 rounded-full text-sm font-body mb-6">{category}</span>
 
           {/* Title */}
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6">{title}</h1>
+          <h1 className="font-heading text-secondary mb-6 leading-tight">
+            <div className="text-2xl md:text-3xl lg:text-4xl">{title}</div>
+          </h1>
 
-          {/* Meta Info */}
-          <div className="flex items-center justify-center gap-6 text-sm font-body text-white/80 mb-8">
-            <span className="flex items-center gap-2">
-              <Clock className="w-4 h-4" />
-              {readTime}
-            </span>
+          {/* Meta Information */}
+          <div className="flex flex-wrap items-center gap-6 text-sm font-body text-secondary/60 mb-8">
+            <div className="flex items-center gap-2"></div>
             {downloadable && pdfUrl && (
               <>
                 <span>•</span>
-                <span className="flex items-center gap-2">
+                <div className="flex items-center gap-2">
                   <Download className="w-4 h-4" />
-                  Downloadable PDF
-                </span>
+                  <span>Downloadable PDF</span>
+                </div>
               </>
             )}
           </div>
 
+          {/* Featured Image */}
+          <div className="relative h-[300px] md:h-[500px] rounded-lg overflow-hidden mb-8">
+            <Image src={imageUrl} alt={image?.alt || title} fill className="object-cover" priority />
+          </div>
+
           {/* Action Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-wrap items-center gap-4">
             {downloadable && pdfUrl && (
-              <a href={pdfUrl} download className="inline-flex items-center gap-2 bg-white text-secondary px-8 py-3 rounded font-body text-sm hover:bg-white/90 transition-colors">
+              <a href={pdfUrl} download className="inline-flex items-center gap-2 bg-secondary text-white px-8 py-3 rounded font-body text-sm hover:bg-secondary/90 transition-colors">
                 <Download className="w-4 h-4" />
                 Download PDF
               </a>
             )}
-            <button onClick={handleShare} className="inline-flex items-center gap-2 border border-white/30 text-white px-8 py-3 rounded font-body text-sm hover:bg-white/10 transition-colors">
+            <button onClick={handleShare} className="inline-flex items-center gap-2 border border-secondary/30 text-secondary px-8 py-3 rounded font-body text-sm hover:bg-secondary/10 transition-colors">
               <Share2 className="w-4 h-4" />
               Share Guide
             </button>

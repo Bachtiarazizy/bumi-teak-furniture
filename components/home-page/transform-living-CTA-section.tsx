@@ -20,7 +20,7 @@ const TransformLivingCTA: React.FC<TransformLivingCTAProps> = ({
   description = "Experience the raw beauty of Indonesian craftsmanship through our carefully curated teak furniture collection.",
   imagePath = "/images/hero-image.jpg",
   primaryButtonText = "Inquire",
-  secondaryButtonText = "Connect",
+  secondaryButtonText = "Learn More",
   primaryButtonLink = "/contact",
   secondaryButtonLink = "/about",
   contentAlignment = "start",
@@ -44,7 +44,13 @@ const TransformLivingCTA: React.FC<TransformLivingCTAProps> = ({
     <section className="relative py-16 w-full overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <Image src={imagePath} alt="Transform your living space" fill className="object-cover" />
+        <Image
+          src={imagePath}
+          alt="Transform your living space"
+          fill
+          className="object-cover"
+          style={{ objectPosition: "center 75%" }} // 80% dari atas (menampilkan bagian bawah lebih banyak)
+        />
         <div className="absolute inset-0 bg-black/50" />
       </div>
 

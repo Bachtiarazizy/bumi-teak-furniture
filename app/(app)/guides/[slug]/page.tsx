@@ -70,7 +70,7 @@ export default async function GuideDetailPage({ params }: GuideDetailPageProps) 
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <GuideDetailHero title={guide.title} category={guide.category} readTime={guide.readTime} image={guide.image} downloadable={guide.downloadable} pdfUrl={guide.pdfUrl} />
+      <GuideDetailHero title={guide.title} category={guide.category} slug={guide.slug.current} image={guide.image} downloadable={guide.downloadable} pdfUrl={guide.pdfUrl} />
 
       {/* Guide Content */}
       <GuideContent content={guide.content} />

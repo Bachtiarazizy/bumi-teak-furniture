@@ -194,7 +194,7 @@ export default function SustainabilityPage() {
               </div>
               <div>
                 <h2 className="font-heading text-3xl text-secondary mb-6">Supporting Local Artisans</h2>
-                <p className="font-body text-secondary text-sm leading-relaxed mb-4">Sustainability is not only about forests—it is also about people.</p>
+                <p className="font-body text-secondary text-sm leading-relaxed mb-4">Sustainability is not only about forests it is also about people.</p>
                 <p className="font-body text-secondary text-sm leading-relaxed mb-6">
                   We work closely with artisan communities in Central Java, where woodworking is a cultural heritage. Through fair compensation, respectful partnerships, and skill development, we help preserve this heritage while supporting
                   stable livelihoods.{" "}
@@ -207,7 +207,7 @@ export default function SustainabilityPage() {
                   </li>
                   <li className="font-body text-sm text-secondary flex items-start">
                     <span className="text-green-600 mr-3 mt-1">✓</span>
-                    <span>Safe and well-ventilated workshop environments</span>
+                    <span>Safe and well ventilated workshop environments</span>
                   </li>
                   <li className="font-body text-sm text-secondary flex items-start">
                     <span className="text-green-600 mr-3 mt-1">✓</span>
@@ -250,7 +250,7 @@ export default function SustainabilityPage() {
                     <span>sustainable, long-lasting design</span>
                   </li>
                 </ul>
-                <p className="font-body text-secondary text-sm leading-relaxed mb-6">Together, we can create homes filled with warmth—while caring for the planet that inspires us.</p>
+                <p className="font-body text-secondary text-sm leading-relaxed mb-6">Together, we can create homes filled with warmth while caring for the planet that inspires us.</p>
                 <div className="flex flex-row gap-4 justify-start">
                   <a href="/shop" className="inline-block bg-secondary text-white px-8 py-3 font-body text-sm hover:bg-secondary/90 transition-colors rounded">
                     Shop Now

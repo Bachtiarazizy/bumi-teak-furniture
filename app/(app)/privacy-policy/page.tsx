@@ -1,4 +1,5 @@
-import LegalPageHero from "@/components/layout/legal-page-hero-section";
+import InformationPageHero from "@/components/layout/page-hero-section";
+import Link from "next/link";
 import React from "react";
 
 export default function PrivacyPolicyPage() {
@@ -116,17 +117,24 @@ export default function PrivacyPolicyPage() {
         },
       ],
       contact: {
-        email: "privacy@bumiteakfurniture.com",
-        phone: "+62 291 123 4567",
-        address: "Jl. Furniture Craft No. 123, Jepara, Central Java, Indonesia 59419",
+        email: "info@bumiteakfurniture.com",
+        phone: "+60 17 570 9140",
+        // address: "Jl. Furniture Craft No. 123, Jepara, Central Java, Indonesia 59419",
       },
     },
   ];
 
   return (
     <main className="min-h-screen">
-      <LegalPageHero title="Privacy Policy" lastUpdated="January 15, 2024" description="Your privacy is important to us. This Privacy Policy explains how Bumi Teak Furniture collects, uses, and protects your personal information." />
-
+      <InformationPageHero
+        title="Privacy Policy"
+        description="Learn about our privacy practices and how we protect your information."
+        imagePath="/images/hero-image.jpg"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Privacy Policy", href: "/privacy-policy" },
+        ]}
+      />
       <section className="bg-white py-12">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-4xl mx-auto">
@@ -167,15 +175,19 @@ export default function PrivacyPolicyPage() {
 
                   {section.contact && (
                     <div className="mt-4 p-6 bg-light rounded-lg">
-                      <p className="font-body text-secondary text-sm mb-2">
-                        <strong>Email:</strong> {section.contact.email}
-                      </p>
-                      <p className="font-body text-secondary text-sm mb-2">
-                        <strong>Phone:</strong> {section.contact.phone}
-                      </p>
-                      <p className="font-body text-secondary text-sm">
+                      <Link href={`mailto:${section.contact.email}`} target="_blank" rel="noopener noreferrer">
+                        <p className="font-body text-secondary text-sm mb-2">
+                          <strong>Email:</strong> {section.contact.email}
+                        </p>
+                      </Link>
+                      <Link href={`https://wa.me${section.contact.phone.replace(/\+/g, "")}`} target="_blank" rel="noopener noreferrer">
+                        <p className="font-body text-secondary text-sm">
+                          <strong>Phone:</strong> {section.contact.phone}
+                        </p>
+                      </Link>
+                      {/* <p className="font-body text-secondary text-sm">
                         <strong>Address:</strong> {section.contact.address}
-                      </p>
+                      </p> */}
                     </div>
                   )}
                 </div>

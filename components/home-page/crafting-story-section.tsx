@@ -51,7 +51,7 @@ const CraftingStorySection: React.FC<CraftingStorySectionProps> = ({
           </div>
 
           {/* Right: Image */}
-          <div className="relative h-[500px] rounded-lg overflow-hidden">
+          <div className="relative h-[500px] rounded-lg shadow-2xl overflow-hidden">
             <Image src={imagePath} alt="Crafting furniture story" fill className="object-cover" />
           </div>
         </div>

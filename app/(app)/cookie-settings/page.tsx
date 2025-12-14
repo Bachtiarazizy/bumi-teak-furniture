@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Check } from "lucide-react";
-import LegalPageHero from "@/components/layout/legal-page-hero-section";
+import InformationPageHero from "@/components/layout/page-hero-section";
 
 interface CookieCategory {
   id: string;
@@ -71,8 +71,15 @@ export default function CookieSettingsPage() {
 
   return (
     <main className="min-h-screen">
-      <LegalPageHero title="Cookie Settings" lastUpdated="January 15, 2024" description="Manage your cookie preferences and learn how we use cookies to improve your experience on our website." />
-
+      <InformationPageHero
+        title="Cookie Settings"
+        description="Manage your cookie preferences to enhance your browsing experience."
+        imagePath="/images/hero-image.jpg"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Cookie Settings", href: "/cookie-settings" },
+        ]}
+      />
       <section className="bg-white py-12">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-4xl mx-auto">
